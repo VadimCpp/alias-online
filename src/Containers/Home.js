@@ -20,16 +20,22 @@ const Home = () => {
     */
 
   const onCreateQuiz = () => {
-    createQuiz();
-    navigate("quiz");
+    alert("TODO: implement");
+    // TODO: implement
+    // createQuiz();
+    // navigate("quiz");
   };
 
   return (
     <Container>
-      <HomeHeader>Quiz generator</HomeHeader>
+      <HomeHeader>Alias online</HomeHeader>
+      <WelcomeMessage>Play with friends around the globe</WelcomeMessage>
       <CreateQuizButton onClick={() => onCreateQuiz()}>
-        Create quiz
+        PLAY
       </CreateQuizButton>
+
+      {/*
+      // TODO: this code we use later after all screen are created
       <ButtonsContainer>
         <button onClick={() => navigate("question")}>
           Add new question
@@ -58,6 +64,7 @@ const Home = () => {
           <button onClick={() => logOut()}>Log out</button>
         </UserManagementContainer>
       )}
+      */}
     </Container>
   );
 };
@@ -68,6 +75,11 @@ const HomeHeader = styled.h1`
   margin-bottom: 1em;
 `;
 
+const WelcomeMessage = styled.p`
+  text-align: center;
+  margin: 10em 0 13em;
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -75,6 +87,7 @@ const Container = styled.div`
   justify-content: center;
   padding-right: 1em;
   padding-left: 1em;
+  height: 100vh;
 `;
 
 const ButtonsContainer = styled.div`
@@ -87,8 +100,9 @@ const ButtonsContainer = styled.div`
 
 const CreateQuizButton = styled.button`
   background-color: #54bab9;
-  padding: 4em;
+  padding: 1em 4em;
   color: white;
+  font-size: 1.5em;
 `;
 
 const UserManagementContainer = styled.div`
