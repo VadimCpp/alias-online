@@ -1,3 +1,15 @@
+# Alias-online
+
+> An online version of the famous game
+
+![IMG_1185](https://user-images.githubusercontent.com/4641125/194563847-7b9041ff-66d8-4892-9209-6b513961cde5.JPG)
+
+The idea come at NDC Oslo 2022
+
+Original repository is here: https://github.com/bekk/firebase-workshop
+
+---
+
 # Firebase Workshop 🔥
 
 In this workshop, we are going to cover the basics of the Firebase platform. We will focus on getting to know Hosting, Firestore and Authentication. And if we have the time, we will also explore Firebase Cloud Functions and Firebase Storage.
