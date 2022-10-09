@@ -9,12 +9,14 @@ import Questions from "./Containers/Questions";
 import Quiz from "./Containers/Quiz";
 import Register from "./Containers/Register";
 import Reset from "./Containers/Reset";
+import Signin from "./Containers/Signin";
 
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Signin />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/reset" element={<Reset />} />

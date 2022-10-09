@@ -19,16 +19,18 @@ const Home = () => {
     console.log(user)
     */
 
-  const onCreateQuiz = () => {
-    navigate("signin");
+  const onSigninWithGoogle = () => {
+    alert("TODO: implement");
   };
 
   return (
     <Container>
       <HomeHeader>Alias online</HomeHeader>
-      <WelcomeMessage>Play with friends around the globe</WelcomeMessage>
-      <CreateQuizButton onClick={() => onCreateQuiz()}>
-        PLAY
+      <HomeSubHeader>Sign in</HomeSubHeader>
+      <WelcomeMessage>Please, sign in with Google
+        to join the playing room</WelcomeMessage>
+      <CreateQuizButton onClick={() => onSigninWithGoogle()}>
+        Sign in with Google
       </CreateQuizButton>
 
       {/*
@@ -69,6 +71,11 @@ const Home = () => {
 const HomeHeader = styled.h1`
   text-align: center;
   font-size: 3em;
+  margin-bottom: .5em;
+`;
+
+const HomeSubHeader = styled.p`
+  text-align: center;
   margin-bottom: 1em;
 `;
 
