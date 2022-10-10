@@ -2,25 +2,26 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-/*
 // Import the methods you need from Firebase
 
 import { addDoc, collection, getDoc, doc, updateDoc, deleteDoc, getDocs } from 'firebase/firestore'
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-*/
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+const googleProvider = new GoogleAuthProvider();
 
 // Fill in the config values of your Firebase project below
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  appId: "",
+  apiKey: "AIzaSyCIXUBQgGrUu6DPyzirXzCOsB_mjA9EIzM",
+  authDomain: "alias-online-13de4.firebaseapp.com",
+  projectId: "alias-online-13de4",
+  storageBucket: "alias-online-13de4.appspot.com",
+  messagingSenderId: "513511160334",
+  appId: "1:513511160334:web:f856fc3504d446d6595a5f"
 };
 
 /* Uncomment the lines below when your Firebase config is good. */
-//const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig)
 //const db = getFirestore(app)
-//const auth = getAuth(app)
+const auth = getAuth(app)
 
 const createQuestion = (question) => {
   // Add questions to Firestore. This method is called from the component src/Containers/Question.js
@@ -70,7 +71,8 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 const signInWithGoogle = async () => {
   // https://firebase.google.com/docs/auth/web/google-signin#handle_the_sign-in_flow_with_the_firebase_sdk
   try {
-    console.log("Logged in with Google");
+    const res = await signInWithPopup(auth, googleProvider);
+    const user = res.user;
   } catch (err) {
     console.error(err);
   }
@@ -87,6 +89,11 @@ const logInWithEmailAndPassword = async (email, password) => {
 
 const logOut = async () => {
   // https://firebase.google.com/docs/auth/web/password-auth#next_steps
+  try {
+    await signOut(auth);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const sendPasswordReset = async (email) => {

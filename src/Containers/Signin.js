@@ -2,37 +2,46 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { logOut, createQuiz } from "../firebase";
+import { signInWithGoogle, logOut } from "../firebase";
 
 const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(undefined);
 
-  /*
-    // Used to listen for changes to the logged-in user state.
-
-    useEffect(() =>{
-        const auth = getAuth()
-        const unsubscribe = onAuthStateChanged(auth, authUser => authUser ? setUser(authUser) : setUser(null));
-        return () => unsubscribe();
-    }, []);
-    console.log(user)
-    */
+  useEffect(() => {
+      const auth = getAuth()
+      const unsubscribe = onAuthStateChanged(auth, authUser => authUser ? setUser(authUser) : setUser(null));
+      return () => unsubscribe();
+  }, []);
 
   const onSigninWithGoogle = () => {
-    alert("TODO: implement");
+    signInWithGoogle();
   };
 
   return (
     <Container>
       <HomeHeader>Alias online</HomeHeader>
-      <HomeSubHeader>Sign in</HomeSubHeader>
+      {!user &&
+        <HomeSubHeader>Sign in</HomeSubHeader>
+      }
+      {user && (
+        <HomeSubHeader>
+          <span>Welcome, {user.displayName}</span>
+          <img width="64" height="64" src={user.photoURL} alt={user.displayName} />
+        </HomeSubHeader>
+      )}
       <WelcomeMessage>Please, sign in with Google
         to join the playing room</WelcomeMessage>
-      <CreateQuizButton onClick={() => onSigninWithGoogle()}>
-        Sign in with Google
-      </CreateQuizButton>
-
+      {!user &&
+        <CreateQuizButton onClick={() => onSigninWithGoogle()}>
+          Sign in with Google
+        </CreateQuizButton>
+      }
+      {user && (
+        <CreateQuizButton onClick={() => logOut()}>
+          Log out
+        </CreateQuizButton>
+      )}
       {/*
       // TODO: this code we use later after all screen are created
       <ButtonsContainer>
