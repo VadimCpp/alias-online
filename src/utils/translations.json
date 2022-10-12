@@ -9,7 +9,74 @@
   },
   "PLAY": {
     "EN": "Play",
-    "UA": "Грай"
+    "UA": "Грати"
   },
-  "TODO": { }
+  "SIGN_IN": {
+    "EN": "Sign in",
+    "UA": "Увійти"
+  },
+  "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY": {
+    "EN": "Please, sign in with Google to join the playing room",
+    "UA": "Будь ласка, увійдіть за допомогою Google, щоб приєднатися до гри"
+  },
+  "SIGN_IN_WITH_GOOGLE": {
+    "EN": "Sign in with Google",
+    "UA": "Увійти за допомогою Google"
+  },
+  "PLAYING_ROOM": {
+    "EN": "Playing room",
+    "UA": "Гральна кімната"
+  },
+  "PLAYERS": {
+    "EN": "Players",
+    "UA": "Гравці"
+  },
+  "STATUS": {
+    "EN": "Status",
+    "UA": "Статус"
+  },
+  "SEE_SCORE": {
+    "EN": "See score",
+    "UA": "Подивитись рахунок"
+  },
+  "SEE_STATUS": {
+    "EN": "See status",
+    "UA": "Подивитись статус"
+  },
+  "EVERYBODY_IS_WAITING" : {
+    "EN": "Everybody is waiting",
+    "UA": "Всі очікують"
+  },
+  "PRESS_PLAY": {
+    "EN": "Press play",
+    "UA": "Натисни 'Грати'"
+  },
+  "IS_EXPLAINING_A_WORD": {
+    "EN": "is explaining a word",
+    "UA": "пояснює слово"
+  },
+  "GUESS": {
+    "EN": "Guess",
+    "UA": "Здогадайся"
+  },
+  "EXPLAINING": {
+    "EN": "explaining",
+    "UA": "пояснює"
+  },
+  "YOU_ARE_EXPLAINING_THE_WORD": {
+    "EN": "You are explaining the word",
+    "UA": "Ти пояснюєш слово"
+  },
+  "EXPLAIN_THE_WORD": {
+    "EN": "Explain the word",
+    "UA": "Поясни це слово"
+  },
+  "CHOOSE_WINNER": {
+    "EN": "Choose winner",
+    "UA": "Обрати переможця"
+  },
+  "SHOW_WORD": {
+    "EN": "Show word",
+    "UA": "Показати слово"
+  }
 }
