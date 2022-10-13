@@ -78,5 +78,13 @@
   "SHOW_WORD": {
     "EN": "Show word",
     "UA": "Показати слово"
+  },
+  "UKRANIAN": {
+    "EN": "Ukrainian",
+    "UA": "Українська"
+  },
+  "ENGLISH": {
+    "EN": "English",
+    "UA": "Англійська"
   }
 }

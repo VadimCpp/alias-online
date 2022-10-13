@@ -46,10 +46,10 @@ const Home = () => {
       )}
       <ButtonsContainer>
         <button onClick={() => setInterfaceLang("UA")}>
-          Українська 🇺🇦
+          {getString(interfaceLang, "UKRANIAN")} 🇺🇦
         </button>
         <button onClick={() => setInterfaceLang("EN")}>
-          English 🇬🇧
+          {getString(interfaceLang, "ENGLISH")} 🇬🇧
         </button>
       </ButtonsContainer>
       {/*
