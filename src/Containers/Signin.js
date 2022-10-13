@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { signInWithGoogle, logOut } from "../firebase";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(undefined);
-
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
   useEffect(() => {
       const auth = getAuth()
       const unsubscribe = onAuthStateChanged(auth, authUser => authUser ? setUser(authUser) : setUser(null));
@@ -22,7 +24,7 @@ const Home = () => {
     <Container>
       <HomeHeader>Alias online</HomeHeader>
       {!user &&
-        <HomeSubHeader>Sign in</HomeSubHeader>
+        <HomeSubHeader>{getString(interfaceLang, "SIGN_IN")}</HomeSubHeader>
       }
       {user && (
         <HomeSubHeader>
@@ -42,20 +44,15 @@ const Home = () => {
           Log out
         </CreateQuizButton>
       )}
-      {/*
-      // TODO: this code we use later after all screen are created
       <ButtonsContainer>
-        <button onClick={() => navigate("question")}>
-          Add new question
+        <button onClick={() => setInterfaceLang("UA")}>
+          Українська 🇺🇦
         </button>
-        <button
-          style={{ marginLeft: "1em" }}
-          onClick={() => navigate("questions")}
-        >
-         My questions
+        <button onClick={() => setInterfaceLang("EN")}>
+          English 🇬🇧
         </button>
       </ButtonsContainer>
-
+      {/*
       {!user && (
         <UserManagementContainer>
           <button onClick={() => navigate("/login")}>Log in</button>
@@ -90,7 +87,7 @@ const HomeSubHeader = styled.p`
 
 const WelcomeMessage = styled.p`
   text-align: center;
-  margin: 10em 0 13em;
+  margin: 3em 0 3em;
 `;
 
 const Container = styled.div`
