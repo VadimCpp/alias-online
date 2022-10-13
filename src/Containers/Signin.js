@@ -36,7 +36,7 @@ const Home = () => {
         to join the playing room</WelcomeMessage>
       {!user &&
         <CreateQuizButton onClick={() => onSigninWithGoogle()}>
-          Sign in with Google
+          {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
         </CreateQuizButton>
       }
       {user && (
