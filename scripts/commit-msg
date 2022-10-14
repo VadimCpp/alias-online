@@ -1,0 +1,12 @@
+#!/bin/bash
+
+MSG="$1"
+
+echo $MSG
+
+if ! (echo "$MSG" | grep -Eq "^#[0-9]+");then
+    echo "ERROR! Your commit message must contain task number at the beginning, e.g. '#13 do something'"
+    exit 1
+else
+    echo "commit-msg: dear developer, commit message format is okay"
+fi
