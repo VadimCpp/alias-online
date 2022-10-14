@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "firebase deploy --only hosting",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "prepare": "cp -rf ./scripts/commit-msg .git/hooks && chmod 755 ./scripts/commit-msg"
   },
   "eslintConfig": {
     "extends": [

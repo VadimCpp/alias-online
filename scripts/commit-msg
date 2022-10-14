@@ -3,6 +3,12 @@
 MSG="$1"
 
 echo "commit-msg: check the commit message..."
+
+if [ "$MSG" = ".git/COMMIT_EDITMSG" ]; then
+  echo "commit-msg: extract commit message from .git/COMMIT_EDITMSG"
+  MSG=`cat .git/COMMIT_EDITMSG`
+fi
+
 echo $MSG
 
 if ! (echo "$MSG" | grep -Eq "^#[0-9]+");then
