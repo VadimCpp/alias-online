@@ -22,18 +22,17 @@ const Home = () => {
 
   return (
     <Container>
-      <HomeHeader>Alias online</HomeHeader>
+      <HomeHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</HomeHeader>
       {!user &&
         <HomeSubHeader>{getString(interfaceLang, "SIGN_IN")}</HomeSubHeader>
       }
       {user && (
         <HomeSubHeader>
-          <span>Welcome, {user.displayName}</span>
+          <span>{getString(interfaceLang, "WELCOME")}, {user.displayName}</span>
           <img width="64" height="64" src={user.photoURL} alt={user.displayName} />
         </HomeSubHeader>
       )}
-      <WelcomeMessage>Please, sign in with Google
-        to join the playing room</WelcomeMessage>
+      <WelcomeMessage>{getString(interfaceLang, "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY")}</WelcomeMessage>
       {!user &&
         <CreateQuizButton onClick={() => onSigninWithGoogle()}>
           {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
@@ -41,7 +40,7 @@ const Home = () => {
       }
       {user && (
         <CreateQuizButton onClick={() => logOut()}>
-          Log out
+           {getString(interfaceLang, "LOG_OUT")}
         </CreateQuizButton>
       )}
       <ButtonsContainer>

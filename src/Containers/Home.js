@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { logOut, createQuiz } from "../firebase";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(undefined);
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
   /*
     // Used to listen for changes to the logged-in user state.
@@ -25,10 +28,10 @@ const Home = () => {
 
   return (
     <Container>
-      <HomeHeader>Alias online</HomeHeader>
-      <WelcomeMessage>Play with friends around the globe</WelcomeMessage>
+      <HomeHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</HomeHeader>
+      <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
       <CreateQuizButton onClick={() => onCreateQuiz()}>
-        PLAY
+        {getString(interfaceLang, "PLAY")}
       </CreateQuizButton>
 
       {/*

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { sendPasswordReset } from "../firebase";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 function Reset() {
   const [email, setEmail] = useState("");
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
   const onSendResetPassword = () => {
     sendPasswordReset(email);
@@ -20,11 +23,11 @@ function Reset() {
           placeholder="Email"
         />
         <Button onClick={() => onSendResetPassword()}>
-          Send reset password email
+          {getString(interfaceLang, "SEND_RESET_PASSWORD_EMAIL")}
         </Button>
 
         <div>
-          <Link to="/register">Register</Link>
+          <Link to="/register">{getString(interfaceLang, "REGISTER")}</Link>
         </div>
       </ResetContainer>
     </ResetWrapper>
