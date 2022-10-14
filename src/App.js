@@ -13,6 +13,7 @@ import Quiz from "./Containers/Quiz";
 import Register from "./Containers/Register";
 import Reset from "./Containers/Reset";
 import Signin from "./Containers/Signin";
+import LangSettings from "./Containers/LangSettings";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/question/:id" element={<Question />} />
           <Route path="/questions" element={<Questions />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/lang-settings" element={<LangSettings />} />
         </Routes>
       </div>
     </LanguageContext.Provider>
