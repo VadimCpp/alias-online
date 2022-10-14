@@ -2,6 +2,7 @@
 
 MSG="$1"
 
+echo "commit-msg: check the commit message..."
 echo $MSG
 
 if ! (echo "$MSG" | grep -Eq "^#[0-9]+");then
