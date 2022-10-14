@@ -11,9 +11,9 @@ const Home = () => {
   const [user, setUser] = useState(undefined);
   const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
   useEffect(() => {
-      const auth = getAuth()
-      const unsubscribe = onAuthStateChanged(auth, authUser => authUser ? setUser(authUser) : setUser(null));
-      return () => unsubscribe();
+    const auth = getAuth()
+    const unsubscribe = onAuthStateChanged(auth, authUser => authUser ? setUser(authUser) : setUser(null));
+    return () => unsubscribe();
   }, []);
 
   const onSigninWithGoogle = () => {
@@ -45,12 +45,7 @@ const Home = () => {
         </CreateQuizButton>
       )}
       <ButtonsContainer>
-        <button onClick={() => setInterfaceLang("UA")}>
-          {getString(interfaceLang, "UKRANIAN")} 🇺🇦
-        </button>
-        <button onClick={() => setInterfaceLang("EN")}>
-          {getString(interfaceLang, "ENGLISH")} 🇬🇧
-        </button>
+        <button onClick={() => navigate("/lang-settings")}>language settings</button>
       </ButtonsContainer>
       {/*
       {!user && (
