@@ -16,7 +16,7 @@
   { "NO": "Knapp" },
   { "NO": "Saks" },
   { "NO": "Kost" },
-  { "NO": "Stjerne" },
+  { "NO": "Stjerne", "EN": "Star", "UA": "Зірка" },
   { "NO": "Stiftemaskin" },
   { "NO": "Drage" },
   { "NO": "Dør" },
