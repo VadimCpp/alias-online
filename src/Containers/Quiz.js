@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 const Quiz = () => {
   const navigate = useNavigate();
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
   return (
     <>
@@ -15,9 +18,9 @@ const Quiz = () => {
         <Table>
           <thead>
             <tr>
-              <TableDataHead>Question</TableDataHead>
-              <TableDataHead>Answer</TableDataHead>
-              <TableDataHead>Made by</TableDataHead>
+              <TableDataHead>{getString(interfaceLang, "QUESTION")}</TableDataHead>
+              <TableDataHead>{getString(interfaceLang, "ANSWER")}</TableDataHead>
+              <TableDataHead>{getString(interfaceLang, "MADE_BY")}</TableDataHead>
             </tr>
           </thead>
           <tbody></tbody>

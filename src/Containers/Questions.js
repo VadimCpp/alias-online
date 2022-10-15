@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getQuestions } from "../firebase";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 const Questions = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
   useEffect(() => {
     /* 
@@ -22,15 +25,15 @@ const Questions = () => {
   return (
     <>
       <div style={{ width: "3em", marginLeft: "1em" }}>
-        <button onClick={() => navigate("/")}>Go Back</button>
+        <button onClick={() => navigate("/")}>{getString(interfaceLang, "GO_BACK")}</button>
       </div>
       <QuestionsContainer>
-        <QuestionsHeader>Question</QuestionsHeader>
+        <QuestionsHeader>{getString(interfaceLang, "QUESTION")}</QuestionsHeader>
         <Table>
           <thead>
             <TableRow>
-              <TableDataHead>Question</TableDataHead>
-              <TableDataHead>Answer</TableDataHead>
+              <TableDataHead>{getString(interfaceLang, "QUESTION")}</TableDataHead>
+              <TableDataHead>{getString(interfaceLang, "ANSWER")}</TableDataHead>
             </TableRow>
           </thead>
           <tbody>

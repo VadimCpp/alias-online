@@ -3,6 +3,14 @@
     "EN": "Alias online",
     "UA": "Аліас онлайн"
   },
+  "DO_YOU_HAVE_AN_ACCOUNT_ALREADY?": {
+    "EN": "Do you have an account already?",
+    "UA": "У вас вже є обліковий запис?"
+  },
+  "LOG_IN_HERE": {
+    "EN": "Log in here",
+    "UA": "Увійдіть тут"
+  },
   "PLAY_WITH_FRIENDS": {
     "EN": "Play with friends around the globe",
     "UA": "Грай з друзями з усього світу"
@@ -10,6 +18,10 @@
   "PLAY": {
     "EN": "Play",
     "UA": "Грати"
+  },
+  "SEND_RESET_PASSWORD_EMAIL": {
+    "EN": "Send reset password email",
+    "UA": "Надіслати електронний лист для скидання пароля"
   },
   "SIGN_IN": {
     "EN": "Sign in",
@@ -86,5 +98,53 @@
   "ENGLISH": {
     "EN": "English",
     "UA": "Англійська"
+  },
+  "WELCOME": {
+    "EN": "Welcome",
+    "UA": "Вітаємо"
+  },
+  "LOG_OUT": {
+    "EN": "Log out",
+    "UA": "Вийти"
+  },
+  "LOG_IN_WITH_GOOGLE": {
+    "EN": "Log in with google",
+    "UA": "Увійти за допомогою Google"
+  },
+  "FORGOT_YOUR_PASSWORD?": {
+    "EN": "Forgot your password?",
+    "UA": "Забули пароль?"
+  },
+  "REGISTER": {
+    "EN": "Register",
+    "UA": "Реєстрація"
+  },
+  "REGISTER_WITH_GOOGLE": {
+    "EN": "Register with Google",
+    "UA": "Реєстрація за допомогою Google"
+  },
+  "BACK": {
+    "EN": "Back",
+    "UA": "Назад"
+  },
+  "ANSWER": {
+    "EN": "Answer",
+    "UA": "Відповідь"
+  },
+  "DELETE": {
+    "EN": "Delete",
+    "UA": "Видалити"
+  },
+  "GO_BACK": {
+    "EN": "Go back",
+    "UA": "Повертайся"
+  },
+  "QUESTION": {
+    "EN": "Question",
+    "UA": "Запитання"
+  },
+  "MADE_BY": {
+    "EN": "Made by",
+    "UA": "Зроблено"
   }
 }

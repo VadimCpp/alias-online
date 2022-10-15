@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 function Login() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
   /*
         // You can use the useEffect hook here to listen to changes to the
@@ -52,14 +55,14 @@ function Login() {
           onClick={() => onGoogleSignIn()}
           style={{ backgroundColor: "#4285f4" }}
         >
-          Log in with Google
+          {getString(interfaceLang, "LOG_IN_WITH_GOOGLE")}
         </Button>
         <div>
-          <Link to="/reset">Forgot your password?</Link>
+          <Link to="/reset">{getString(interfaceLang, "FORGOT_YOUR_PASSWORD?")}</Link>
         </div>
         <br />
         <div>
-          <Link to="/register">Register</Link>
+          <Link to="/register">{getString(interfaceLang, "REGISTER")}</Link>
         </div>
       </LoginContainer>
     </LoginWrapper>

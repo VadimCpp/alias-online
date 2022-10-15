@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -7,11 +7,14 @@ import {
   getQuestion,
   updateQuestion,
 } from "../firebase";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 const Question = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [question, setQuestion] = useState({});
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
   const onSaveButtonClick = () => {
     if (id) {
@@ -39,7 +42,7 @@ const Question = () => {
   return (
     <>
       <div style={{ width: "3em", marginLeft: "1em" }}>
-        <button onClick={() => navigate("/")}>Back</button>
+        <button onClick={() => navigate("/")}>{getString(interfaceLang, "BACK")}</button>
       </div>
       <QuestionContainer>
         <QuestionHeader>
@@ -64,7 +67,7 @@ const Question = () => {
           </FormField>
           <FormField>
             <label style={{ marginBottom: "0.5em" }} htmlFor="answer">
-              Answer
+              {getString(interfaceLang, "ANSWER")}
             </label>
             <textarea
               rows="1"
@@ -82,7 +85,7 @@ const Question = () => {
         <ButtonsContainer>
           <SaveButton onClick={() => onSaveButtonClick()}>Save</SaveButton>
           <DeleteButton onClick={() => onDeleteButtonClick()}>
-            Delete
+            {getString(interfaceLang, "Delete")}
           </DeleteButton>
         </ButtonsContainer>
       </QuestionContainer>

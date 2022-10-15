@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { registerWithEmailAndPassword, signInWithGoogle } from "../firebase";
+import LanguageContext from "../contexts/languageContext";
+import getString from '../utils/getString';
 
 function Register() {
   const navigate = useNavigate();
@@ -9,6 +11,7 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
   /*
 
@@ -56,17 +59,17 @@ function Register() {
           placeholder="Password"
         />
         <Button onClick={() => onRegisterUserWithEmailAndPassword()}>
-          Registrer
+          {getString(interfaceLang, "REGISTER")}
         </Button>
         <Button
           onClick={() => onGoogleSignIn()}
           style={{ backgroundColor: "#4285f4" }}
         >
-          Register with Google
+          {getString(interfaceLang, "Register with Google")}
         </Button>
 
         <div>
-          Do you have an account already? <Link to="/login">Log in here</Link>.
+          {getString(interfaceLang, "DO_YOU_HAVE_AN_ACCOUNT_ALREADY?")} <Link to="/login">{getString(interfaceLang, "LOG_IN_HERE")}</Link>.
         </div>
       </RegisterContainer>
     </RegisterWrapper>
