@@ -14,6 +14,7 @@ import Register from "./Containers/Register";
 import Reset from "./Containers/Reset";
 import Signin from "./Containers/Signin";
 import LangSettings from "./Containers/LangSettings";
+import PlayingRoom from "./Containers/PlayingRoom";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/questions" element={<Questions />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/lang-settings" element={<LangSettings />} />
+          <Route path="/playing-room" element={<PlayingRoom />} />
         </Routes>
       </div>
     </LanguageContext.Provider>

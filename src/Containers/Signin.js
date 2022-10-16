@@ -33,7 +33,16 @@ const Signin = () => {
           <img width="64" height="64" src={user.photoURL} alt={user.displayName} />
         </HomeSubHeader>
       )}
-      <WelcomeMessage>{getString(interfaceLang, "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY")}</WelcomeMessage>
+      {!user && (
+        <WelcomeMessage>{getString(interfaceLang, "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY")}</WelcomeMessage>
+      )}
+      {user && (
+        <ButtonsContainer>
+          <CreateQuizButton onClick={() => navigate("/playing-room")}>
+            {getString(interfaceLang, "PLAY")}
+          </CreateQuizButton>
+        </ButtonsContainer>
+      )}
       {!user &&
         <CreateQuizButton onClick={() => onSigninWithGoogle()}>
           {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
@@ -94,7 +103,7 @@ const ButtonsContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 10%;
+  margin: 20px 0;
 `;
 
 const CreateQuizButton = styled.button`
