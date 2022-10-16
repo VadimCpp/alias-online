@@ -5,6 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { logOut, createQuiz } from "../firebase";
 import LanguageContext from "../contexts/languageContext";
 import getString from '../utils/getString';
+import AliasHeader from "../components/aliasHeader";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Home = () => {
 
   return (
     <Container>
-      <HomeHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</HomeHeader>
+      <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
       <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
       <CreateQuizButton onClick={() => onCreateQuiz()}>
         {getString(interfaceLang, "PLAY")}
@@ -68,12 +69,6 @@ const Home = () => {
     </Container>
   );
 };
-
-const HomeHeader = styled.h1`
-  text-align: center;
-  font-size: 3em;
-  margin-bottom: 1em;
-`;
 
 const WelcomeMessage = styled.p`
   text-align: center;

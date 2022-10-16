@@ -5,8 +5,9 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { signInWithGoogle, logOut } from "../firebase";
 import LanguageContext from "../contexts/languageContext";
 import getString from '../utils/getString';
+import AliasHeader from "../components/aliasHeader";
 
-const Home = () => {
+const Signin = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(undefined);
   const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
@@ -22,7 +23,7 @@ const Home = () => {
 
   return (
     <Container>
-      <HomeHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</HomeHeader>
+      <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
       {!user &&
         <HomeSubHeader>{getString(interfaceLang, "SIGN_IN")}</HomeSubHeader>
       }
@@ -67,12 +68,6 @@ const Home = () => {
     </Container>
   );
 };
-
-const HomeHeader = styled.h1`
-  text-align: center;
-  font-size: 3em;
-  margin-bottom: .5em;
-`;
 
 const HomeSubHeader = styled.p`
   text-align: center;
@@ -119,4 +114,4 @@ const UserManagementContainer = styled.div`
   margin-bottom: 5%;
 `;
 
-export default Home;
+export default Signin;
