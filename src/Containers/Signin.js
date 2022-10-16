@@ -40,7 +40,7 @@ const Signin = () => {
         </CreateQuizButton>
       }
       {user && (
-        <CreateQuizButton onClick={() => logOut()}>
+        <CreateQuizButton onClick={() => logOut(user.uid)}>
            {getString(interfaceLang, "LOG_OUT")}
         </CreateQuizButton>
       )}

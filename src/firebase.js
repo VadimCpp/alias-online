@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 // Import the methods you need from Firebase
 
-import { addDoc, collection, getDoc, doc, updateDoc, deleteDoc, getDocs } from 'firebase/firestore'
+import { setDoc, addDoc, collection, getDoc, doc, updateDoc, deleteDoc, getDocs } from 'firebase/firestore'
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 const googleProvider = new GoogleAuthProvider();
 
@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 /* Uncomment the lines below when your Firebase config is good. */
 const app = initializeApp(firebaseConfig)
-//const db = getFirestore(app)
+const db = getFirestore(app)
 const auth = getAuth(app)
 
 const createQuestion = (question) => {
@@ -69,12 +69,31 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 };
 
 const signInWithGoogle = async () => {
-  // https://firebase.google.com/docs/auth/web/google-signin#handle_the_sign-in_flow_with_the_firebase_sdk
+  let signInSuccess = false;
+  let signInResult;
   try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
+    signInResult = await signInWithPopup(auth, googleProvider);
+    signInSuccess = true;
   } catch (err) {
-    console.error(err);
+    console.error("Error while signing in.", err);
+  }
+
+  if (signInSuccess) {
+    try {
+      const user = signInResult.user;
+      const userDoc = {
+        uid: user.uid,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        score: 0,
+        lastActiveAt: (new Date()).toISOString(),
+        role: 'spiller',
+        isActive: true
+      };
+      await setDoc(doc(db, "users", user.uid), userDoc);
+    } catch (err) {
+      console.error("Error setting the document for signed in used.", err);
+    }
   }
 };
 
@@ -87,12 +106,18 @@ const logInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-const logOut = async () => {
-  // https://firebase.google.com/docs/auth/web/password-auth#next_steps
+const logOut = async (userUid) => {
+  try {
+    const questionRef = doc(db, "users", userUid);
+    await updateDoc(questionRef, { isActive: false });
+  } catch (err) {
+    console.error("Error while updating user doc.", err);
+  }
+
   try {
     await signOut(auth);
   } catch (err) {
-    console.error(err);
+    console.error("Error while signing user out.", err);
   }
 };
 
