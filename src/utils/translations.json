@@ -1,150 +1,192 @@
 {
   "ALIAS_ONLINE": {
     "EN": "Alias online",
-    "UA": "Аліас онлайн"
+    "UA": "Аліас онлайн",
+    "RU": "Алиас онлайн"
   },
   "DO_YOU_HAVE_AN_ACCOUNT_ALREADY?": {
     "EN": "Do you have an account already?",
-    "UA": "У вас вже є обліковий запис?"
+    "UA": "У вас вже є обліковий запис?",
+    "RU": "У вас есть учётная запись?"
   },
   "LOG_IN_HERE": {
     "EN": "Log in here",
-    "UA": "Увійдіть тут"
+    "UA": "Увійдіть тут",
+    "RU": "Войти тут"
   },
   "PLAY_WITH_FRIENDS": {
     "EN": "Play with friends around the globe",
-    "UA": "Грай з друзями з усього світу"
+    "UA": "Грай з друзями з усього світу",
+    "RU": "Играй с друзьями по всему миру"
   },
   "PLAY": {
     "EN": "Play",
-    "UA": "Грати"
+    "UA": "Грати",
+    "RU": "Играть"
   },
   "SEND_RESET_PASSWORD_EMAIL": {
     "EN": "Send reset password email",
-    "UA": "Надіслати електронний лист для скидання пароля"
+    "UA": "Надіслати електронний лист для скидання пароля",
+    "RU": "Отправить емейл для сброса пароля"
   },
   "SIGN_IN": {
     "EN": "Sign in",
-    "UA": "Увійти"
+    "UA": "Увійти",
+    "RU": "Войти"
   },
   "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY": {
     "EN": "Please, sign in with Google to join the playing room",
-    "UA": "Будь ласка, увійдіть за допомогою Google, щоб приєднатися до гри"
+    "UA": "Будь ласка, увійдіть за допомогою Google, щоб приєднатися до гри",
+    "RU": "Пожалуйста, войдите с помощью Google, чтобы присоединиться к игре"
   },
   "SIGN_IN_WITH_GOOGLE": {
     "EN": "Sign in with Google",
-    "UA": "Увійти за допомогою Google"
+    "UA": "Увійти за допомогою Google",
+    "RU": "Войти с помощью Google"
   },
   "PLAYING_ROOM": {
     "EN": "Playing room",
-    "UA": "Гральна кімната"
+    "UA": "Гральна кімната",
+    "RU": "Игровая комната"
   },
   "PLAYERS": {
     "EN": "Players",
-    "UA": "Гравці"
+    "UA": "Гравці",
+    "RU": "Игроки"
   },
   "STATUS": {
     "EN": "Status",
-    "UA": "Статус"
+    "UA": "Статус",
+    "RU": "Статус"
   },
   "SEE_SCORE": {
     "EN": "See score",
-    "UA": "Подивитись рахунок"
+    "UA": "Подивитись рахунок",
+    "RU": "Увидеть счёт"
   },
   "SEE_STATUS": {
     "EN": "See status",
-    "UA": "Подивитись статус"
+    "UA": "Подивитись статус",
+    "RU": "Увидеть статус"
   },
   "EVERYBODY_IS_WAITING" : {
     "EN": "Everybody is waiting",
-    "UA": "Всі очікують"
+    "UA": "Всі очікують",
+    "RU": "Все ожидают"
   },
   "PRESS_PLAY": {
     "EN": "Press play",
-    "UA": "Натисни 'Грати'"
+    "UA": "Натисни 'Грати'",
+    "RU": "Нажми играть"
   },
   "IS_EXPLAINING_A_WORD": {
     "EN": "is explaining a word",
-    "UA": "пояснює слово"
+    "UA": "пояснює слово",
+    "RU": "объясняет слово"
   },
   "GUESS": {
     "EN": "Guess",
-    "UA": "Здогадайся"
+    "UA": "Здогадайся",
+    "RU": "Догадайся"
   },
   "EXPLAINING": {
     "EN": "explaining",
-    "UA": "пояснює"
+    "UA": "пояснює",
+    "RU": "объяснение"
   },
   "YOU_ARE_EXPLAINING_THE_WORD": {
     "EN": "You are explaining the word",
-    "UA": "Ти пояснюєш слово"
+    "UA": "Ти пояснюєш слово",
+    "RU": "Ты объясняешь слово"
   },
   "EXPLAIN_THE_WORD": {
     "EN": "Explain the word",
-    "UA": "Поясни це слово"
+    "UA": "Поясни це слово",
+    "RU": "Объясни слово"
   },
   "CHOOSE_WINNER": {
     "EN": "Choose winner",
-    "UA": "Обрати переможця"
+    "UA": "Обрати переможця",
+    "RU": "Выбери победителя"
   },
   "SHOW_WORD": {
     "EN": "Show word",
-    "UA": "Показати слово"
+    "UA": "Показати слово",
+    "RU": "Покажи слово"
   },
   "UKRANIAN": {
     "EN": "Ukrainian",
-    "UA": "Українська"
+    "UA": "Українська",
+    "RU": "Украинский"
   },
   "ENGLISH": {
     "EN": "English",
-    "UA": "Англійська"
+    "UA": "Англійська",
+    "RU": "Английский"
+  },
+  "RUSSIAN": {
+    "EN": "Русский",
+    "UA": "Російський",
+    "RU": "Русский"
   },
   "WELCOME": {
     "EN": "Welcome",
-    "UA": "Вітаємо"
+    "UA": "Вітаємо",
+    "RU": "Добро пожаловать"
   },
   "LOG_OUT": {
     "EN": "Log out",
-    "UA": "Вийти"
+    "UA": "Вийти",
+    "RU": "Выйти"
   },
   "LOG_IN_WITH_GOOGLE": {
     "EN": "Log in with google",
-    "UA": "Увійти за допомогою Google"
+    "UA": "Увійти за допомогою Google",
+    "RU": "Войти с помощью Гугл"
   },
   "FORGOT_YOUR_PASSWORD?": {
     "EN": "Forgot your password?",
-    "UA": "Забули пароль?"
+    "UA": "Забули пароль?",
+    "RU": "Забыли пароль?"
   },
   "REGISTER": {
     "EN": "Register",
-    "UA": "Реєстрація"
+    "UA": "Реєстрація",
+    "RU": "Регистрация"
   },
   "REGISTER_WITH_GOOGLE": {
     "EN": "Register with Google",
-    "UA": "Реєстрація за допомогою Google"
+    "UA": "Реєстрація за допомогою Google",
+    "RU": "Регистрация с помощью Гугл"
   },
   "BACK": {
     "EN": "Back",
-    "UA": "Назад"
+    "UA": "Назад",
+    "RU": "Назад"
   },
   "ANSWER": {
     "EN": "Answer",
-    "UA": "Відповідь"
+    "UA": "Відповідь",
+    "RU": "Ответ"
   },
   "DELETE": {
     "EN": "Delete",
-    "UA": "Видалити"
+    "UA": "Видалити",
+    "RU": "Удалить"
   },
   "GO_BACK": {
     "EN": "Go back",
-    "UA": "Повертайся"
+    "UA": "Повертайся",
+    "RU": "Вернись"
   },
   "QUESTION": {
     "EN": "Question",
-    "UA": "Запитання"
+    "UA": "Запитання",
+    "RU": "Вопрос"
   },
   "MADE_BY": {
     "EN": "Made by",
-    "UA": "Зроблено"
+    "UA": "Зроблено",
+    "RU": "Сделано"
   }
 }
