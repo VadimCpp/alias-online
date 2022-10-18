@@ -5,9 +5,11 @@ const base = css`
     box-sizing: border-box;
   }
 
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400&family=Open+Sans&display=swap');
+
   body {
     margin-top: 20px;
-    font-family: Monaco;
+    font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #fbf8f1;
@@ -21,29 +23,25 @@ const base = css`
   h6,
   button,
   label {
-    font-family: Monaco;
+    font-family: 'Open Sans';
   }
 
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, "Noto Sans Mono", Consolas, "Courier New",
       monospace;
   }
 
-  button {
-    padding: 1.25em 1em;
+  button {    
     align-items: center;
     justify-content: center;
-    display: flex;
-    font-size: 1em;
-    background-color: #e9dac1;
-    border: 2px solid black;
+    display: flex;  
     cursor: pointer;
     color: black;
   }
 
   input,
   textarea {
-    font-family: Monaco;
+    font-family: 'Open Sans';
     width: "100%";
     font-size: 14pt;
     resize: none;
