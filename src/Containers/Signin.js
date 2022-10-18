@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { signInWithGoogle, logOut } from "../firebase";
@@ -10,7 +10,7 @@ import AliasHeader from "../components/aliasHeader";
 const Signin = () => {
   const navigate = useNavigate();
   const { interfaceLang } = useContext(LanguageContext);
-  const { user } = useState(UserContext);
+  const { user } = useContext(UserContext);
 
   const onSigninWithGoogle = () => {
     signInWithGoogle();
