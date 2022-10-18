@@ -1,21 +1,31 @@
-import React, {useContext} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import getString from "../utils/getString";
 import AliasHeader from "../components/aliasHeader";
 import LanguageContext from "../contexts/languageContext";
 import ContainerWithTitle from "../components/containerWithTitle";
+import { subscribeForUsersUpdates } from "../firebase";
+import UserList from "../components/userList";
 
 const PlayingRoom = () => {
   const navigate = useNavigate();
   const { interfaceLang } = useContext(LanguageContext);
+  const [ users, setUsers ] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = subscribeForUsersUpdates((collection) => {
+      setUsers(collection.docs.map((doc) => doc.data()));
+    })
+    return () => unsubscribe();
+  }, []);
 
   return (
     <Container>
       <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
       <HomeSubHeader>{getString(interfaceLang, "PLAYING_ROOM")}</HomeSubHeader>
       <ContainerWithTitle title={"Players"}>
-        {"TODO: players list"}
+        {users.length ? <UserList users={users} uid={0} /> : "Loading..."}
       </ContainerWithTitle>
       <ContainerWithTitle title={"Status"}>
         {"TODO: status"}
