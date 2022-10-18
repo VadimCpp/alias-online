@@ -7,10 +7,12 @@ import LanguageContext from "../contexts/languageContext";
 import ContainerWithTitle from "../components/containerWithTitle";
 import { subscribeForUsersUpdates } from "../firebase";
 import UserList from "../components/userList";
+import UserContext from "../contexts/userContext";
 
 const PlayingRoom = () => {
   const navigate = useNavigate();
   const { interfaceLang } = useContext(LanguageContext);
+  const { user } = useContext(UserContext);
   const [ users, setUsers ] = useState([]);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const PlayingRoom = () => {
       <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
       <HomeSubHeader>{getString(interfaceLang, "PLAYING_ROOM")}</HomeSubHeader>
       <ContainerWithTitle title={"Players"}>
-        {users.length ? <UserList users={users} uid={0} /> : "Loading..."}
+        {users.length ? <UserList users={users} uid={user?.uid} /> : "Loading..."}
       </ContainerWithTitle>
       <ContainerWithTitle title={"Status"}>
         {"TODO: status"}
