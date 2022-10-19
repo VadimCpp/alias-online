@@ -5,9 +5,11 @@ const base = css`
     box-sizing: border-box;
   }
 
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400&family=Open+Sans&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
   body {
     margin-top: 20px;
-    font-family: Monaco;
+    font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #fbf8f1;
@@ -18,32 +20,28 @@ const base = css`
   h3,
   h4,
   h5,
-  h6,
-  button,
+  h6,  
   label {
-    font-family: Monaco;
+    font-family: 'Montserrat', sans-serif;
   }
 
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, 'Open Sans', Consolas, "Courier New",
       monospace;
   }
 
-  button {
-    padding: 1.25em 1em;
+  button {    
     align-items: center;
     justify-content: center;
-    display: flex;
-    font-size: 1em;
-    background-color: #e9dac1;
-    border: 2px solid black;
+    display: flex;  
     cursor: pointer;
     color: black;
+    font-family: 'Open Sans', sans-serif;
   }
 
   input,
   textarea {
-    font-family: Monaco;
+    font-family: 'Open Sans', sans-serif;
     width: "100%";
     font-size: 14pt;
     resize: none;

@@ -6,8 +6,12 @@ import { logOut, createQuiz } from "../firebase";
 import LanguageContext from "../contexts/languageContext";
 import getString from '../utils/getString';
 import AliasHeader from "../components/aliasHeader";
-
+import FlexContainer from "../components/flexContainer";
+import Button from "../components/button";
+import Wrapper from "../components/wrapper";
+import Header from "../components/header";
 const Home = () => {
+
   const navigate = useNavigate();
   const [user, setUser] = useState(undefined);
   const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
@@ -28,12 +32,15 @@ const Home = () => {
   };
 
   return (
-    <Container>
-      <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+    <Wrapper>
+      <Header>
+        <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+      </Header>
+
       <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
-      <CreateQuizButton onClick={() => onCreateQuiz()}>
+      <Button uppercase={'uppercase'} onClick={onCreateQuiz}>
         {getString(interfaceLang, "PLAY")}
-      </CreateQuizButton>
+      </Button>
 
       {/*
       // TODO: this code we use later after all screen are created
@@ -66,23 +73,19 @@ const Home = () => {
         </UserManagementContainer>
       )}
       */}
-    </Container>
+    </Wrapper>
   );
 };
 
-const WelcomeMessage = styled.p`
+const WelcomeMessage = styled.p`  
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
   text-align: center;
-  margin: 10em 0 13em;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-right: 1em;
-  padding-left: 1em;
-  height: 100vh;
+  margin-top: 3.5em;
+  margin-bottom: 7.5em;
+  padding-right: 4em;
+  padding-left: 4em;  
 `;
 
 const ButtonsContainer = styled.div`
@@ -91,13 +94,6 @@ const ButtonsContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 10%;
-`;
-
-const CreateQuizButton = styled.button`
-  background-color: #54bab9;
-  padding: 1em 4em;
-  color: white;
-  font-size: 1.5em;
 `;
 
 const UserManagementContainer = styled.div`
