@@ -8,9 +8,9 @@ const StyledFlexContainer = styled.div`
   padding-right: 1em;
   padding-left: 1em;
   margin: ${props => props.margin || '0' };  
-  background: #ffffff;
-  
+  background: #ffffff;  
 `
+
 const FlexContainer = (props) => {
   return <StyledFlexContainer {...props} />
 };

@@ -38,7 +38,7 @@ const Home = () => {
       </Header>
 
       <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
-      <Button onClick={onCreateQuiz}>
+      <Button uppercase={'uppercase'} onClick={onCreateQuiz}>
         {getString(interfaceLang, "PLAY")}
       </Button>
 
@@ -77,9 +77,15 @@ const Home = () => {
   );
 };
 
-const WelcomeMessage = styled.p`
+const WelcomeMessage = styled.p`  
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
   text-align: center;
-  margin: 10em 0 13em;
+  margin-top: 3.5em;
+  margin-bottom: 7.5em;
+  padding-right: 4em;
+  padding-left: 4em;  
 `;
 
 const ButtonsContainer = styled.div`
@@ -88,13 +94,6 @@ const ButtonsContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 10%;
-`;
-
-const CreateQuizButton = styled.button`
-  background-color: #54bab9;
-  padding: 1em 4em;
-  color: white;
-  font-size: 1.5em;
 `;
 
 const UserManagementContainer = styled.div`

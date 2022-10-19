@@ -12,14 +12,15 @@ const StyledButton = styled.button`
   border: none;
   text-transform: ${({uppercase}) => uppercase || 'none' };
   margin-bottom: 110px;
-  
+  transition: all .5s;
+  &:hover{
+    transform: scale(1.15);
+  }  
 `
-
 const Button = ({children, ...props}) => {
   return <StyledButton {...props}>
     {children}
   </StyledButton>
-
 };
 
 export default Button;

@@ -6,7 +6,7 @@ const base = css`
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400&family=Open+Sans&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
   body {
     margin-top: 20px;
     font-family: 'Open Sans', sans-serif;
@@ -20,14 +20,13 @@ const base = css`
   h3,
   h4,
   h5,
-  h6,
-  button,
+  h6,  
   label {
-    font-family: 'Open Sans';
+    font-family: 'Montserrat', sans-serif;
   }
 
   code {
-    font-family: source-code-pro, Menlo, "Noto Sans Mono", Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, 'Open Sans', Consolas, "Courier New",
       monospace;
   }
 
@@ -37,11 +36,12 @@ const base = css`
     display: flex;  
     cursor: pointer;
     color: black;
+    font-family: 'Open Sans', sans-serif;
   }
 
   input,
   textarea {
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     width: "100%";
     font-size: 14pt;
     resize: none;
