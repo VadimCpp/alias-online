@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 // Import the methods you need from Firebase
 
-import { setDoc, addDoc, collection, getDoc, doc, updateDoc, deleteDoc, getDocs } from 'firebase/firestore'
+import { setDoc, addDoc, collection, getDoc, doc, updateDoc, deleteDoc, getDocs, onSnapshot } from 'firebase/firestore'
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 const googleProvider = new GoogleAuthProvider();
 
@@ -19,9 +19,18 @@ const firebaseConfig = {
 };
 
 /* Uncomment the lines below when your Firebase config is good. */
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-const auth = getAuth(app)
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+/**
+ * @param updatesHandler - callback function which is fired on update
+ * @return unsubscribe function, call it to stop subscription
+ */
+const subscribeForUsersUpdates = (updatesHandler) => {
+  const usersRef = collection(db, "users");
+  return onSnapshot(usersRef, updatesHandler);
+}
 
 const createQuestion = (question) => {
   // Add questions to Firestore. This method is called from the component src/Containers/Question.js
@@ -142,4 +151,5 @@ export {
   logInWithEmailAndPassword,
   logOut,
   sendPasswordReset,
+  subscribeForUsersUpdates,
 };

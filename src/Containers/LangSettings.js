@@ -24,6 +24,11 @@ const LangSettings = () => {
       text: 'UKRANIAN',
       langKey: 'UA',
       abbreviation: 'UA',
+    },
+    {
+      text: 'RUSSIAN',
+      langKey: 'RU',
+      abbreviation: 'RU',
     }
   ];
 

@@ -1,21 +1,16 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { signInWithGoogle, logOut } from "../firebase";
 import LanguageContext from "../contexts/languageContext";
+import UserContext from "../contexts/userContext";
 import getString from '../utils/getString';
 import AliasHeader from "../components/aliasHeader";
 
 const Signin = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState(undefined);
-  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
-  useEffect(() => {
-    const auth = getAuth()
-    const unsubscribe = onAuthStateChanged(auth, authUser => authUser ? setUser(authUser) : setUser(null));
-    return () => unsubscribe();
-  }, []);
+  const { interfaceLang } = useContext(LanguageContext);
+  const { user } = useContext(UserContext);
 
   const onSigninWithGoogle = () => {
     signInWithGoogle();
