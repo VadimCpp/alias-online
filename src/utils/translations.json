@@ -125,7 +125,7 @@
     "RU": "Английский"
   },
   "RUSSIAN": {
-    "EN": "Русский",
+    "EN": "Russian",
     "UA": "Російський",
     "RU": "Русский"
   },
@@ -140,9 +140,9 @@
     "RU": "Выйти"
   },
   "LOG_IN_WITH_GOOGLE": {
-    "EN": "Log in with google",
+    "EN": "Log in with Google",
     "UA": "Увійти за допомогою Google",
-    "RU": "Войти с помощью Гугл"
+    "RU": "Войти с помощью Google"
   },
   "FORGOT_YOUR_PASSWORD?": {
     "EN": "Forgot your password?",
@@ -157,7 +157,7 @@
   "REGISTER_WITH_GOOGLE": {
     "EN": "Register with Google",
     "UA": "Реєстрація за допомогою Google",
-    "RU": "Регистрация с помощью Гугл"
+    "RU": "Регистрация с помощью Google"
   },
   "BACK": {
     "EN": "Back",
