@@ -18,7 +18,7 @@ const Signin = () => {
 
   return (
     <Container>
-      <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+      <AliasHeader color={"black"}>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
       {!user &&
         <HomeSubHeader>{getString(interfaceLang, "SIGN_IN")}</HomeSubHeader>
       }
@@ -51,24 +51,6 @@ const Signin = () => {
       <ButtonsContainer>
         <button onClick={() => navigate("/lang-settings")}>language settings</button>
       </ButtonsContainer>
-      {/*
-      {!user && (
-        <UserManagementContainer>
-          <button onClick={() => navigate("/login")}>Log in</button>
-          <button
-            style={{ marginLeft: "1em" }}
-            onClick={() => navigate("/register")}
-          >
-            Register
-          </button>
-        </UserManagementContainer>
-      )}
-      {user && (
-        <UserManagementContainer>
-          <button onClick={() => logOut()}>Log out</button>
-        </UserManagementContainer>
-      )}
-      */}
     </Container>
   );
 };
@@ -106,16 +88,6 @@ const CreateQuizButton = styled.button`
   padding: 1em 4em;
   color: white;
   font-size: 1.5em;
-`;
-
-const UserManagementContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5%;
 `;
 
 export default Signin;
