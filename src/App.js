@@ -11,7 +11,6 @@ import Home from "./Containers/Home";
 import Login from "./Containers/Login";
 import Question from "./Containers/Question";
 import Questions from "./Containers/Questions";
-import Quiz from "./Containers/Quiz";
 import Register from "./Containers/Register";
 import Reset from "./Containers/Reset";
 import Signin from "./Containers/Signin";
@@ -32,7 +31,6 @@ const App = () => {
             <Route path="/question" element={<Question />} />
             <Route path="/question/:id" element={<Question />} />
             <Route path="/questions" element={<Questions />} />
-            <Route path="/quiz" element={<Quiz />} />
             <Route path="/lang-settings" element={<LangSettings />} />
             <Route path="/playing-room" element={<PlayingRoom />} />
           </Routes>
