@@ -12,7 +12,6 @@ import Login from "./Containers/Login";
 import Question from "./Containers/Question";
 import Questions from "./Containers/Questions";
 import Register from "./Containers/Register";
-import Reset from "./Containers/Reset";
 import Signin from "./Containers/Signin";
 import LangSettings from "./Containers/LangSettings";
 import PlayingRoom from "./Containers/PlayingRoom";
