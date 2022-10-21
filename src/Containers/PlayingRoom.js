@@ -24,7 +24,7 @@ const PlayingRoom = () => {
         {defaultRoom?.status || "Loading..."}
       </ContainerWithTitle>
       <CreateQuizButton onClick={() => navigate("/signin")}>
-        {getString(interfaceLang, "PLAY")}
+        {getString(interfaceLang, "BACK")}
       </CreateQuizButton>
     </Container>
   );

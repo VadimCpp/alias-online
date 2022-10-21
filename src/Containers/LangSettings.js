@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { signInWithGoogle, logOut } from "../firebase";
 import LanguageContext from "../contexts/languageContext";
 import getString from '../utils/getString';
 
@@ -35,9 +33,9 @@ const LangSettings = () => {
 
   return (
     <Container>
-      <ButtonBack>
-        <button onClick={() => navigate("/signin")}>back</button>
-      </ButtonBack>
+      <CreateQuizButton onClick={() => navigate("/signin")}>
+        {getString(interfaceLang, "BACK")}
+      </CreateQuizButton>
       <HomeHeader>Language settings</HomeHeader>
       <ButtonsWrapper>
         <ButtonsContainer>
@@ -48,7 +46,7 @@ const LangSettings = () => {
           <RadioButton>
             {
               langOptions.map((option) => {
-                let isChecked = interfaceLang === option.langKey ? true : false;
+                let isChecked = interfaceLang === option.langKey;
                 return (
                   <label key={option.langKey}>
                     <input
@@ -76,7 +74,6 @@ const HomeHeader = styled.h1`
   margin-bottom: .5em;
 `;
 
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,11 +83,12 @@ const Container = styled.div`
   padding-left: 1em;
   height: 100vh;
 `;
+
 const ButtonsWrapper = styled.div`
-border: solid 0.1em;
-border-radius: 2em;
-padding: 1.5em 2em 1em 2em;
-`
+  border: solid 0.1em;
+  border-radius: 2em;
+  padding: 1.5em 2em 1em 2em;
+`;
 
 const ButtonsContainer = styled.div`
   display: flex;
@@ -117,9 +115,11 @@ const ButtonsContainerHeader = styled.div`
   border-radius: 50px;
 `;
 
-const ButtonBack = styled.div`
-left: -5em;
-border: red 2px;
-`
+const CreateQuizButton = styled.button`
+  background-color: #54bab9;
+  padding: 1em 4em;
+  color: white;
+  font-size: 1.5em;
+`;
 
 export default LangSettings;

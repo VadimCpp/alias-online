@@ -49,7 +49,9 @@ const Signin = () => {
         </CreateQuizButton>
       )}
       <ButtonsContainer>
-        <button onClick={() => navigate("/lang-settings")}>language settings</button>
+        <CreateQuizButton onClick={() => navigate("/lang-settings")}>
+          {getString(interfaceLang, "LANGUAGE_SETTINGS")}
+        </CreateQuizButton>
       </ButtonsContainer>
     </Container>
   );
