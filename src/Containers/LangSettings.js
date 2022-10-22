@@ -1,8 +1,17 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { signInWithGoogle, logOut } from "../firebase";
 import LanguageContext from "../contexts/languageContext";
 import getString from '../utils/getString';
+import Wrapper from "../components/wrapper";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Button from "../components/button";
+import AliasHeader from "../components/aliasHeader";
+import FlexContainer from "../components/flexContainer";
+import Main from "../components/main";
 
 const LangSettings = () => {
   const navigate = useNavigate();
@@ -30,80 +39,65 @@ const LangSettings = () => {
     }
   ];
 
-
   return (
-    <Container>
-      <CreateQuizButton onClick={() => navigate("/signin")}>
-        {getString(interfaceLang, "BACK")}
-      </CreateQuizButton>
-      <HomeHeader>Language settings</HomeHeader>
-      <ButtonsWrapper>
-        <ButtonsContainer>
-          <ButtonsContainerHeader>
-            Choice Language
-          </ButtonsContainerHeader>
-
-          <RadioButton>
-            {
-              langOptions.map((option) => {
-                let isChecked = interfaceLang === option.langKey;
-                return (
-                  <label key={option.langKey}>
-                    <input
-                      type="radio"
-                      name="langOptions"
-                      value={option.langKey}
-                      checked={isChecked}
-                      onChange={(e) => langHandler(e.target.value)}
-                    />
-                    {getString(interfaceLang, option.text)} {option.abbreviation}
-                  </label>
-                )
-              })
-            }
-          </RadioButton>
-        </ButtonsContainer>
-      </ButtonsWrapper>
-    </Container>
+    <Wrapper>
+      <Header
+        isPrimary={false}
+        isSign={false}
+        isLang={true}>
+        <AliasHeader>Language settings</AliasHeader>
+      </Header>
+      <Main>
+        <ButtonsWrapper>
+          <FlexContainer direction={'column'}>
+            <ButtonsContainerHeader>
+              Choice Language
+            </ButtonsContainerHeader>
+            <RadioButton>
+              {
+                langOptions.map((option) => {
+                  let isChecked = interfaceLang === option.langKey ? true : false;
+                  return (
+                    <label key={option.langKey}>
+                      <input
+                        type="radio"
+                        name="langOptions"
+                        value={option.langKey}
+                        checked={isChecked}
+                        onChange={(e) => langHandler(e.target.value)}
+                      />
+                      {getString(interfaceLang, option.text)} {option.abbreviation}
+                    </label>
+                  )
+                })
+              }
+            </RadioButton>
+          </FlexContainer>
+        </ButtonsWrapper>
+      </Main>
+      <Footer>
+        <Button
+          uppercase={'uppercase'}
+          onClick={() => navigate("/signin")}
+        >
+          back
+        </Button>
+      </Footer>
+    </Wrapper>
   );
 };
 
-const HomeHeader = styled.h1`
-  text-align: center;
-  font-size: 3em;
-  margin-bottom: .5em;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-right: 1em;
-  padding-left: 1em;
-  height: 100vh;
-`;
-
 const ButtonsWrapper = styled.div`
-  border: solid 0.1em;
-  border-radius: 2em;
-  padding: 1.5em 2em 1em 2em;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10%;
-`;
+border: solid 0.1em;
+border-radius: 2em;
+padding: 1.5em 2em 1em 2em;
+`
 
 const RadioButton = styled.div`
   font-size: 15px;
   display: flex;
   flex-direction: column;
   padding-bottom: 1.5em;
-
 `;
 
 const ButtonsContainerHeader = styled.div`
@@ -113,13 +107,6 @@ const ButtonsContainerHeader = styled.div`
   background: gray;
   padding: 10px 15px 10px 15px;
   border-radius: 50px;
-`;
-
-const CreateQuizButton = styled.button`
-  background-color: #54bab9;
-  padding: 1em 4em;
-  color: white;
-  font-size: 1.5em;
 `;
 
 export default LangSettings;

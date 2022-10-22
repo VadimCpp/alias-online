@@ -8,7 +8,6 @@ const base = css`
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400&family=Open+Sans&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
   body {
-    margin-top: 20px;
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

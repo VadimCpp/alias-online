@@ -7,6 +7,8 @@ import AliasHeader from "../components/aliasHeader";
 import Button from "../components/button";
 import Wrapper from "../components/wrapper";
 import Header from "../components/header";
+import Main from "../components/main";
+import Footer from "../components/footer";
 const Home = () => {
 
   const navigate = useNavigate();
@@ -18,14 +20,19 @@ const Home = () => {
 
   return (
     <Wrapper>
-      <Header>
+      <Header isPrimary={true} isSign={false} onClick={() => navigate("/lang-settings")}>
         <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
       </Header>
-
-      <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
-      <Button uppercase={'uppercase'} onClick={onPlay}>
-        {getString(interfaceLang, "PLAY")}
-      </Button>
+      <Main>
+        <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
+      </Main>
+      <Footer>
+        <Button uppercase={'uppercase'}
+                onClick={onPlay}
+        >
+          {getString(interfaceLang, "PLAY")}
+        </Button>
+      </Footer>
     </Wrapper>
   );
 };
@@ -35,8 +42,7 @@ const WelcomeMessage = styled.p`
   font-size: 20px;
   line-height: 27px;
   text-align: center;
-  margin-top: 3.5em;
-  margin-bottom: 7.5em;
+  margin-top: 2em;
   padding-right: 4em;
   padding-left: 4em;  
 `;
