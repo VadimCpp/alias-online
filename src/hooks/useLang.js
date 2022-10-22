@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 const useLang = () => {
-  const [interfaceLang, setInterfaceLang] = useState("RU");
-  const [learningLang, setLearningLang] = useState("EN");
+  const [interfaceLang, setInterfaceLang] = useState("EN");
+  const [learningLang, setLearningLang] = useState("NO");
   return {
     interfaceLang,
     learningLang,

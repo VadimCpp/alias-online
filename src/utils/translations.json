@@ -188,5 +188,10 @@
     "EN": "Made by",
     "UA": "Зроблено",
     "RU": "Сделано"
+  },
+  "LANGUAGE_SETTINGS": {
+    "EN": "language settings",
+    "UA": "Налаштування мови",
+    "RU": "Настройки языка"
   }
 }

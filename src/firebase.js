@@ -32,6 +32,15 @@ const subscribeForUsersUpdates = (updatesHandler) => {
   return onSnapshot(usersRef, updatesHandler);
 }
 
+/**
+ * @param updatesHandler - callback function which is fired on update
+ * @return unsubscribe function, call it to stop subscription
+ */
+const subscribeForRoomsUpdates = (updatesHandler) => {
+  const roomsRef = collection(db, "rooms");
+  return onSnapshot(roomsRef, updatesHandler);
+}
+
 const createQuestion = (question) => {
   // Add questions to Firestore. This method is called from the component src/Containers/Question.js
   /*
@@ -152,4 +161,5 @@ export {
   logOut,
   sendPasswordReset,
   subscribeForUsersUpdates,
+  subscribeForRoomsUpdates,
 };
