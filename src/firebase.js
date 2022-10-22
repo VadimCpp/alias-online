@@ -41,6 +41,47 @@ const subscribeForRoomsUpdates = (updatesHandler) => {
   return onSnapshot(roomsRef, updatesHandler);
 }
 
+const setLeader = async (uid) => {
+  const roomRef = doc(db, "rooms", "norsk-room");
+  await updateDoc(roomRef, {
+    leaderUid: uid,
+    winnerUid: null,
+    word: null,
+  });
+}
+
+const setWinner = async (uid, word) => {
+  const roomRef = doc(db, "rooms", "norsk-room");
+  await updateDoc(roomRef, {
+    winnerUid: uid,
+    leaderUid: null,
+    word,
+  });
+}
+
+const resetGame = async () => {
+  const roomRef = doc(db, "rooms", "norsk-room");
+  await updateDoc(roomRef, {
+    leaderUid: null,
+    winnerUid: null,
+    word: null,
+  });
+}
+
+const resetScore = async (uid) => {
+  const userRef = doc(db, "users", uid);
+  await updateDoc(userRef, {
+    score: 0,
+  });
+}
+
+const updateScore = async (uid, score) => {
+  const userRef = doc(db, "users", uid);
+  await updateDoc(userRef, {
+    score,
+  });
+}
+
 const createQuestion = (question) => {
   // Add questions to Firestore. This method is called from the component src/Containers/Question.js
   /*
@@ -162,4 +203,9 @@ export {
   sendPasswordReset,
   subscribeForUsersUpdates,
   subscribeForRoomsUpdates,
+  setLeader,
+  setWinner,
+  resetGame,
+  resetScore,
+  updateScore,
 };

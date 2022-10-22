@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const UserList = ({ users, uid }) => {
+const UserList = ({ users, uid, onUserClick }) => {
   const getDisplayName = (user) => {
     let dn = user.displayName;
     if (uid === user.uid) {
@@ -15,7 +15,7 @@ const UserList = ({ users, uid }) => {
       {
         users.map(user => {
           return (
-            <Row key={user.uid}>
+            <Row key={user.uid} onClick={() => onUserClick(user)}>
               <Avatar width="32" height="32" src={user.photoURL} alt={user.displayName} />
               <Name>{getDisplayName(user)}</Name>
               <Score>{user.score}</Score>
@@ -32,6 +32,7 @@ const Row = styled.li`
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 const Avatar = styled.img`
