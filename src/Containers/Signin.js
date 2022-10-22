@@ -6,6 +6,11 @@ import LanguageContext from "../contexts/languageContext";
 import UserContext from "../contexts/userContext";
 import getString from '../utils/getString';
 import AliasHeader from "../components/aliasHeader";
+import Header from "../components/header";
+import Wrapper from "../components/wrapper";
+import Main from "../components/main";
+import Footer from "../components/footer";
+import Button from "../components/button";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -17,40 +22,61 @@ const Signin = () => {
   };
 
   return (
-    <Container>
-      <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
-      {!user &&
-        <HomeSubHeader>{getString(interfaceLang, "SIGN_IN")}</HomeSubHeader>
-      }
-      {user && (
-        <HomeSubHeader>
-          <span>{getString(interfaceLang, "WELCOME")}, {user.displayName}</span>
-          <img width="64" height="64" src={user.photoURL} alt={user.displayName} />
-        </HomeSubHeader>
-      )}
-      {!user && (
-        <WelcomeMessage>{getString(interfaceLang, "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY")}</WelcomeMessage>
-      )}
-      {user && (
-        <ButtonsContainer>
-          <CreateQuizButton onClick={() => navigate("/playing-room")}>
-            {getString(interfaceLang, "PLAY")}
-          </CreateQuizButton>
-        </ButtonsContainer>
-      )}
-      {!user &&
-        <CreateQuizButton onClick={() => onSigninWithGoogle()}>
-          {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
-        </CreateQuizButton>
-      }
-      {user && (
-        <CreateQuizButton onClick={() => logOut(user.uid)}>
-           {getString(interfaceLang, "LOG_OUT")}
-        </CreateQuizButton>
-      )}
-      <ButtonsContainer>
-        <button onClick={() => navigate("/lang-settings")}>language settings</button>
-      </ButtonsContainer>
+    <Wrapper>
+      <Header isPrimary={false}
+              isSign={true}
+              onClick={() => navigate("/lang-settings")}
+      >
+        <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+        {!user &&
+          <HomeSubHeader>{getString(interfaceLang, "SIGN_IN")}</HomeSubHeader>
+        }
+        {user && (
+          <HomeSubHeader>
+            <span>{getString(interfaceLang, "WELCOME")}, {user.displayName}</span>
+            <img width="64"
+                 height="64"
+                 src={user.photoURL}
+                 alt={user.displayName}
+            />
+          </HomeSubHeader>
+        )}
+      </Header>
+      <Main>
+        {!user && (
+          <WelcomeMessage>{getString(interfaceLang, "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY")}</WelcomeMessage>
+        )}
+      </Main>
+      <Footer>
+        {user && (
+          <Button
+            uppercase={'uppercase'}
+            onClick={() => navigate("/playing-room")}
+          >
+              {getString(interfaceLang, "PLAY")}
+          </Button>
+        )}
+        {!user &&
+          <Button
+            uppercase={'none'}
+            onClick={() => onSigninWithGoogle()}
+          >
+            {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
+          </Button>
+        }
+        {user && (
+          <Button
+            uppercase={'uppercase'}
+            onClick={() => logOut(user.uid)}
+          >
+            {getString(interfaceLang, "LOG_OUT")}
+          </Button>
+        )}
+
+
+
+
+
       {/*
       {!user && (
         <UserManagementContainer>
@@ -69,43 +95,27 @@ const Signin = () => {
         </UserManagementContainer>
       )}
       */}
-    </Container>
+          </Footer>
+    </Wrapper>
   );
 };
 
 const HomeSubHeader = styled.p`
-  text-align: center;
-  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;  
+  gap: 0.5em;
+  align-items: center;
+  font-size: 1.5em; 
 `;
 
 const WelcomeMessage = styled.p`
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
   text-align: center;
-  margin: 3em 0 3em;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-top: 2em;
   padding-right: 1em;
   padding-left: 1em;
-  height: 100vh;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-`;
-
-const CreateQuizButton = styled.button`
-  background-color: #54bab9;
-  padding: 1em 4em;
-  color: white;
-  font-size: 1.5em;
 `;
 
 const UserManagementContainer = styled.div`

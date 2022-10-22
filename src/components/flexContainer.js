@@ -4,11 +4,10 @@ const StyledFlexContainer = styled.div`
   display: flex;
   flex-direction: ${props => props.direction || 'row' };
   align-items: ${props => props.align || 'center' };
-  justify-content: ${props => props.justify || 'center' };
-  padding-right: 1em;
-  padding-left: 1em;
+  justify-content: ${props => props.justify || 'stretch' };
   margin: ${props => props.margin || '0' };  
   background: #ffffff;  
+  min-height: ${props => props.height || 'auto' };  
 `
 
 const FlexContainer = (props) => {
