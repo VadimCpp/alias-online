@@ -69,7 +69,13 @@ const PlayingRoom = () => {
   }
 
   const onGetPrizeClick = async() => {
-    await updateScore(user.uid,(user.score || 0) + 1);
+    // NOTE!
+    // users object contains data about score:
+    // https://docs.google.com/document/d/1J7g91NJokW6iptjZxOcIQbLNSpCceRIT7UVWEcZV_BA/edit#heading=h.ie7mxisro286
+    // and user object contains only authorization information.
+    // TODO: implement unified user information.
+    const userData = users.find(u => u.uid === user.uid);
+    await updateScore(user.uid,(userData.score || 0) + 1);
     setIsChooseWinner(false);
     await setLeader(user.uid);
     getRandomCard();
