@@ -1,5 +1,4 @@
-import React, {useContext, useState} from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
 import getString from "../utils/getString";
 import AliasHeader from "../components/aliasHeader";
@@ -8,6 +7,7 @@ import ContainerWithTitle from "../components/containerWithTitle";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
 import { setLeader, setWinner, resetGame, resetScore, updateScore } from "../firebase";
+import VOCABULARY from "../utils/vocabulary.json";
 
 const PlayingRoom = () => {
 
@@ -32,7 +32,18 @@ const PlayingRoom = () => {
   }
 
   const [ isChooseWinner, setIsChooseWinner ] = useState(false);
-  const [ wordToExplain, setWordToExplain ] = useState(null);
+  const [ wordToExplain, setWordToExplain ] = useState("");
+  const [ imageToExplain, setImageToExplain ] = useState("");
+
+  const getRandomCard = () => {
+    const wordsWithEmoji = VOCABULARY.filter(w => !!w['EMOJI']);
+    const randomIndex = Math.ceil(Math.random() * (wordsWithEmoji.length-1));
+    const randomWord = wordsWithEmoji[randomIndex];
+    console.log('Random card is: ', randomWord);
+    setWordToExplain(randomWord["NO"]);
+    setImageToExplain(randomWord["EMOJI"]);
+  };
+  useEffect(() => getRandomCard(), []);
 
   const onPlayClick = async () => {
     const activeUsers = users.filter(u => {
@@ -47,7 +58,7 @@ const PlayingRoom = () => {
       await updateScore(user.uid, (user.score || 0) + 1);
       setIsChooseWinner(false);
       await setLeader(user.uid);
-      setWordToExplain("TODO");
+      getRandomCard();
     } else {
       alert("To start a game you need at least three active players.");
     }
@@ -61,7 +72,7 @@ const PlayingRoom = () => {
     await updateScore(user.uid,(user.score || 0) + 1);
     setIsChooseWinner(false);
     await setLeader(user.uid);
-    setWordToExplain("TODO");
+    getRandomCard();
   }
 
   const onResetGameClick = async () => {
@@ -112,7 +123,8 @@ const PlayingRoom = () => {
       {status === 2 && !isChooseWinner && (
         <>
           <ContainerWithTitle title={"Word"}>
-            {`You explain «${wordToExplain}»`}
+            <EmojiImage>{imageToExplain}</EmojiImage>
+            <WordToExplain>{wordToExplain}</WordToExplain>
           </ContainerWithTitle>
           <ContainerWithTitle title={"Status"}>
             {"You are explaing the word now."}
@@ -167,5 +179,17 @@ const CreateQuizButton = styled.button`
   color: white;
   font-size: 1.5em;
 `;
+
+const EmojiImage = styled.h2`
+  font-size: 96px;
+  text-align: center;
+`;
+
+const WordToExplain = styled.p`
+  font-size: 30px;
+  text-align: center;
+`;
+
+
 
 export default PlayingRoom;
