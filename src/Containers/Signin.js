@@ -34,11 +34,6 @@ const Signin = () => {
         {user && (
           <HomeSubHeader>
             <span>{getString(interfaceLang, "WELCOME")}, {user.displayName}</span>
-            <img width="64"
-                 height="64"
-                 src={user.photoURL}
-                 alt={user.displayName}
-            />
           </HomeSubHeader>
         )}
       </Header>
@@ -72,30 +67,7 @@ const Signin = () => {
             {getString(interfaceLang, "LOG_OUT")}
           </Button>
         )}
-
-
-
-
-
-      {/*
-      {!user && (
-        <UserManagementContainer>
-          <button onClick={() => navigate("/login")}>Log in</button>
-          <button
-            style={{ marginLeft: "1em" }}
-            onClick={() => navigate("/register")}
-          >
-            Register
-          </button>
-        </UserManagementContainer>
-      )}
-      {user && (
-        <UserManagementContainer>
-          <button onClick={() => logOut()}>Log out</button>
-        </UserManagementContainer>
-      )}
-      */}
-          </Footer>
+      </Footer>
     </Wrapper>
   );
 };
@@ -116,16 +88,6 @@ const WelcomeMessage = styled.p`
   margin-top: 2em;
   padding-right: 1em;
   padding-left: 1em;
-`;
-
-const UserManagementContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 5%;
 `;
 
 export default Signin;
