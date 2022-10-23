@@ -130,7 +130,7 @@ const PlayingRoom = () => {
         <>
           <ContainerWithTitle title={"Word"}>
             <EmojiImage>{imageToExplain}</EmojiImage>
-            <WordToExplain>{wordToExplain}</WordToExplain>
+            <StatusMessage>{wordToExplain}</StatusMessage>
           </ContainerWithTitle>
           <ContainerWithTitle title={"Status"}>
             {"You are explaing the word now."}
@@ -143,7 +143,8 @@ const PlayingRoom = () => {
       {status === 3 && (
         <>
           <ContainerWithTitle title={"Status"}>
-            {"The match is over. Wait a moment..."}
+            <EmojiImage>⏳</EmojiImage>
+            <StatusMessage>{"The match is over. Wait a moment..."}</StatusMessage>
           </ContainerWithTitle>
           <CreateQuizButton onClick={onResetGameClick}>
             {"Reset game"}
@@ -153,7 +154,8 @@ const PlayingRoom = () => {
       {status === 4 && (
         <>
           <ContainerWithTitle title={"Status"}>
-            {"You win the match!"}
+            <EmojiImage>🏆</EmojiImage>
+            <StatusMessage>{"You win! Press «Get Prize» button."}</StatusMessage>
           </ContainerWithTitle>
           <CreateQuizButton onClick={onGetPrizeClick}>
             {"Get prize"}
@@ -191,11 +193,10 @@ const EmojiImage = styled.h2`
   text-align: center;
 `;
 
-const WordToExplain = styled.p`
-  font-size: 30px;
+const StatusMessage = styled.p`
+  margin-top: 10px;
   text-align: center;
 `;
-
 
 
 export default PlayingRoom;
