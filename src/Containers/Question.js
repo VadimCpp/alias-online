@@ -7,14 +7,15 @@ import {
   getQuestion,
   updateQuestion,
 } from "../firebase";
-import LanguageContext from "../contexts/languageContext";
+import UserContext from "../contexts/userContext";
 import getString from '../utils/getString';
 
 const Question = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [question, setQuestion] = useState({});
-  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
+  const { interfaceLang } = useContext(UserContext);
+
 
   const onSaveButtonClick = () => {
     if (id) {

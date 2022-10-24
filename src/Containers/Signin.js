@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { signInWithGoogle, logOut } from "../firebase";
-import LanguageContext from "../contexts/languageContext";
 import UserContext from "../contexts/userContext";
 import getString from '../utils/getString';
 import AliasHeader from "../components/aliasHeader";
@@ -14,8 +13,7 @@ import Button from "../components/button";
 
 const Signin = () => {
   const navigate = useNavigate();
-  const { interfaceLang } = useContext(LanguageContext);
-  const { user } = useContext(UserContext);
+  const { user, interfaceLang } = useContext(UserContext);
 
   const onSigninWithGoogle = () => {
     signInWithGoogle();

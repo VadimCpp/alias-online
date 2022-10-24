@@ -2,13 +2,14 @@ import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getQuestions } from "../firebase";
-import LanguageContext from "../contexts/languageContext";
+import UserContext from "../contexts/userContext";
 import getString from '../utils/getString';
 
 const Questions = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
-  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
+  const { interfaceLang } = useContext(UserContext);
+
 
   useEffect(() => {
     /* 

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { registerWithEmailAndPassword, signInWithGoogle } from "../firebase";
-import LanguageContext from "../contexts/languageContext";
+import UserContext from "../contexts/userContext";
 import getString from '../utils/getString';
 
 function Register() {
@@ -11,7 +11,8 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
+  const { interfaceLang } = useContext(UserContext);
+
 
   /*
 
