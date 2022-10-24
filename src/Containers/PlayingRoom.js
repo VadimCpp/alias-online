@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
 import getString from "../utils/getString";
 import AliasHeader from "../components/aliasHeader";
-import LanguageContext from "../contexts/languageContext";
 import ContainerWithTitle from "../components/containerWithTitle";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
@@ -11,8 +10,7 @@ import VOCABULARY from "../utils/vocabulary.json";
 
 const PlayingRoom = () => {
 
-  const { interfaceLang } = useContext(LanguageContext);
-  const { user, users, defaultRoom } = useContext(UserContext);
+  const { user, users, defaultRoom, interfaceLang } = useContext(UserContext);
 
   const leaderUid = defaultRoom?.leaderUid;
   const winnerUid = defaultRoom?.winnerUid;

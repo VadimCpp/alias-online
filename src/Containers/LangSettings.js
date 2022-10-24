@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { signInWithGoogle, logOut } from "../firebase";
-import LanguageContext from "../contexts/languageContext";
+import UserContext from "../contexts/userContext";
+import { updateLang } from "../firebase";
 import getString from '../utils/getString';
 import Wrapper from "../components/wrapper";
 import Header from "../components/header";
@@ -15,11 +14,18 @@ import Main from "../components/main";
 
 const LangSettings = () => {
   const navigate = useNavigate();
-  const { interfaceLang, setInterfaceLang } = useContext(LanguageContext);
 
-  const langHandler = (key) => {
-    setInterfaceLang(key)
+  const { user, interfaceLang, setInterfaceLang } = useContext(UserContext);
+
+  const langHandler = async (key) => {
+    console.log("123", interfaceLang, user, key)
+    if (user) {
+      await updateLang(user.uid, key)
+    } else {
+      setInterfaceLang(key)
+    }
   }
+
 
   const langOptions = [
     {

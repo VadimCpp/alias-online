@@ -82,6 +82,13 @@ const updateScore = async (uid, score) => {
   });
 }
 
+const updateLang = async (uid, lang) => {
+  const userRef = doc(db, "users", uid);
+  await updateDoc(userRef, {
+    lang
+  });
+};
+
 const createQuestion = (question) => {
   // Add questions to Firestore. This method is called from the component src/Containers/Question.js
   /*
@@ -189,6 +196,8 @@ const sendPasswordReset = async (email) => {
   }
 };
 
+
+
 export {
   createQuestion,
   getQuestion,
@@ -208,4 +217,5 @@ export {
   resetGame,
   resetScore,
   updateScore,
+  updateLang
 };

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import LanguageContext from "../contexts/languageContext";
+import UserContext from "../contexts/userContext";
 import getString from '../utils/getString';
 import AliasHeader from "../components/aliasHeader";
 import Button from "../components/button";
@@ -12,7 +12,8 @@ import Footer from "../components/footer";
 const Home = () => {
 
   const navigate = useNavigate();
-  const { interfaceLang } = useContext(LanguageContext);
+  const { user, interfaceLang } = useContext(UserContext);
+
 
   const onPlay = () => {
     navigate("signin");

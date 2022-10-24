@@ -2,9 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./firebase";
 
-import LanguageContext from "./contexts/languageContext";
 import UserContext from "./contexts/userContext";
-import useLang from "./hooks/useLang";
 import useUser from "./hooks/useUser";
 
 import Home from "./Containers/Home";
@@ -18,7 +16,6 @@ import PlayingRoom from "./Containers/PlayingRoom";
 
 const App = () => {
   return (
-    <LanguageContext.Provider value={useLang()}>
       <UserContext.Provider value={useUser()}>
         <div>
           <Routes>
@@ -34,7 +31,6 @@ const App = () => {
           </Routes>
         </div>
       </UserContext.Provider>
-    </LanguageContext.Provider>
   );
 };
 export default App;

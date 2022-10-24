@@ -1,11 +1,13 @@
-import {useEffect, useState} from 'react';
-import {getAuth, onAuthStateChanged} from "firebase/auth";
-import {subscribeForRoomsUpdates, subscribeForUsersUpdates} from "../firebase";
+import { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { subscribeForRoomsUpdates, subscribeForUsersUpdates } from "../firebase";
 
 const useUser = () => {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [rooms, setRooms] = useState([]);
+  const [interfaceLang, setInterfaceLang] = useState("EN");
+  const learningLang = useState("NO");
 
   //NOTE! Use only one room for the first release
   //TODO: implement multiple rooms in future
@@ -61,10 +63,41 @@ const useUser = () => {
     setDefaultRoom(rooms.find(r => r.uid === "norsk-room") || null);
   }, [rooms]);
 
+  useEffect(() => {
+    let unsubscribe = null;
+    try {
+      if (user) {
+        unsubscribe = subscribeForUsersUpdates((collection) => {
+          setUsers(collection.docs.map((doc) => doc.data()));
+        });
+      } else {
+        setUsers([]);
+      }
+    }
+    catch (err) {
+      console.error("Error while subscribe for users updates.", err);
+      setUsers([]);
+    }
+
+    return () => { if (unsubscribe) { unsubscribe() } };
+  }, [user]);
+
+  useEffect(() => {
+    if (!!user && users.length) {
+      let profile = users.find(u => u.uid === user.uid)
+      setInterfaceLang(profile.lang || "EN");
+    } else {
+      setInterfaceLang("EN");
+    }
+  }, [users, user]);
+
   return {
     user,
     users,
     defaultRoom,
+    interfaceLang,
+    setInterfaceLang,
+    learningLang
   };
 };
 
