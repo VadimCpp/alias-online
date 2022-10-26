@@ -13,7 +13,7 @@ import { signInWithGoogle, logOut } from "../firebase";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { user, interfaceLang } = useContext(UserContext);
+  const { user, interfaceLang, isLoading } = useContext(UserContext);
 
   return (
     <Wrapper>
@@ -26,6 +26,9 @@ const Home = () => {
         )}
       </Header>
       <Main>
+        {isLoading && (
+          <WelcomeMessage>Loading...</WelcomeMessage>
+        )}
         {!user && (
           <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
         )}

@@ -3,6 +3,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { subscribeForRoomsUpdates, subscribeForUsersUpdates } from "../firebase";
 
 const useUser = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
   const [rooms, setRooms] = useState([]);
@@ -14,9 +15,10 @@ const useUser = () => {
   const [defaultRoom, setDefaultRoom] = useState(null);
 
   useEffect(() => {
-    const auth = getAuth()
+    const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, authUser => {
       console.log("Auth state changed. Updating user: ", authUser);
+      setIsLoading(false);
       authUser ? setUser(authUser) : setUser(null);
     });
     return () => unsubscribe();
@@ -92,6 +94,7 @@ const useUser = () => {
   }, [users, user]);
 
   return {
+    isLoading,
     user,
     users,
     defaultRoom,
