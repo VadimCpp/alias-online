@@ -9,7 +9,6 @@ import Home from "./Containers/Home";
 import Login from "./Containers/Login";
 import Questions from "./Containers/Questions";
 import Register from "./Containers/Register";
-import Signin from "./Containers/Signin";
 import LangSettings from "./Containers/LangSettings";
 import PlayingRoom from "./Containers/PlayingRoom";
 
@@ -19,7 +18,6 @@ const App = () => {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signin" element={<Signin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/questions" element={<Questions />} />

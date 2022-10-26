@@ -29,16 +29,6 @@
     "UA": "Надіслати електронний лист для скидання пароля",
     "RU": "Отправить емейл для сброса пароля"
   },
-  "SIGN_IN": {
-    "EN": "Sign in",
-    "UA": "Увійти",
-    "RU": "Войти"
-  },
-  "SIGN_IN_WITH_GOOGLE_TO_JOIN_THE_PLAY": {
-    "EN": "Please, sign in with Google to join the playing room",
-    "UA": "Будь ласка, увійдіть за допомогою Google, щоб приєднатися до гри",
-    "RU": "Пожалуйста, войдите с помощью Google, чтобы присоединиться к игре"
-  },
   "SIGN_IN_WITH_GOOGLE": {
     "EN": "Sign in with Google",
     "UA": "Увійти за допомогою Google",

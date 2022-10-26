@@ -9,30 +9,52 @@ import Wrapper from "../components/wrapper";
 import Header from "../components/header";
 import Main from "../components/main";
 import Footer from "../components/footer";
-const Home = () => {
+import { signInWithGoogle, logOut } from "../firebase";
 
+const Home = () => {
   const navigate = useNavigate();
   const { user, interfaceLang } = useContext(UserContext);
-
-
-  const onPlay = () => {
-    navigate("signin");
-  };
 
   return (
     <Wrapper>
       <Header isPrimary={true} isSign={false} onClick={() => navigate("/lang-settings")}>
         <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+        {user && (
+          <HomeSubHeader>
+            <span>{getString(interfaceLang, "WELCOME")}, {user.displayName}</span>
+          </HomeSubHeader>
+        )}
       </Header>
       <Main>
-        <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
+        {!user && (
+          <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
+        )}
       </Main>
       <Footer>
-        <Button uppercase={'uppercase'}
-                onClick={onPlay}
+        {user && (
+          <Button
+            uppercase={'uppercase'}
+            onClick={() => navigate("/playing-room")}
+          >
+            {getString(interfaceLang, "PLAY")}
+          </Button>
+        )}
+        {!user &&
+        <Button
+          uppercase={'none'}
+          onClick={() => signInWithGoogle()}
         >
-          {getString(interfaceLang, "PLAY")}
+          {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
         </Button>
+        }
+        {user && (
+          <Button
+            uppercase={'uppercase'}
+            onClick={() => logOut(user.uid)}
+          >
+            {getString(interfaceLang, "LOG_OUT")}
+          </Button>
+        )}
       </Footer>
     </Wrapper>
   );
@@ -46,6 +68,14 @@ const WelcomeMessage = styled.p`
   margin-top: 2em;
   padding-right: 4em;
   padding-left: 4em;  
+`;
+
+const HomeSubHeader = styled.p`
+  display: flex;
+  flex-direction: column;  
+  gap: 0.5em;
+  align-items: center;
+  font-size: 1.5em; 
 `;
 
 export default Home;
