@@ -6,7 +6,6 @@ import UserContext from "./contexts/userContext";
 import useUser from "./hooks/useUser";
 
 import Home from "./Containers/Home";
-import Login from "./Containers/Login";
 import Questions from "./Containers/Questions";
 import Register from "./Containers/Register";
 import LangSettings from "./Containers/LangSettings";
@@ -18,7 +17,6 @@ const App = () => {
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/questions" element={<Questions />} />
             <Route path="/lang-settings" element={<LangSettings />} />
