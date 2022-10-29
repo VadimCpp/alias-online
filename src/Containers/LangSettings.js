@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../contexts/userContext";
@@ -12,13 +12,14 @@ import AliasHeader from "../components/aliasHeader";
 import FlexContainer from "../components/flexContainer";
 import Main from "../components/main";
 
+const BACK = -1;
+
 const LangSettings = () => {
   const navigate = useNavigate();
 
   const { user, interfaceLang, setInterfaceLang } = useContext(UserContext);
 
   const langHandler = async (key) => {
-    console.log("123", interfaceLang, user, key)
     if (user) {
       await updateLang(user.uid, key)
     } else {
@@ -62,7 +63,7 @@ const LangSettings = () => {
             <RadioButton>
               {
                 langOptions.map((option) => {
-                  let isChecked = interfaceLang === option.langKey ? true : false;
+                  let isChecked = interfaceLang === option.langKey;
                   return (
                     <label key={option.langKey}>
                       <input
@@ -84,7 +85,7 @@ const LangSettings = () => {
       <Footer>
         <Button
           uppercase={'uppercase'}
-          onClick={() => navigate("/signin")}
+          onClick={() => navigate(BACK)}
         >
           back
         </Button>
