@@ -10,6 +10,7 @@ import { setLeader, setWinner, resetGame, resetScore, updateScore } from "../fir
 import VOCABULARY from "../utils/vocabulary.json";
 import Header from "../components/header";
 import Wrapper from "../components/wrapper";
+import Button from "../components/button";
 
 const PlayingRoom = () => {
   const navigate = useNavigate();
@@ -96,38 +97,41 @@ const PlayingRoom = () => {
       </Header>
       {status === 0 && (
         <>
-          <ContainerWithTitle title={"Players"}>
+          <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
             {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : "Loading..."}
           </ContainerWithTitle>
-          <ContainerWithTitle title={"Status"}>
+          <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
             {"Game is not started. Press «Play» button."}
           </ContainerWithTitle>
-          <CreateQuizButton onClick={onPlayClick}>
-            {"Play"}
-          </CreateQuizButton>
+          <Button onClick={onPlayClick}>
+            {getString(interfaceLang, "PLAY")}
+          </Button>
         </>
       )}
       {status === 1 && (
         <>
-          <ContainerWithTitle title={"Status"}>
+          <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
+            {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : "Loading..."}
+          </ContainerWithTitle>
+          <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
             {"You are guessing the word"}
           </ContainerWithTitle>
-          <CreateQuizButton onClick={onResetGameClick}>
-            {"Reset game"}
-          </CreateQuizButton>
+          <Button onClick={onResetGameClick}>
+            {getString(interfaceLang, "RESET_GAME")}
+          </Button>
         </>
       )}
       {status === 2 && isChooseWinner && (
         <>
-          <ContainerWithTitle title={"Players"}>
+          <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
             {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : "Loading..."}
           </ContainerWithTitle>
-          <ContainerWithTitle title={"Status"}>
+          <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
             {"Choose the winner or back to picture"}
           </ContainerWithTitle>
-          <CreateQuizButton onClick={() => setIsChooseWinner(false)}>
-            {"Back to picture"}
-          </CreateQuizButton>
+          <Button onClick={() => setIsChooseWinner(false)}>
+            {getString(interfaceLang, "SHOW_PICTURE")}
+          </Button>
         </>
       )}
       {status === 2 && !isChooseWinner && (
@@ -136,34 +140,34 @@ const PlayingRoom = () => {
             <EmojiImage>{imageToExplain}</EmojiImage>
             <StatusMessage>{wordToExplain}</StatusMessage>
           </ContainerWithTitle>
-          <ContainerWithTitle title={"Status"}>
+          <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
             {"You are explaing the word now."}
           </ContainerWithTitle>
-          <CreateQuizButton onClick={() => setIsChooseWinner(true)}>
-            {"Choose vinner"}
-          </CreateQuizButton>
+          <Button onClick={() => setIsChooseWinner(true)}>
+            {getString(interfaceLang, "CHOOSE_VINNER")}
+          </Button>
         </>
       )}
       {status === 3 && (
         <>
-          <ContainerWithTitle title={"Status"}>
+          <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
             <EmojiImage>⏳</EmojiImage>
             <StatusMessage>{"The match is over. Wait a moment..."}</StatusMessage>
           </ContainerWithTitle>
-          <CreateQuizButton onClick={onResetGameClick}>
-            {"Reset game"}
-          </CreateQuizButton>
+          <Button onClick={onResetGameClick}>
+            {getString(interfaceLang, "RESET_GAME")}
+          </Button>
         </>
       )}
       {status === 4 && (
         <>
-          <ContainerWithTitle title={"Status"}>
+          <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
             <EmojiImage>🏆</EmojiImage>
             <StatusMessage>{"You win! Press «Get Prize» button."}</StatusMessage>
           </ContainerWithTitle>
-          <CreateQuizButton onClick={onGetPrizeClick}>
-            {"Get prize"}
-          </CreateQuizButton>
+          <Button onClick={onGetPrizeClick}>
+            {getString(interfaceLang, "GET_PRIZE")}
+          </Button>
         </>
       )}
     </Wrapper>
@@ -173,13 +177,6 @@ const PlayingRoom = () => {
 const HomeSubHeader = styled.p`
   text-align: center;
   margin-bottom: 1em;
-`;
-
-const CreateQuizButton = styled.button`
-  background-color: #54bab9;
-  padding: 1em 4em;
-  color: white;
-  font-size: 1.5em;
 `;
 
 const EmojiImage = styled.h2`

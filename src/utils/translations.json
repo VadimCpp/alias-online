@@ -188,5 +188,25 @@
     "EN": "Choose language",
     "UA": "Оберіть мову",
     "RU": "Выберите язык"
+  },
+  "GET_PRIZE": {
+    "EN": "Get prize",
+    "UA": "Отримати приз",
+    "RU": "Получить приз"
+  },
+  "CHOOSE_VINNER": {
+    "EN": "Choose vinner",
+    "UA": "Обрати переможця",
+    "RU": "Выбрать победителя"
+  },
+  "RESET_GAME": {
+    "EN": "Reset game",
+    "UA": "Зкинути гру",
+    "RU": "Сбросить игру"
+  },
+  "SHOW_PICTURE": {
+    "EN": "Show picture",
+    "UA": "Показати зображення",
+    "RU": "Показать картинку"
   }
 }
