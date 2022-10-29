@@ -9,8 +9,8 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Button from "../components/button";
 import AliasHeader from "../components/aliasHeader";
-import FlexContainer from "../components/flexContainer";
 import Main from "../components/main";
+import ContainerWithTitle from "../components/containerWithTitle";
 
 const BACK = -1;
 
@@ -52,14 +52,10 @@ const LangSettings = () => {
         isPrimary={false}
         isSign={false}
         isLang={true}>
-        <AliasHeader>Language settings</AliasHeader>
+        <AliasHeader> { getString(interfaceLang, "LANGUAGE_SETTINGS") } </AliasHeader>
       </Header>
       <Main>
-        <ButtonsWrapper>
-          <FlexContainer direction={'column'}>
-            <ButtonsContainerHeader>
-              Choice Language
-            </ButtonsContainerHeader>
+          <ContainerWithTitle title={getString(interfaceLang, "CHOOSE_LANGUAGE")}>
             <RadioButton>
               {
                 langOptions.map((option) => {
@@ -79,41 +75,25 @@ const LangSettings = () => {
                 })
               }
             </RadioButton>
-          </FlexContainer>
-        </ButtonsWrapper>
+          </ContainerWithTitle>
       </Main>
       <Footer>
         <Button
           uppercase={'uppercase'}
           onClick={() => navigate(BACK)}
         >
-          back
+          { getString(interfaceLang, "BACK") }
         </Button>
       </Footer>
     </Wrapper>
   );
 };
 
-const ButtonsWrapper = styled.div`
-border: solid 0.1em;
-border-radius: 2em;
-padding: 1.5em 2em 1em 2em;
-`
-
 const RadioButton = styled.div`
   font-size: 15px;
   display: flex;
   flex-direction: column;
   padding-bottom: 1.5em;
-`;
-
-const ButtonsContainerHeader = styled.div`
-  font-size: 20px;
-  position: relative;
-  top: -55px;
-  background: gray;
-  padding: 10px 15px 10px 15px;
-  border-radius: 50px;
 `;
 
 export default LangSettings;

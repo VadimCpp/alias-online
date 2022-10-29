@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import getString from "../utils/getString";
 import AliasHeader from "../components/aliasHeader";
 import ContainerWithTitle from "../components/containerWithTitle";
@@ -7,9 +8,11 @@ import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
 import { setLeader, setWinner, resetGame, resetScore, updateScore } from "../firebase";
 import VOCABULARY from "../utils/vocabulary.json";
+import Header from "../components/header";
+import Wrapper from "../components/wrapper";
 
 const PlayingRoom = () => {
-
+  const navigate = useNavigate();
   const { user, users, defaultRoom, interfaceLang } = useContext(UserContext);
 
   const leaderUid = defaultRoom?.leaderUid;
@@ -85,9 +88,12 @@ const PlayingRoom = () => {
   }
 
   return (
-    <Container>
-      <AliasHeader color={"black"}>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
-      <HomeSubHeader>{defaultRoom?.name || getString(interfaceLang, "PLAYING_ROOM")}</HomeSubHeader>
+    <Wrapper>
+      <Header isPrimary={false} isSign={false} onClick={() => navigate("/lang-settings")}>
+        <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+        {user && (
+          <HomeSubHeader>{defaultRoom?.name || getString(interfaceLang, "PLAYING_ROOM")}</HomeSubHeader>        )}
+      </Header>
       {status === 0 && (
         <>
           <ContainerWithTitle title={"Players"}>
@@ -160,19 +166,9 @@ const PlayingRoom = () => {
           </CreateQuizButton>
         </>
       )}
-    </Container>
+    </Wrapper>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-right: 1em;
-  padding-left: 1em;
-  height: 100vh;
-`;
 
 const HomeSubHeader = styled.p`
   text-align: center;

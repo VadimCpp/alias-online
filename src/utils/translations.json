@@ -180,8 +180,13 @@
     "RU": "Сделано"
   },
   "LANGUAGE_SETTINGS": {
-    "EN": "language settings",
+    "EN": "Language settings",
     "UA": "Налаштування мови",
     "RU": "Настройки языка"
+  },
+  "CHOOSE_LANGUAGE": {
+    "EN": "Choose language",
+    "UA": "Оберіть мову",
+    "RU": "Выберите язык"
   }
 }
