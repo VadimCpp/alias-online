@@ -17,6 +17,7 @@ const Border = styled.div`
   border: 1px solid #51565F;
   padding: 0 36px 24px;
   margin: 24px 0;
+  background-color: white;
 `;
 
 const Title = styled.p`

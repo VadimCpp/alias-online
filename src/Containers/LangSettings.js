@@ -55,27 +55,27 @@ const LangSettings = () => {
         <AliasHeader> { getString(interfaceLang, "LANGUAGE_SETTINGS") } </AliasHeader>
       </Header>
       <Main>
-          <ContainerWithTitle title={getString(interfaceLang, "CHOOSE_LANGUAGE")}>
-            <RadioButton>
-              {
-                langOptions.map((option) => {
-                  let isChecked = interfaceLang === option.langKey;
-                  return (
-                    <label key={option.langKey}>
-                      <input
-                        type="radio"
-                        name="langOptions"
-                        value={option.langKey}
-                        checked={isChecked}
-                        onChange={(e) => langHandler(e.target.value)}
-                      />
-                      {getString(interfaceLang, option.text)} {option.abbreviation}
-                    </label>
-                  )
-                })
-              }
-            </RadioButton>
-          </ContainerWithTitle>
+        <ContainerWithTitle title={getString(interfaceLang, "CHOOSE_LANGUAGE")}>
+          <RadioButton>
+            {
+              langOptions.map((option) => {
+                let isChecked = interfaceLang === option.langKey;
+                return (
+                  <label key={option.langKey}>
+                    <input
+                      type="radio"
+                      name="langOptions"
+                      value={option.langKey}
+                      checked={isChecked}
+                      onChange={(e) => langHandler(e.target.value)}
+                    />
+                    {getString(interfaceLang, option.text)} {option.abbreviation}
+                  </label>
+                )
+              })
+            }
+          </RadioButton>
+        </ContainerWithTitle>
       </Main>
       <Footer>
         <Button

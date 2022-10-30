@@ -5,7 +5,6 @@ import {ReactComponent as GoogleLogo} from "../icons/google-icon.svg";
 
 const StyledHeader = styled.div`
   color: #ffffff;
-  position: relative;
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -15,6 +14,8 @@ const StyledHeader = styled.div`
   background-image: linear-gradient(198deg, #2BC48A 8.96%, 
   rgba(43, 196, 138, 0.962165) 56.08%, 
   rgba(43, 196, 138, 0.61) 76.08%, #ffffff 56.08%);  
+  position: absolute;
+  top: 0;
 `
 const StyledMainLogo = styled(MainLogo)`
   position: absolute;

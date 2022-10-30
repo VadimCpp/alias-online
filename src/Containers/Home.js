@@ -8,7 +8,6 @@ import Button from "../components/button";
 import Wrapper from "../components/wrapper";
 import Header from "../components/header";
 import Main from "../components/main";
-import Footer from "../components/footer";
 import { signInWithGoogle, logOut } from "../firebase";
 
 const Home = () => {
@@ -26,14 +25,13 @@ const Home = () => {
         )}
       </Header>
       <Main>
+        <Gap />
         {isLoading && (
           <WelcomeMessage>Loading...</WelcomeMessage>
         )}
         {!user && (
           <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
         )}
-      </Main>
-      <Footer>
         {user && (
           <Button
             uppercase={'uppercase'}
@@ -43,12 +41,12 @@ const Home = () => {
           </Button>
         )}
         {!user &&
-        <Button
-          uppercase={'none'}
-          onClick={() => signInWithGoogle()}
-        >
-          {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
-        </Button>
+          <Button
+            uppercase={'none'}
+            onClick={() => signInWithGoogle()}
+          >
+            {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
+          </Button>
         }
         {user && (
           <Button
@@ -58,7 +56,7 @@ const Home = () => {
             {getString(interfaceLang, "LOG_OUT")}
           </Button>
         )}
-      </Footer>
+      </Main>
     </Wrapper>
   );
 };
@@ -80,5 +78,7 @@ const HomeSubHeader = styled.p`
   align-items: center;
   font-size: 1.5em; 
 `;
+
+const Gap = styled.div`height: 15vh`
 
 export default Home;

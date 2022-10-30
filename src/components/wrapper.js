@@ -2,6 +2,7 @@ import styled from "styled-components";
 import FlexContainer from "./flexContainer";
 
 const StyledWrapper = styled.div`
+  position: relative;
   width: 390px;  
   margin: 0 auto;
   min-height: 100vh;
