@@ -52,7 +52,7 @@ const LangSettings = () => {
         isPrimary={false}
         isSign={false}
         isLang={true}>
-        <AliasHeader> { getString(interfaceLang, "LANGUAGE_SETTINGS") } </AliasHeader>
+        <AliasHeader onClick={() => navigate("/")}> { getString(interfaceLang, "LANGUAGE_SETTINGS") } </AliasHeader>
       </Header>
       <Main>
         <ContainerWithTitle title={getString(interfaceLang, "CHOOSE_LANGUAGE")}>

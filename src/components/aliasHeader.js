@@ -9,6 +9,7 @@ const AliasHeader = styled.h1`
   font-style: normal;
   font-weight: 700; 
   line-height: 60px;
+  cursor: pointer;
 `;
 
 export default AliasHeader;

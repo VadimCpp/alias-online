@@ -92,7 +92,7 @@ const PlayingRoom = () => {
   return (
     <Wrapper>
       <Header isPrimary={false} isSign={false} onClick={() => navigate("/lang-settings")}>
-        <AliasHeader>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+        <AliasHeader onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
         {user && (
           <HomeSubHeader>{defaultRoom?.name || getString(interfaceLang, "PLAYING_ROOM")}</HomeSubHeader>        )}
       </Header>

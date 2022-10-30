@@ -10,22 +10,61 @@ const UserList = ({ users, uid, onUserClick }) => {
     return dn;
   }
 
+  const isActive = (user) => {
+    const today = new Date();
+    const lastActiveAt = new Date(user.lastActiveAt);
+    const lastActiveHoursAgo = (today - lastActiveAt) / 1000 / 60 / 60;
+    return (lastActiveHoursAgo < 1);
+  }
+
+  const sortedUsers = users.sort((a, b) => {
+    const ia = isActive(a);
+    const ib = isActive(b);
+    if (ia === ib) return 0;
+    if (!ia) return 1;
+    return -1;
+  });
+
   return (
-    <ul>
+    <List>
       {
-        users.map(user => {
+        sortedUsers.map(user => {
           return (
             <Row key={user.uid} onClick={() => onUserClick(user)}>
               <Avatar width="32" height="32" src={user.photoURL} alt={user.displayName} />
               <Name>{getDisplayName(user)}</Name>
               <Score>{user.score}</Score>
+              { isActive(user) ? <ActiveIndicator /> : <InactiveIndicator /> }
             </Row>
           );
         })
       }
-    </ul>
+    </List>
   );
 }
+
+const List = styled.ul`
+  max-height: 300px;
+  overflow-y: scroll;
+  width: 100%;
+`;
+
+const ActiveIndicator = styled.span`
+  background-color: lightgreen;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: 15px;
+  margin-right: 10px;
+`;
+
+const InactiveIndicator = styled.span`
+  background-color: lightgray;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin-left: 15px;
+`;
 
 const Row = styled.li`
   display: flex;
