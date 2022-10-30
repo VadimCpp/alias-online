@@ -100,10 +100,10 @@ const PlayingRoom = () => {
         {status === 0 && (
           <>
             <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : "Loading..."}
+              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
             </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {"Game is not started. Press «Play» button."}
+              {getString(interfaceLang,"GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON")}
             </ContainerWithTitle>
             <Button onClick={onPlayClick}>
               {getString(interfaceLang, "PLAY")}
@@ -113,7 +113,7 @@ const PlayingRoom = () => {
         {status === 1 && (
           <>
             <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : "Loading..."}
+              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
             </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
               {"You are guessing the word"}
@@ -126,7 +126,7 @@ const PlayingRoom = () => {
         {status === 2 && isChooseWinner && (
           <>
             <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : "Loading..."}
+              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
             </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
               {"Choose the winner or back to picture"}
@@ -138,12 +138,12 @@ const PlayingRoom = () => {
         )}
         {status === 2 && !isChooseWinner && (
           <>
-            <ContainerWithTitle title={"Word"}>
+            <ContainerWithTitle title={getString(interfaceLang, "WORD")}>
               <EmojiImage>{imageToExplain}</EmojiImage>
               <StatusMessage>{wordToExplain}</StatusMessage>
             </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {"You are explaing the word now."}
+              <StatusMessage>{getString(interfaceLang, "YOU_ARE_EXPLAINING_THE_WORD")}</StatusMessage>
             </ContainerWithTitle>
             <Button onClick={() => setIsChooseWinner(true)}>
               {getString(interfaceLang, "CHOOSE_VINNER")}
@@ -154,7 +154,7 @@ const PlayingRoom = () => {
           <>
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
               <EmojiImage>⏳</EmojiImage>
-              <StatusMessage>{"The match is over. Wait a moment..."}</StatusMessage>
+              <StatusMessage>{getString(interfaceLang,"THE_MATCH_IS_OVER_WAIT_A_MOMENT")}</StatusMessage>
             </ContainerWithTitle>
             <Button onClick={onResetGameClick}>
               {getString(interfaceLang, "RESET_GAME")}
@@ -165,7 +165,7 @@ const PlayingRoom = () => {
           <>
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
               <EmojiImage>🏆</EmojiImage>
-              <StatusMessage>{"You win! Press «Get Prize» button."}</StatusMessage>
+              <StatusMessage>{getString(interfaceLang, "YOU_WIN_PRESS_GET_PRIZE")}</StatusMessage>
             </ContainerWithTitle>
             <Button onClick={onGetPrizeClick}>
               {getString(interfaceLang, "GET_PRIZE")}
@@ -190,6 +190,9 @@ const EmojiImage = styled.h2`
 const StatusMessage = styled.p`
   margin-top: 10px;
   text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 260px;
 `;
 
 export default PlayingRoom;

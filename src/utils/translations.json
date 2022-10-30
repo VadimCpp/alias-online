@@ -208,5 +208,30 @@
     "EN": "Show picture",
     "UA": "Показати зображення",
     "RU": "Показать картинку"
+  },
+  "WORD": {
+    "EN": "Word",
+    "UA": "Слово",
+    "RU": "Слово"
+  },
+  "YOU_WIN_PRESS_GET_PRIZE": {
+    "EN": "You win! Press «Get Prize» button.",
+    "UA": "Перемога за Вами! Натисніть кнопку «Отримати приз»",
+    "RU": "Вы победили! Нажмите кнопку «Получить приз»"
+  },
+  "THE_MATCH_IS_OVER_WAIT_A_MOMENT": {
+    "EN": "The match is over. Wait a moment...",
+    "UA": "Раунд завершено. Зачекайте трішки...",
+    "RU": "Раунд завершен. Подождите немного..."
+  },
+  "GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON": {
+    "EN": "Game is not started. Press «Play» button.",
+    "UA": "Гра ще не почалася. Натисніть кнопку «Грати».",
+    "RU": "Игра еще не началась. Нажмите кнопку «Играть»."
+  },
+  "LOADING": {
+    "EN": "Loading...",
+    "UA": "Завантажує...",
+    "RU": "Загружается..."
   }
 }
