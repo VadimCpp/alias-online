@@ -233,5 +233,10 @@
     "EN": "Loading...",
     "UA": "Завантажує...",
     "RU": "Загружается..."
+  },
+  "ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME": {
+    "EN": "Are you sure you want to reset game?",
+    "UA": "Ви впевнені, що хочете зкинути гру?",
+    "RU": "Вы уверены, что хотите сбросить игру?"
   }
 }

@@ -12,6 +12,7 @@ import Header from "../components/header";
 import Wrapper from "../components/wrapper";
 import Button from "../components/button";
 import Main from "../components/main";
+import ResetButton from "../components/resetButton";
 
 const PlayingRoom = () => {
   const navigate = useNavigate();
@@ -85,8 +86,10 @@ const PlayingRoom = () => {
   }
 
   const onResetGameClick = async () => {
-    await resetGame();
-    await resetScore(user.uid);
+    if (window.confirm(getString(interfaceLang,'ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
+      await resetGame();
+      await resetScore(user.uid);
+    }
   }
 
   return (
@@ -118,9 +121,9 @@ const PlayingRoom = () => {
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
               {"You are guessing the word"}
             </ContainerWithTitle>
-            <Button onClick={onResetGameClick}>
+            <ResetButton onClick={onResetGameClick}>
               {getString(interfaceLang, "RESET_GAME")}
-            </Button>
+            </ResetButton>
           </>
         )}
         {status === 2 && isChooseWinner && (
@@ -156,9 +159,9 @@ const PlayingRoom = () => {
               <EmojiImage>⏳</EmojiImage>
               <StatusMessage>{getString(interfaceLang,"THE_MATCH_IS_OVER_WAIT_A_MOMENT")}</StatusMessage>
             </ContainerWithTitle>
-            <Button onClick={onResetGameClick}>
+            <ResetButton onClick={onResetGameClick}>
               {getString(interfaceLang, "RESET_GAME")}
-            </Button>
+            </ResetButton>
           </>
         )}
         {status === 4 && (
