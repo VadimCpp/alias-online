@@ -2,241 +2,291 @@
   "ALIAS_ONLINE": {
     "EN": "Alias online",
     "UA": "Аліас онлайн",
-    "RU": "Алиас онлайн"
+    "RU": "Алиас онлайн",
+    "NO": "Alias online"
   },
   "DO_YOU_HAVE_AN_ACCOUNT_ALREADY?": {
     "EN": "Do you have an account already?",
     "UA": "У вас вже є обліковий запис?",
-    "RU": "У вас есть учётная запись?"
+    "RU": "У вас есть учётная запись?",
+    "NO": "Har du en konto allerede?"
+    
   },
   "LOG_IN_HERE": {
     "EN": "Log in here",
     "UA": "Увійдіть тут",
-    "RU": "Войти тут"
+    "RU": "Войти тут",
+    "NO": "Logg in her"
   },
   "PLAY_WITH_FRIENDS": {
     "EN": "Play with friends around the globe",
     "UA": "Грай з друзями з усього світу",
-    "RU": "Играй с друзьями по всему миру"
+    "RU": "Играй с друзьями по всему миру",
+    "NO": "Spill med venner over hele verden"
   },
   "PLAY": {
     "EN": "Play",
     "UA": "Грати",
-    "RU": "Играть"
+    "RU": "Играть",
+    "NO": "Skuespill"
   },
   "SEND_RESET_PASSWORD_EMAIL": {
     "EN": "Send reset password email",
     "UA": "Надіслати електронний лист для скидання пароля",
-    "RU": "Отправить емейл для сброса пароля"
+    "RU": "Отправить емейл для сброса пароля",
+    "NO": "Sende e-post for tilbakestilling av passord"
   },
   "SIGN_IN_WITH_GOOGLE": {
     "EN": "Sign in with Google",
     "UA": "Увійти за допомогою Google",
-    "RU": "Войти с помощью Google"
+    "RU": "Войти с помощью Google",
+    "NO": "Logg på med Google"
   },
   "PLAYING_ROOM": {
     "EN": "Playing room",
     "UA": "Гральна кімната",
-    "RU": "Игровая комната"
+    "RU": "Игровая комната",
+    "NO": "Spillerom"
   },
   "PLAYERS": {
     "EN": "Players",
     "UA": "Гравці",
-    "RU": "Игроки"
+    "RU": "Игроки",
+    "NO": "Spillere"
   },
   "STATUS": {
     "EN": "Status",
     "UA": "Статус",
-    "RU": "Статус"
+    "RU": "Статус",
+    "NO": "Status"
   },
   "SEE_SCORE": {
     "EN": "See score",
     "UA": "Подивитись рахунок",
-    "RU": "Увидеть счёт"
+    "RU": "Увидеть счёт",
+    "NO": "Se resultat"
   },
   "SEE_STATUS": {
     "EN": "See status",
     "UA": "Подивитись статус",
-    "RU": "Увидеть статус"
+    "RU": "Увидеть статус",
+    "NO": "Se status"
   },
   "EVERYBODY_IS_WAITING" : {
     "EN": "Everybody is waiting",
     "UA": "Всі очікують",
-    "RU": "Все ожидают"
+    "RU": "Все ожидают",
+    "NO": "Alle venter"
   },
   "PRESS_PLAY": {
     "EN": "Press play",
     "UA": "Натисни 'Грати'",
-    "RU": "Нажми играть"
+    "RU": "Нажми играть",
+    "NO": "Trykk på play"
   },
   "IS_EXPLAINING_A_WORD": {
     "EN": "is explaining a word",
     "UA": "пояснює слово",
-    "RU": "объясняет слово"
+    "RU": "объясняет слово",
+    "NO": "forklarer et ord"
   },
   "GUESS": {
     "EN": "Guess",
     "UA": "Здогадайся",
-    "RU": "Догадайся"
+    "RU": "Догадайся",
+    "NO": "Gjetning"
   },
   "EXPLAINING": {
     "EN": "explaining",
     "UA": "пояснює",
-    "RU": "объяснение"
+    "RU": "объяснение",
+    "NO": "forklare"
   },
   "YOU_ARE_EXPLAINING_THE_WORD": {
     "EN": "You are explaining the word",
     "UA": "Ти пояснюєш слово",
-    "RU": "Ты объясняешь слово"
+    "RU": "Ты объясняешь слово",
+    "NO": "Du forklarer ordet"
   },
   "EXPLAIN_THE_WORD": {
     "EN": "Explain the word",
     "UA": "Поясни це слово",
-    "RU": "Объясни слово"
+    "RU": "Объясни слово",
+    "NO": "Forklar ordet"
   },
   "CHOOSE_WINNER": {
     "EN": "Choose winner",
     "UA": "Обрати переможця",
-    "RU": "Выбери победителя"
+    "RU": "Выбери победителя",
+    "NO": "Velg vinner"
   },
   "SHOW_WORD": {
     "EN": "Show word",
     "UA": "Показати слово",
-    "RU": "Покажи слово"
+    "RU": "Покажи слово",
+    "NO": "Vis ord"
   },
   "UKRANIAN": {
     "EN": "Ukrainian",
     "UA": "Українська",
-    "RU": "Украинский"
+    "RU": "Украинский",
+    "NO": "Ukrainsk"
   },
   "ENGLISH": {
     "EN": "English",
     "UA": "Англійська",
-    "RU": "Английский"
+    "RU": "Английский",
+    "NO": "Engelsk"
   },
   "RUSSIAN": {
     "EN": "Russian",
-    "UA": "Російський",
-    "RU": "Русский"
+    "UA": "Російська",
+    "RU": "Русский",
+    "NO":  "Russisk"
   },
   "WELCOME": {
     "EN": "Welcome",
     "UA": "Вітаємо",
-    "RU": "Добро пожаловать"
+    "RU": "Добро пожаловать",
+    "NO": "Velkommen"
   },
   "LOG_OUT": {
     "EN": "Log out",
     "UA": "Вийти",
-    "RU": "Выйти"
+    "RU": "Выйти",
+    "NO": "Logg ut"
   },
   "LOG_IN_WITH_GOOGLE": {
     "EN": "Log in with Google",
     "UA": "Увійти за допомогою Google",
-    "RU": "Войти с помощью Google"
+    "RU": "Войти с помощью Google",
+    "NO": "Logg på med Google"
   },
   "FORGOT_YOUR_PASSWORD?": {
     "EN": "Forgot your password?",
     "UA": "Забули пароль?",
-    "RU": "Забыли пароль?"
+    "RU": "Забыли пароль?",
+    "NO": "Har du glemt passordet?"
   },
   "REGISTER": {
     "EN": "Register",
     "UA": "Реєстрація",
-    "RU": "Регистрация"
+    "RU": "Регистрация",
+    "NO": "Registrering"
   },
   "REGISTER_WITH_GOOGLE": {
     "EN": "Register with Google",
     "UA": "Реєстрація за допомогою Google",
-    "RU": "Регистрация с помощью Google"
+    "RU": "Регистрация с помощью Google",
+    "NO": "Registrer deg hos Google"
   },
   "BACK": {
     "EN": "Back",
     "UA": "Назад",
-    "RU": "Назад"
+    "RU": "Назад",
+    "NO": "Tilbake"
   },
   "ANSWER": {
     "EN": "Answer",
     "UA": "Відповідь",
-    "RU": "Ответ"
+    "RU": "Ответ",
+    "NO": "Svare"
   },
   "DELETE": {
     "EN": "Delete",
     "UA": "Видалити",
-    "RU": "Удалить"
+    "RU": "Удалить",
+    "NO": "Slette"
   },
   "GO_BACK": {
     "EN": "Go back",
     "UA": "Повертайся",
-    "RU": "Вернись"
+    "RU": "Вернись",
+    "NO": "Gå tilbake"
   },
   "QUESTION": {
     "EN": "Question",
     "UA": "Запитання",
-    "RU": "Вопрос"
+    "RU": "Вопрос",
+    "NO": "Spørsmål"
   },
   "MADE_BY": {
     "EN": "Made by",
     "UA": "Зроблено",
-    "RU": "Сделано"
+    "RU": "Сделано",
+    "NO": "Laget av"
   },
   "LANGUAGE_SETTINGS": {
     "EN": "Language settings",
     "UA": "Налаштування мови",
-    "RU": "Настройки языка"
+    "RU": "Настройки языка",
+    "NO": "Språkinnstillinger"
   },
   "CHOOSE_LANGUAGE": {
     "EN": "Choose language",
     "UA": "Оберіть мову",
-    "RU": "Выберите язык"
+    "RU": "Выберите язык",
+    "NO": "Velg språk"
   },
   "GET_PRIZE": {
     "EN": "Get prize",
     "UA": "Отримати приз",
-    "RU": "Получить приз"
+    "RU": "Получить приз",
+    "NO": "Få premie"
+
   },
   "CHOOSE_VINNER": {
     "EN": "Choose vinner",
     "UA": "Обрати переможця",
-    "RU": "Выбрать победителя"
+    "RU": "Выбрать победителя",
+    "NO": "Velg vinner"
   },
   "RESET_GAME": {
     "EN": "Reset game",
     "UA": "Зкинути гру",
-    "RU": "Сбросить игру"
+    "RU": "Сбросить игру",
+    "NO": "Tilbakestill spill"
   },
   "SHOW_PICTURE": {
     "EN": "Show picture",
     "UA": "Показати зображення",
-    "RU": "Показать картинку"
+    "RU": "Показать картинку",
+    "NO": "Vis bilde"
   },
   "WORD": {
     "EN": "Word",
     "UA": "Слово",
-    "RU": "Слово"
+    "RU": "Слово",
+    "NO": "Ord"
   },
   "YOU_WIN_PRESS_GET_PRIZE": {
-    "EN": "You win! Press «Get Prize» button.",
+    "EN": "You win! Press «Get Prize» button",
     "UA": "Перемога за Вами! Натисніть кнопку «Отримати приз»",
-    "RU": "Вы победили! Нажмите кнопку «Получить приз»"
+    "RU": "Вы победили! Нажмите кнопку «Получить приз»",
+    "NO": "Du vinner! Trykk på «Få premie»-knappen"
   },
   "THE_MATCH_IS_OVER_WAIT_A_MOMENT": {
     "EN": "The match is over. Wait a moment...",
     "UA": "Раунд завершено. Зачекайте трішки...",
-    "RU": "Раунд завершен. Подождите немного..."
+    "RU": "Раунд завершен. Подождите немного...",
+    "NO": "Kampen er over. Vent et øyeblikk ..."
   },
   "GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON": {
     "EN": "Game is not started. Press «Play» button.",
     "UA": "Гра ще не почалася. Натисніть кнопку «Грати».",
-    "RU": "Игра еще не началась. Нажмите кнопку «Играть»."
+    "RU": "Игра еще не началась. Нажмите кнопку «Играть».",
+    "NO": "Spillet er ikke startet. Trykk på «Spill»-knappen."
   },
   "LOADING": {
     "EN": "Loading...",
     "UA": "Завантажує...",
-    "RU": "Загружается..."
+    "RU": "Загружается...",
+    "NO": "Lasting..."
   },
   "ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME": {
     "EN": "Are you sure you want to reset game?",
     "UA": "Ви впевнені, що хочете зкинути гру?",
-    "RU": "Вы уверены, что хотите сбросить игру?"
+    "RU": "Вы уверены, что хотите сбросить игру?",
+    "NO": "Er du sikker på at du vil tilbakestille spillet?"
   }
 }
