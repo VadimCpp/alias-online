@@ -94,12 +94,14 @@ const PlayingRoom = () => {
 
   return (
     <Wrapper>
-      <Header isPrimary={false} isSign={false} onClick={() => navigate("/lang-settings")}>
-        <AliasHeader onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</AliasHeader>
+      <Header isPrimary={false} isSign={false} onClick={() => navigate("/lang-settings")} isPlayingRoom>
+        <AliasHeader onClick={() => navigate("/")} isPlayingRoom >
+          {getString(interfaceLang, "ALIAS_ONLINE")}
+        </AliasHeader>
         {user && (
           <HomeSubHeader>{defaultRoom?.name || getString(interfaceLang, "PLAYING_ROOM")}</HomeSubHeader>        )}
       </Header>
-      <Main>
+      <Main isPlayingRoom>
         {status === 0 && (
           <>
             <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>

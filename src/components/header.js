@@ -9,7 +9,7 @@ const StyledHeader = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   width: 100%;
-  min-height: 50vh;
+  height: ${props => props.isPlayingRoom ? '30vh' : '50vh' };
   background-position: top left;
   background-image: linear-gradient(198deg, #2BC48A 8.96%, 
   rgba(43, 196, 138, 0.962165) 56.08%, 
@@ -50,8 +50,8 @@ const Rotate = styled.div`
   animation: ${rotate} 2s linear 1s;
 `;
 
-const Header = ({children, isPrimary, isSign, onClick, isLang=false}) => {
-  return <StyledHeader>
+const Header = ({children, isPrimary, isSign, onClick, isLang= false, isPlayingRoom = false}) => {
+  return <StyledHeader isPlayingRoom={isPlayingRoom}>
     {!isLang ?
       <StyledSettingsLogo onClick={onClick} />
       :
