@@ -7,7 +7,7 @@ const StyledFlexContainer = styled.div`
   justify-content: ${props => props.justify || 'stretch' };
   margin: ${props => props.margin || '0' };  
   background: #ffffff;  
-  min-height: ${props => props.height || 'auto' };  
+  height: 100vh;  
 `
 
 const FlexContainer = (props) => {

@@ -41,7 +41,7 @@ const base = css`
   input,
   textarea {
     font-family: 'Open Sans', sans-serif;
-    width: "100%";
+    width: 100%;
     font-size: 14pt;
     resize: none;
     padding: 0.3em;
@@ -138,7 +138,6 @@ const reset = css`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
     vertical-align: baseline;
   }
@@ -158,6 +157,8 @@ const reset = css`
   }
   body {
     line-height: 1;
+    height: 100vh;
+    overflow: hidden;
   }
   ol,
   ul {
@@ -171,7 +172,6 @@ const reset = css`
   blockquote:after,
   q:before,
   q:after {
-    content: "";
     content: none;
   }
   table {

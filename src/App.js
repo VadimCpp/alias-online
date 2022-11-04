@@ -11,15 +11,13 @@ import PlayingRoom from "./Containers/PlayingRoom";
 
 const App = () => {
   return (
-      <UserContext.Provider value={useUser()}>
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/lang-settings" element={<LangSettings />} />
-            <Route path="/playing-room" element={<PlayingRoom />} />
-          </Routes>
-        </div>
-      </UserContext.Provider>
+    <UserContext.Provider value={useUser()}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/lang-settings" element={<LangSettings />} />
+        <Route path="/playing-room" element={<PlayingRoom />} />
+      </Routes>
+    </UserContext.Provider>
   );
 };
 export default App;

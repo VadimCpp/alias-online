@@ -5,8 +5,9 @@ const StyledWrapper = styled.div`
   position: relative;
   width: 390px;  
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100vh;
 `
+// Wrapper -> FlexContainer -> StyledFlexContainer
 
 const Wrapper = ({children}) => {
   return <StyledWrapper>
