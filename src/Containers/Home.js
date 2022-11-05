@@ -35,7 +35,7 @@ const Home = () => {
         {user && (
           <Button
             uppercase={'uppercase'}
-            onClick={() => navigate("/playing-room")}
+            onClick={() => navigate("/rooms")}
           >
             {getString(interfaceLang, "PLAY")}
           </Button>

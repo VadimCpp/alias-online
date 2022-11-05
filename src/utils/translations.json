@@ -10,7 +10,6 @@
     "UA": "У вас вже є обліковий запис?",
     "RU": "У вас есть учётная запись?",
     "NO": "Har du en konto allerede?"
-    
   },
   "LOG_IN_HERE": {
     "EN": "Log in here",
@@ -288,5 +287,11 @@
     "UA": "Ви впевнені, що хочете зкинути гру?",
     "RU": "Вы уверены, что хотите сбросить игру?",
     "NO": "Er du sikker på at du vil tilbakestille spillet?"
+  },
+  "CHOOSE_ROOM": {
+    "EN": "Choose the room",
+    "UA": "Оберіть кіннату",
+    "RU": "Выберите комнату",
+    "NO": "Velg rommet"
   }
 }

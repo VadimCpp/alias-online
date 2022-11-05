@@ -168,12 +168,6 @@ const reset = css`
   q {
     quotes: none;
   }
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: none;
-  }
   table {
     border-collapse: collapse;
     border-spacing: 0;

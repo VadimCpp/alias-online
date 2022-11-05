@@ -6,6 +6,7 @@ import UserContext from "./contexts/userContext";
 import useUser from "./hooks/useUser";
 
 import Home from "./Containers/Home";
+import Rooms from "./Containers/Rooms";
 import LangSettings from "./Containers/LangSettings";
 import PlayingRoom from "./Containers/PlayingRoom";
 
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/lang-settings" element={<LangSettings />} />
+        <Route path="/rooms" element={<Rooms />} />
         <Route path="/playing-room" element={<PlayingRoom />} />
       </Routes>
     </UserContext.Provider>
