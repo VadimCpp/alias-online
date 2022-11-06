@@ -107,6 +107,12 @@
     "RU": "Ты объясняешь слово",
     "NO": "Du forklarer ordet"
   },
+  "ARE_EXPLAINING_THE_WORD": {
+    "EN": "are explaining the word",
+    "UA": "пояснює слово",
+    "RU": "объясняет слово",
+    "NO": "forklarer ordet"
+  },
   "EXPLAIN_THE_WORD": {
     "EN": "Explain the word",
     "UA": "Поясни це слово",

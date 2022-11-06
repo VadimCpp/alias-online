@@ -22,6 +22,7 @@ const PlayingRoom = () => {
   const { user, users, defaultRoom, interfaceLang } = useContext(UserContext);
 
   const leaderUid = defaultRoom?.leaderUid;
+  const leaderName = defaultRoom?.leaderName;
   const winnerUid = defaultRoom?.winnerUid;
   const word = defaultRoom?.word;
 
@@ -84,7 +85,7 @@ const PlayingRoom = () => {
     const userData = users.find(u => u.uid === user.uid);
     await updateScore(user.uid,(userData.score || 0) + 1);
     setIsChooseWinner(false);
-    await setLeader(user.uid);
+    await setLeader(user.uid, userData.displayName);
     getRandomCard();
   }
 
@@ -120,9 +121,8 @@ const PlayingRoom = () => {
         )}
         {status === 1 && (
           <>
-            {/* TODO: display who is explaining the word */}
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {getString(interfaceLang,"YOU_ARE_GUESSING_THE_WORD")}
+              {`${leaderName} ${getString(interfaceLang,"ARE_EXPLAINING_THE_WORD")}`}
             </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}

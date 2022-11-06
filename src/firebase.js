@@ -41,10 +41,11 @@ const subscribeForRoomsUpdates = (updatesHandler) => {
   return onSnapshot(roomsRef, updatesHandler);
 }
 
-const setLeader = async (uid) => {
+const setLeader = async (uid, name) => {
   const roomRef = doc(db, "rooms", "norsk-room");
   await updateDoc(roomRef, {
     leaderUid: uid,
+    leaderName: name,
     winnerUid: null,
     word: null,
   });
@@ -55,6 +56,7 @@ const setWinner = async (uid, word) => {
   await updateDoc(roomRef, {
     winnerUid: uid,
     leaderUid: null,
+    leaderName: null,
     word,
   });
 }
@@ -63,6 +65,7 @@ const resetGame = async () => {
   const roomRef = doc(db, "rooms", "norsk-room");
   await updateDoc(roomRef, {
     leaderUid: null,
+    leaderName: null,
     winnerUid: null,
     word: null,
   });
