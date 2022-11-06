@@ -7,6 +7,7 @@ import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 import UserContext from "../contexts/userContext";
 import Button from "../components/button";
+import { updateRoom } from "../firebase";
 
 const SettingsButton = styled(SettingsIcon)`
   transition: all .5s;
@@ -70,7 +71,12 @@ const Rooms = () => {
   const FOOTER_HEIGHT = "80px";
 
   const navigate = useNavigate();
-  const { interfaceLang } = useContext(UserContext);
+  const { user, interfaceLang, rooms, isLoading } = useContext(UserContext);
+
+  const onClickRoom = async (room) => {
+    await updateRoom(user.uid, room.uid);
+    navigate("/playing-room");
+  }
 
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
@@ -83,14 +89,16 @@ const Rooms = () => {
       </Container.Header>
       <Container.Content>
         <RoomsContent>
-          <Button onClick={() => navigate("/playing-room")}>
-            {"Bor i Norge"}
-          </Button>
+          { !isLoading && rooms.map((room) => {
+            return <Button key={room.uid} onClick={() => onClickRoom(room)}>
+              {room.name}
+            </Button>
+          })}
         </RoomsContent>
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <RoomsFooter>
-          {getString(interfaceLang, "CHOOSE_ROOM")}
+          { getString(interfaceLang, isLoading ? "LOADING" : "CHOOSE_ROOM" )}
         </RoomsFooter>
       </Container.Footer>
     </Container>

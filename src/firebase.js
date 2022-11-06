@@ -79,13 +79,23 @@ const updateScore = async (uid, score) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     score,
+    lastActiveAt: (new Date()).toISOString(),
+  });
+}
+
+const updateRoom = async (uid, room) => {
+  const userRef = doc(db, "users", uid);
+  await updateDoc(userRef, {
+    room,
+    lastActiveAt: (new Date()).toISOString(),
   });
 }
 
 const updateLang = async (uid, lang) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
-    lang
+    lang,
+    lastActiveAt: (new Date()).toISOString(),
   });
 };
 
@@ -217,5 +227,6 @@ export {
   resetGame,
   resetScore,
   updateScore,
+  updateRoom,
   updateLang
 };

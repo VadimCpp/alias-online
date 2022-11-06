@@ -58,31 +58,13 @@ const useUser = () => {
       console.error("Error while subscribe for rooms updates.", err);
       setRooms([]);
     }
+
     return () => { if (unsubscribe) { unsubscribe() } };
   }, [user]);
 
   useEffect(() => {
     setDefaultRoom(rooms.find(r => r.uid === "norsk-room") || null);
   }, [rooms]);
-
-  useEffect(() => {
-    let unsubscribe = null;
-    try {
-      if (user) {
-        unsubscribe = subscribeForUsersUpdates((collection) => {
-          setUsers(collection.docs.map((doc) => doc.data()));
-        });
-      } else {
-        setUsers([]);
-      }
-    }
-    catch (err) {
-      console.error("Error while subscribe for users updates.", err);
-      setUsers([]);
-    }
-
-    return () => { if (unsubscribe) { unsubscribe() } };
-  }, [user]);
 
   useEffect(() => {
     if (!!user && users.length) {
@@ -97,6 +79,7 @@ const useUser = () => {
     isLoading,
     user,
     users,
+    rooms,
     defaultRoom,
     interfaceLang,
     setInterfaceLang,
