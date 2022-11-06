@@ -43,6 +43,11 @@ const PlayingRoom = () => {
   const [ wordToExplain, setWordToExplain ] = useState("");
   const [ imageToExplain, setImageToExplain ] = useState("");
 
+  const getIcon = (word) => {
+    const w = VOCABULARY.find(w => word === w['NO']);
+    return (w && !!w['EMOJI'] ? w['EMOJI'] : '😵');
+  }
+
   const getRandomCard = () => {
     const wordsWithEmoji = VOCABULARY.filter(w => !!w['EMOJI']);
     const randomIndex = Math.ceil(Math.random() * (wordsWithEmoji.length-1));
@@ -65,7 +70,7 @@ const PlayingRoom = () => {
     if (activeUsers.length >= 3) {
       await updateScore(user.uid, (user.score || 0) + 1);
       setIsChooseWinner(false);
-      await setLeader(user.uid);
+      await setLeader(user.uid, user.displayName);
       getRandomCard();
     } else {
       alert("To start a game you need at least three active players.");
@@ -73,7 +78,7 @@ const PlayingRoom = () => {
   }
 
   const onWinnerClick = async (user) => {
-    await setWinner(user.uid, wordToExplain);
+    await setWinner(user.uid, user.displayName || "dsf", wordToExplain);
   }
 
   const onGetPrizeClick = async() => {
@@ -152,10 +157,11 @@ const PlayingRoom = () => {
         )}
         {status === 3 && (
           <>
-            {/* TODO: display vinner and the word */}
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              <EmojiImage>⏳</EmojiImage>
-              <StatusMessage>{getString(interfaceLang,"THE_MATCH_IS_OVER_WAIT_A_MOMENT")}</StatusMessage>
+              <EmojiImage>{getIcon(defaultRoom?.word)}</EmojiImage>
+              <StatusMessage>
+                {`${defaultRoom?.winnerName} ${getString(interfaceLang, "HAS_GUESSED")} ${defaultRoom?.word}`}
+              </StatusMessage>
             </ContainerWithTitle>
           </>
         )}

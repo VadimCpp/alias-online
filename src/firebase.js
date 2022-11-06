@@ -47,14 +47,16 @@ const setLeader = async (uid, name) => {
     leaderUid: uid,
     leaderName: name,
     winnerUid: null,
+    winnerName: null,
     word: null,
   });
 }
 
-const setWinner = async (uid, word) => {
+const setWinner = async (uid, name, word) => {
   const roomRef = doc(db, "rooms", "norsk-room");
   await updateDoc(roomRef, {
     winnerUid: uid,
+    winnerName: name,
     leaderUid: null,
     leaderName: null,
     word,
@@ -67,6 +69,7 @@ const resetGame = async () => {
     leaderUid: null,
     leaderName: null,
     winnerUid: null,
+    winnerName: null,
     word: null,
   });
 }
