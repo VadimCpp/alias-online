@@ -8,8 +8,8 @@ const StyledButton = styled.button`
   border-radius: 20px;
   border: none;
   text-transform: ${({uppercase}) => uppercase || 'none' };  
-  padding: ${({uppercase}) => (uppercase === 'uppercase' ? '0.5em' : '1em 1em') };
-  margin-top: 1em;
+  padding: ${({uppercase}) => (uppercase === 'uppercase' ? '0.5em' : '15px') };
+  margin: 5px;
   transition: all .5s;
   &:hover{
     transform: scale(1.15);

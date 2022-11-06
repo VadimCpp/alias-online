@@ -2,19 +2,22 @@ import React, {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import getString from "../utils/getString";
-import AliasHeader from "../components/aliasHeader";
 import ContainerWithTitle from "../components/containerWithTitle";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
 import { setLeader, setWinner, resetGame, resetScore, updateScore } from "../firebase";
 import VOCABULARY from "../utils/vocabulary.json";
-import Header from "../components/header";
-import Wrapper from "../components/wrapper";
 import Button from "../components/button";
-import Main from "../components/main";
 import ResetButton from "../components/resetButton";
+import Container from "../components/constainer";
+import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
+import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 
 const PlayingRoom = () => {
+  // TODO: how to pass parameter once to the top tag of compound component?
+  const HEADER_HEIGHT = "120px";
+  const FOOTER_HEIGHT = "80px";
+
   const navigate = useNavigate();
   const { user, users, defaultRoom, interfaceLang } = useContext(UserContext);
 
@@ -93,77 +96,67 @@ const PlayingRoom = () => {
   }
 
   return (
-    <Wrapper>
-      <Header isPrimary={false} isSign={false} onClick={() => navigate("/lang-settings")} isPlayingRoom>
-        <AliasHeader onClick={() => navigate("/")} isPlayingRoom >
-          {getString(interfaceLang, "ALIAS_ONLINE")}
-        </AliasHeader>
-        {user && (
-          <HomeSubHeader>{defaultRoom?.name || getString(interfaceLang, "PLAYING_ROOM")}</HomeSubHeader>        )}
-      </Header>
-      <Main isPlayingRoom>
+    <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
+      <Container.Header height={HEADER_HEIGHT}>
+        <PlayingRoomHeader>
+          <SettingsButton onClick={() => navigate("/lang-settings")} />
+          <TitleAndSubtitle>
+            <Title onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</Title>
+            <SubTitle>{defaultRoom?.name || getString(interfaceLang, "PLAYING_ROOM")}</SubTitle>
+          </TitleAndSubtitle>
+          <MenuButton onClick={() => alert("TODO")} />
+        </PlayingRoomHeader>
+      </Container.Header>
+      <Container.Content>
         {status === 0 && (
           <>
-            <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
-            </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
               {getString(interfaceLang,"GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON")}
             </ContainerWithTitle>
-            <Button onClick={onPlayClick}>
-              {getString(interfaceLang, "PLAY")}
-            </Button>
+            <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
+              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
+            </ContainerWithTitle>
           </>
         )}
         {status === 1 && (
           <>
+            {/* TODO: display who is explaining the word */}
+            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
+              {getString(interfaceLang,"YOU_ARE_GUESSING_THE_WORD")}
+            </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
             </ContainerWithTitle>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {"You are guessing the word"}
-            </ContainerWithTitle>
-            <ResetButton onClick={onResetGameClick}>
-              {getString(interfaceLang, "RESET_GAME")}
-            </ResetButton>
           </>
         )}
         {status === 2 && isChooseWinner && (
           <>
+            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
+              {getString(interfaceLang,"CHOOSE_THE_WINNER_OR_BACK_TO_PICTURE")}
+            </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
             </ContainerWithTitle>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {"Choose the winner or back to picture"}
-            </ContainerWithTitle>
-            <Button onClick={() => setIsChooseWinner(false)}>
-              {getString(interfaceLang, "SHOW_PICTURE")}
-            </Button>
           </>
         )}
         {status === 2 && !isChooseWinner && (
           <>
+            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
+              <StatusMessage>{getString(interfaceLang, "YOU_ARE_EXPLAINING_THE_WORD")}</StatusMessage>
+            </ContainerWithTitle>
             <ContainerWithTitle title={getString(interfaceLang, "WORD")}>
               <EmojiImage>{imageToExplain}</EmojiImage>
               <StatusMessage>{wordToExplain}</StatusMessage>
             </ContainerWithTitle>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              <StatusMessage>{getString(interfaceLang, "YOU_ARE_EXPLAINING_THE_WORD")}</StatusMessage>
-            </ContainerWithTitle>
-            <Button onClick={() => setIsChooseWinner(true)}>
-              {getString(interfaceLang, "CHOOSE_VINNER")}
-            </Button>
           </>
         )}
         {status === 3 && (
           <>
+            {/* TODO: display vinner and the word */}
             <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
               <EmojiImage>⏳</EmojiImage>
               <StatusMessage>{getString(interfaceLang,"THE_MATCH_IS_OVER_WAIT_A_MOMENT")}</StatusMessage>
             </ContainerWithTitle>
-            <ResetButton onClick={onResetGameClick}>
-              {getString(interfaceLang, "RESET_GAME")}
-            </ResetButton>
           </>
         )}
         {status === 4 && (
@@ -172,20 +165,58 @@ const PlayingRoom = () => {
               <EmojiImage>🏆</EmojiImage>
               <StatusMessage>{getString(interfaceLang, "YOU_WIN_PRESS_GET_PRIZE")}</StatusMessage>
             </ContainerWithTitle>
-            <Button onClick={onGetPrizeClick}>
-              {getString(interfaceLang, "GET_PRIZE")}
-            </Button>
           </>
         )}
-      </Main>
-    </Wrapper>
+      </Container.Content>
+      <Container.Footer height={FOOTER_HEIGHT}>
+        <PlayingRoomFooter>
+          {status === 0 && (
+            <>
+              <Button onClick={onPlayClick}>
+                {getString(interfaceLang, "PLAY")}
+              </Button>
+            </>
+          )}
+          {status === 1 && (
+            <>
+              <ResetButton onClick={onResetGameClick}>
+                {getString(interfaceLang, "RESET_GAME")}
+              </ResetButton>
+            </>
+          )}
+          {status === 2 && isChooseWinner && (
+            <>
+              <Button onClick={() => setIsChooseWinner(false)}>
+                {getString(interfaceLang, "SHOW_PICTURE")}
+              </Button>
+            </>
+          )}
+          {status === 2 && !isChooseWinner && (
+            <>
+              <Button onClick={() => setIsChooseWinner(true)}>
+                {getString(interfaceLang, "CHOOSE_VINNER")}
+              </Button>
+            </>
+          )}
+          {status === 3 && (
+            <>
+              <ResetButton onClick={onResetGameClick}>
+                {getString(interfaceLang, "RESET_GAME")}
+              </ResetButton>
+            </>
+          )}
+          {status === 4 && (
+            <>
+              <Button onClick={onGetPrizeClick}>
+                {getString(interfaceLang, "GET_PRIZE")}
+              </Button>
+            </>
+          )}
+        </PlayingRoomFooter>
+      </Container.Footer>
+    </Container>
   );
 };
-
-const HomeSubHeader = styled.p`
-  text-align: center;
-  margin-bottom: 1em;
-`;
 
 const EmojiImage = styled.h2`
   font-size: 96px;
@@ -198,6 +229,68 @@ const StatusMessage = styled.p`
   font-size: 16px;
   font-weight: bold;
   max-width: 260px;
+`;
+
+const SettingsButton = styled(SettingsIcon)`
+  transition: all .5s;
+  width: 36px;
+  height: 36px;
+  &:hover {
+    transform: scale(1.25);
+  }
+`;
+
+const MenuButton = styled(MenuIcon)`
+  transition: all .5s;
+  width: 36px;
+  height: 36px;
+  &:hover {
+    transform: scale(1.25);
+  }
+  visibility: hidden;
+`;
+
+const Title = styled.h1`  
+  text-align: center;
+  font-size: 36px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700; 
+  cursor: pointer;
+`;
+
+const SubTitle = styled.p`
+  text-align: center;
+  color: white;
+  margin: 0;
+`;
+
+const TitleAndSubtitle = styled.div`
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const PlayingRoomHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  background-color: #2BC48A;
+  padding: 0 20px;
+  z-index: 1;
+`;
+
+const PlayingRoomFooter = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #222;
+  padding: 0 20px;
+  color: white;
 `;
 
 export default PlayingRoom;

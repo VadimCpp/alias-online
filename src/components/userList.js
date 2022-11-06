@@ -44,8 +44,6 @@ const UserList = ({ users, uid, onUserClick }) => {
 }
 
 const List = styled.ul`
-  max-height: 200px;
-  overflow-y: scroll;
   width: 100%;
 `;
 

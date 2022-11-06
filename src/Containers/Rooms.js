@@ -9,6 +9,46 @@ import UserContext from "../contexts/userContext";
 import Button from "../components/button";
 import { updateRoom } from "../firebase";
 
+const Rooms = () => {
+  // TODO: how to pass parameter once to the top tag of compound component?
+  const HEADER_HEIGHT = "120px";
+  const FOOTER_HEIGHT = "80px";
+
+  const navigate = useNavigate();
+  const { user, interfaceLang, rooms, isLoading } = useContext(UserContext);
+
+  const onClickRoom = async (room) => {
+    await updateRoom(user.uid, room.uid);
+    navigate("/playing-room");
+  }
+
+  return (
+    <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
+      <Container.Header height={HEADER_HEIGHT}>
+        <RoomsHeader>
+          <SettingsButton onClick={() => navigate("/lang-settings")} />
+          <Title onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</Title>
+          <MenuButton onClick={() => alert("TODO")} />
+        </RoomsHeader>
+      </Container.Header>
+      <Container.Content>
+        <RoomsContent>
+          { !isLoading && rooms.map((room) => {
+            return <Button key={room.uid} onClick={() => onClickRoom(room)}>
+              {room.name}
+            </Button>
+          })}
+        </RoomsContent>
+      </Container.Content>
+      <Container.Footer height={FOOTER_HEIGHT}>
+        <RoomsFooter>
+          { getString(interfaceLang, isLoading ? "LOADING" : "CHOOSE_ROOM" )}
+        </RoomsFooter>
+      </Container.Footer>
+    </Container>
+  );
+};
+
 const SettingsButton = styled(SettingsIcon)`
   transition: all .5s;
   width: 36px;
@@ -64,45 +104,5 @@ const RoomsFooter = styled.div`
   padding: 0 20px;
   color: white;
 `;
-
-const Rooms = () => {
-  // TODO: how to pass parameter once to the top tag of compound component?
-  const HEADER_HEIGHT = "120px";
-  const FOOTER_HEIGHT = "80px";
-
-  const navigate = useNavigate();
-  const { user, interfaceLang, rooms, isLoading } = useContext(UserContext);
-
-  const onClickRoom = async (room) => {
-    await updateRoom(user.uid, room.uid);
-    navigate("/playing-room");
-  }
-
-  return (
-    <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
-      <Container.Header height={HEADER_HEIGHT}>
-        <RoomsHeader>
-          <SettingsButton onClick={() => navigate("/lang-settings")} />
-          <Title onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</Title>
-          <MenuButton onClick={() => alert("TODO")} />
-        </RoomsHeader>
-      </Container.Header>
-      <Container.Content>
-        <RoomsContent>
-          { !isLoading && rooms.map((room) => {
-            return <Button key={room.uid} onClick={() => onClickRoom(room)}>
-              {room.name}
-            </Button>
-          })}
-        </RoomsContent>
-      </Container.Content>
-      <Container.Footer height={FOOTER_HEIGHT}>
-        <RoomsFooter>
-          { getString(interfaceLang, isLoading ? "LOADING" : "CHOOSE_ROOM" )}
-        </RoomsFooter>
-      </Container.Footer>
-    </Container>
-  );
-};
 
 export default Rooms;

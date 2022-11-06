@@ -293,5 +293,17 @@
     "UA": "Оберіть кіннату",
     "RU": "Выберите комнату",
     "NO": "Velg rommet"
+  },
+  "YOU_ARE_GUESSING_THE_WORD": {
+    "EN": "You are guessing the word",
+    "UA": "Ви відгадуєте слово",
+    "RU": "Вы угадываете слово",
+    "NO": "Du gjeter et ord"
+  },
+  "CHOOSE_THE_WINNER_OR_BACK_TO_PICTURE": {
+    "EN": "Choose the winner or back to picture",
+    "UA": "Оберіть переможця або поверніться до картинки",
+    "RU": "Выберите победителя или вернитесь к изображению",
+    "NO": "Velge vinner og kom tilbake til bildet"
   }
 }
