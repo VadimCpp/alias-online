@@ -37,8 +37,7 @@ const base = css`
     color: black;
     font-family: 'Open Sans', sans-serif;
   }
-
-  input,
+  
   textarea {
     font-family: 'Open Sans', sans-serif;
     width: 100%;

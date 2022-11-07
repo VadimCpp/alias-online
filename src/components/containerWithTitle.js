@@ -28,7 +28,6 @@ const Title = styled.p`
   justify-content: center;
   align-items: center;
   height: 48px;
-  width: 270px;
   color: white;
   font-size: 20px;
   border-radius: 25px;

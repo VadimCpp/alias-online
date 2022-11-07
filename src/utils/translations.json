@@ -153,7 +153,13 @@
     "EN": "Russian",
     "UA": "Російська",
     "RU": "Русский",
-    "NO":  "Russisk"
+    "NO": "Russisk"
+  },
+  "NORWEGIAN": {
+    "EN": "Norwegian",
+    "UA": "Норвезька",
+    "RU": "Норвежский",
+    "NO": "Norsk"
   },
   "WELCOME": {
     "EN": "Welcome",
