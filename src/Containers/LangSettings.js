@@ -5,7 +5,6 @@ import UserContext from "../contexts/userContext";
 import { updateLang } from "../firebase";
 import getString from '../utils/getString';
 import Button from "../components/button";
-import ContainerWithTitle from "../components/containerWithTitle";
 import Container from "../components/constainer";
 
 const BACK = -1;
@@ -59,7 +58,7 @@ const LangSettings = () => {
       </Container.Header>
       <Container.Content>
         <LangContent>
-          <ContainerWithTitle title={getString(interfaceLang, "CHOOSE_LANGUAGE")}>
+          <Border title={getString(interfaceLang, "CHOOSE_LANGUAGE")}>
             <RadioButton>
               {
                 langOptions.map((option) => {
@@ -82,14 +81,15 @@ const LangSettings = () => {
                 })
               }
             </RadioButton>
-          </ContainerWithTitle>
+            <Button onClick={() => navigate(BACK)}>
+              { getString(interfaceLang, "BACK") }
+            </Button>
+          </Border>
         </LangContent>
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <LangFooter>
-          <Button onClick={() => navigate(BACK)}>
-            { getString(interfaceLang, "BACK") }
-          </Button>
+          {getString(interfaceLang, "CHOOSE_LANGUAGE")}
         </LangFooter>
       </Container.Footer>
     </Container>
@@ -137,6 +137,14 @@ const LangFooter = styled.div`
   background-color: #222;
   padding: 0 20px;
   color: white;
+`;
+
+const Border = styled.div`
+  border-radius: 0;
+  border: 1px solid #51565F;
+  padding: 0 36px 24px;
+  background-color: white;
+  max-width: 360px;
 `;
 
 export default LangSettings;

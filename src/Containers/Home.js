@@ -96,7 +96,7 @@ const HomeSubHeader = styled.p`
 const HomeHeader = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
   background-color: #2BC48A;

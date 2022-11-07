@@ -103,8 +103,8 @@
   },
   "YOU_ARE_EXPLAINING_THE_WORD": {
     "EN": "You are explaining the word",
-    "UA": "Ти пояснюєш слово",
-    "RU": "Ты объясняешь слово",
+    "UA": "Ви пояснюєте слово",
+    "RU": "Вы объясняете слово",
     "NO": "Du forklarer ordet"
   },
   "HAS_GUESSED": {
@@ -323,5 +323,11 @@
     "UA": "Оберіть переможця або поверніться до картинки",
     "RU": "Выберите победителя или вернитесь к изображению",
     "NO": "Velge vinner og kom tilbake til bildet"
+  },
+  "WAIT_FOR_WINNER": {
+    "EN": "Wait until winner take the prize",
+    "UA": "Зачекайте поки переможець отримає приз",
+    "RU": "Подождите пока победитель возьмет приз",
+    "NO": "Venter når vinner ta prisen"
   }
 }

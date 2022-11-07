@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import getString from "../utils/getString";
-import ContainerWithTitle from "../components/containerWithTitle";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
 import { setLeader, setWinner, resetGame, resetScore, updateScore } from "../firebase";
@@ -115,107 +114,100 @@ const PlayingRoom = () => {
       </Container.Header>
       <Container.Content>
         {status === 0 && (
-          <>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {getString(interfaceLang,"GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON")}
-            </ContainerWithTitle>
-            <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
+          <Center>
+            <Border title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
-            </ContainerWithTitle>
-          </>
+            </Border>
+            <Button onClick={onPlayClick}>
+              {getString(interfaceLang, "PLAY")}
+            </Button>
+          </Center>
         )}
         {status === 1 && (
-          <>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {`${leaderName} ${getString(interfaceLang,"ARE_EXPLAINING_THE_WORD")}`}
-            </ContainerWithTitle>
-            <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
-            </ContainerWithTitle>
-          </>
+          <Center>
+            <Border title={getString(interfaceLang, "PLAYERS")}>
+              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}} /> : getString(interfaceLang,"LOADING")}
+            </Border>
+            <ResetButton onClick={onResetGameClick}>
+              {getString(interfaceLang, "RESET_GAME")}
+            </ResetButton>
+          </Center>
         )}
         {status === 2 && isChooseWinner && (
-          <>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              {getString(interfaceLang,"CHOOSE_THE_WINNER_OR_BACK_TO_PICTURE")}
-            </ContainerWithTitle>
-            <ContainerWithTitle title={getString(interfaceLang, "PLAYERS")}>
+          <Center>
+            <Border title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
-            </ContainerWithTitle>
-          </>
+            </Border>
+            <Button onClick={() => setIsChooseWinner(false)}>
+              {getString(interfaceLang, "SHOW_PICTURE")}
+            </Button>
+          </Center>
         )}
         {status === 2 && !isChooseWinner && (
-          <>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
-              <StatusMessage>{getString(interfaceLang, "YOU_ARE_EXPLAINING_THE_WORD")}</StatusMessage>
-            </ContainerWithTitle>
-            <ContainerWithTitle title={getString(interfaceLang, "WORD")}>
+          <Center>
+            <Border title={getString(interfaceLang, "WORD")}>
               <EmojiImage>{imageToExplain}</EmojiImage>
               <StatusMessage>{wordToExplain}</StatusMessage>
-            </ContainerWithTitle>
-          </>
+            </Border>
+            <Button onClick={() => setIsChooseWinner(true)}>
+              {getString(interfaceLang, "CHOOSE_VINNER")}
+            </Button>
+          </Center>
         )}
         {status === 3 && (
-          <>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
+          <Center>
+            <Border title={getString(interfaceLang, "STATUS")}>
               <EmojiImage>{getIcon(defaultRoom?.word)}</EmojiImage>
               <StatusMessage>
                 {`${defaultRoom?.winnerName} ${getString(interfaceLang, "HAS_GUESSED")} ${defaultRoom?.word}`}
               </StatusMessage>
-            </ContainerWithTitle>
-          </>
+            </Border>
+            <ResetButton onClick={onResetGameClick}>
+              {getString(interfaceLang, "RESET_GAME")}
+            </ResetButton>
+          </Center>
         )}
         {status === 4 && (
-          <>
-            <ContainerWithTitle title={getString(interfaceLang, "STATUS")}>
+          <Center>
+            <Border title={getString(interfaceLang, "STATUS")}>
               <EmojiImage>🏆</EmojiImage>
-              <StatusMessage>{getString(interfaceLang, "YOU_WIN_PRESS_GET_PRIZE")}</StatusMessage>
-            </ContainerWithTitle>
-          </>
+            </Border>
+            <Button onClick={onGetPrizeClick}>
+              {getString(interfaceLang, "GET_PRIZE")}
+            </Button>
+          </Center>
         )}
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <PlayingRoomFooter>
           {status === 0 && (
             <>
-              <Button onClick={onPlayClick}>
-                {getString(interfaceLang, "PLAY")}
-              </Button>
+              {getString(interfaceLang,"GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON")}
             </>
           )}
           {status === 1 && (
             <>
-              <ResetButton onClick={onResetGameClick}>
-                {getString(interfaceLang, "RESET_GAME")}
-              </ResetButton>
+              {`${leaderName} ${getString(interfaceLang,"ARE_EXPLAINING_THE_WORD")}`}
             </>
           )}
           {status === 2 && isChooseWinner && (
             <>
-              <Button onClick={() => setIsChooseWinner(false)}>
-                {getString(interfaceLang, "SHOW_PICTURE")}
-              </Button>
+              {getString(interfaceLang,"CHOOSE_THE_WINNER_OR_BACK_TO_PICTURE")}
             </>
           )}
           {status === 2 && !isChooseWinner && (
             <>
-              <Button onClick={() => setIsChooseWinner(true)}>
-                {getString(interfaceLang, "CHOOSE_VINNER")}
-              </Button>
+              {getString(interfaceLang, "YOU_ARE_EXPLAINING_THE_WORD")}
             </>
           )}
           {status === 3 && (
             <>
-              <ResetButton onClick={onResetGameClick}>
-                {getString(interfaceLang, "RESET_GAME")}
-              </ResetButton>
+              {getString(interfaceLang, "WAIT_FOR_WINNER")}
             </>
           )}
           {status === 4 && (
             <>
-              <Button onClick={onGetPrizeClick}>
-                {getString(interfaceLang, "GET_PRIZE")}
-              </Button>
+              {getString(interfaceLang, "YOU_WIN_PRESS_GET_PRIZE")}
             </>
           )}
         </PlayingRoomFooter>
@@ -297,6 +289,22 @@ const PlayingRoomFooter = styled.div`
   background-color: #222;
   padding: 0 20px;
   color: white;
+`;
+
+const Border = styled.div`
+  border-radius: 0;
+  border: 1px solid #51565F;
+  padding: 10px 20px;
+  background-color: white;
+  min-width: 280px;
+  max-width: 360px;
+  margin: 20px 0;
+`;
+
+const Center = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export default PlayingRoom;
