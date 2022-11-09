@@ -12,7 +12,7 @@ import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 const Home = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
   const HEADER_HEIGHT = "120px";
-  const FOOTER_HEIGHT = "80px";
+  const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
   const { user, interfaceLang, isLoading } = useContext(UserContext);
@@ -28,39 +28,25 @@ const Home = () => {
       </Container.Header>
       <Container.Content>
         <HomeContent>
+          <HomeSubHeader>
+            {
+              !!user ?
+              `${getString(interfaceLang, "WELCOME")}, ${user.displayName}` :
+              getString(interfaceLang, "PLAY_WITH_FRIENDS")
+            }
+          </HomeSubHeader>
           {user && (
-            <HomeSubHeader>
-              <span>{getString(interfaceLang, "WELCOME")}, {user.displayName}</span>
-            </HomeSubHeader>
-          )}
-          <Gap />
-          {isLoading && (
-            <WelcomeMessage>Loading...</WelcomeMessage>
-          )}
-          {!user && (
-            <WelcomeMessage>{getString(interfaceLang, "PLAY_WITH_FRIENDS")}</WelcomeMessage>
-          )}
-          {user && (
-            <Button
-              uppercase={'uppercase'}
-              onClick={() => navigate("/rooms")}
-            >
+            <Button onClick={() => navigate("/rooms")}>
               {getString(interfaceLang, "PLAY")}
             </Button>
           )}
           {!user &&
-          <Button
-            uppercase={'none'}
-            onClick={() => signInWithGoogle()}
-          >
+          <Button onClick={() => signInWithGoogle()}>
             {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
           </Button>
           }
           {user && (
-            <Button
-              uppercase={'uppercase'}
-              onClick={() => logOut(user.uid)}
-            >
+            <Button onClick={() => logOut(user.uid)}>
               {getString(interfaceLang, "LOG_OUT")}
             </Button>
           )}
@@ -75,22 +61,12 @@ const Home = () => {
   );
 };
 
-const WelcomeMessage = styled.p`  
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 27px;
-  text-align: center;
-  margin-top: 2em;
-  padding-right: 4em;
-  padding-left: 4em;  
-`;
-
 const HomeSubHeader = styled.p`
-  display: flex;
-  flex-direction: column;  
+  text-align: center;
   gap: 0.5em;
   align-items: center;
   font-size: 1.5em; 
+  margin: 35px auto;
 `;
 
 const HomeHeader = styled.div`
@@ -130,8 +106,6 @@ const Title = styled.h1`
   font-weight: 700; 
   cursor: pointer;
 `;
-
-const Gap = styled.div`height: 15vh`;
 
 const HomeContent = styled.div`
   padding: 10px 20px;
