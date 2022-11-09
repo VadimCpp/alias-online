@@ -1,6 +1,6 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import getString from "../utils/getString";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
@@ -18,44 +18,56 @@ const PlayingRoom = () => {
   const FOOTER_HEIGHT = "80px";
 
   const navigate = useNavigate();
-  const { user, users, defaultRoom, interfaceLang } = useContext(UserContext);
 
-  const leaderUid = defaultRoom?.leaderUid;
-  const leaderName = defaultRoom?.leaderName;
-  const winnerUid = defaultRoom?.winnerUid;
-  const word = defaultRoom?.word;
-
-  let status = 0; // Game is not started
-  if (leaderUid) {
-    status = 1; // Leader explain the word
-    if (leaderUid === user.uid) {
-      status = 2; // You explain the word
-    }
-  } else if (winnerUid && word) {
-    status = 3; // The match is over
-    if (winnerUid === user.uid) {
-      status = 4; // You win the match
-    }
-  }
+  let { slug } = useParams();
+  const { user, users, rooms, interfaceLang } = useContext(UserContext);
 
   const [ isChooseWinner, setIsChooseWinner ] = useState(false);
-  const [ wordToExplain, setWordToExplain ] = useState("");
-  const [ imageToExplain, setImageToExplain ] = useState("");
+  const [ room, setRoom ] = useState(null);
 
-  const getIcon = (word) => {
-    const w = VOCABULARY.find(w => word === w['NO']);
-    return (w && !!w['EMOJI'] ? w['EMOJI'] : '😵');
+  useEffect(() => {
+    const aRoom = rooms.find(r => r.uid === slug);
+    if (aRoom) {
+      setRoom(aRoom);
+    }
+  }, [rooms, slug]);
+
+  let status = 0; // Game is not started
+  let leaderUid = "";
+  let leaderName = "";
+  let winnerUid = "";
+  let word = "";
+  if (room) {
+    leaderUid = room.leaderUid;
+    leaderName = room.leaderName;
+    winnerUid = room.winnerUid;
+    word = room.word;
+
+    if (leaderUid) {
+      status = 1; // Leader explain the word
+      if (leaderUid === user.uid) {
+        status = 2; // You explain the word
+      }
+    } else if (winnerUid && word) {
+      status = 3; // The match is over
+      if (winnerUid === user.uid) {
+        status = 4; // You win the match
+      }
+    }
+  } else {
+    console.error('No room found', slug);
   }
 
-  const getRandomCard = () => {
+  const getIcon = (word) => {
+    const w = VOCABULARY.find(w => word === w[room?.lang]);
+    return (w && !!w['EMOJI'] ? w['EMOJI'] : '😵');
+  };
+
+  const getRandomCard = useCallback(() => {
     const wordsWithEmoji = VOCABULARY.filter(w => !!w['EMOJI']);
     const randomIndex = Math.ceil(Math.random() * (wordsWithEmoji.length-1));
-    const randomWord = wordsWithEmoji[randomIndex];
-    console.log('Random card is: ', randomWord);
-    setWordToExplain(randomWord["NO"]);
-    setImageToExplain(randomWord["EMOJI"]);
-  };
-  useEffect(() => getRandomCard(), []);
+    return wordsWithEmoji[randomIndex];
+    }, []);
 
   const onPlayClick = async () => {
     const activeUsers = users.filter(u => {
@@ -69,15 +81,15 @@ const PlayingRoom = () => {
     if (activeUsers.length >= 3) {
       await updateScore(user.uid, (user.score || 0) + 1);
       setIsChooseWinner(false);
-      await setLeader(user.uid, user.displayName);
-      getRandomCard();
+      const w = getRandomCard();
+      await setLeader(user.uid, room.uid, user.displayName, w[room.lang]);
     } else {
       alert("To start a game you need at least three active players.");
     }
   }
 
   const onWinnerClick = async (user) => {
-    await setWinner(user.uid, user.displayName || "dsf", wordToExplain);
+    await setWinner(user.uid, room.uid, user.displayName, room.word);
   }
 
   const onGetPrizeClick = async() => {
@@ -89,15 +101,19 @@ const PlayingRoom = () => {
     const userData = users.find(u => u.uid === user.uid);
     await updateScore(user.uid,(userData.score || 0) + 1);
     setIsChooseWinner(false);
-    await setLeader(user.uid, userData.displayName);
-    getRandomCard();
+    const w = getRandomCard();
+    await setLeader(user.uid, room.uid, userData.displayName, w[room.lang]);
   }
 
   const onResetGameClick = async () => {
     if (window.confirm(getString(interfaceLang,'ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
-      await resetGame();
+      await resetGame(room.uid);
       await resetScore(user.uid);
     }
+  }
+
+  if (!room) {
+    return <>Loading...</>;
   }
 
   return (
@@ -107,7 +123,7 @@ const PlayingRoom = () => {
           <SettingsButton onClick={() => navigate("/lang-settings")} />
           <TitleAndSubtitle>
             <Title onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</Title>
-            <SubTitle>{defaultRoom?.name || getString(interfaceLang, "PLAYING_ROOM")}</SubTitle>
+            <SubTitle>{room.name}</SubTitle>
           </TitleAndSubtitle>
           <MenuButton onClick={() => alert("TODO")} />
         </PlayingRoomHeader>
@@ -146,8 +162,8 @@ const PlayingRoom = () => {
         {status === 2 && !isChooseWinner && (
           <Center>
             <Border title={getString(interfaceLang, "WORD")}>
-              <EmojiImage>{imageToExplain}</EmojiImage>
-              <StatusMessage>{wordToExplain}</StatusMessage>
+              <EmojiImage>{getIcon(room?.word)}</EmojiImage>
+              <StatusMessage>{room?.word}</StatusMessage>
             </Border>
             <Button onClick={() => setIsChooseWinner(true)}>
               {getString(interfaceLang, "CHOOSE_VINNER")}
@@ -157,9 +173,9 @@ const PlayingRoom = () => {
         {status === 3 && (
           <Center>
             <Border title={getString(interfaceLang, "STATUS")}>
-              <EmojiImage>{getIcon(defaultRoom?.word)}</EmojiImage>
+              <EmojiImage>{getIcon(room?.word)}</EmojiImage>
               <StatusMessage>
-                {`${defaultRoom?.winnerName} ${getString(interfaceLang, "HAS_GUESSED")} ${defaultRoom?.word}`}
+                {`${room?.winnerName} ${getString(interfaceLang, "HAS_GUESSED")} ${room?.word}`}
               </StatusMessage>
             </Border>
             <ResetButton onClick={onResetGameClick}>
@@ -170,7 +186,7 @@ const PlayingRoom = () => {
         {status === 4 && (
           <Center>
             <Border title={getString(interfaceLang, "STATUS")}>
-              <EmojiImage>🏆</EmojiImage>
+              <EmojiImage>🥳</EmojiImage>
             </Border>
             <Button onClick={onGetPrizeClick}>
               {getString(interfaceLang, "GET_PRIZE")}

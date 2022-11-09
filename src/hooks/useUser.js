@@ -4,15 +4,18 @@ import { subscribeForRoomsUpdates, subscribeForUsersUpdates } from "../firebase"
 
 const useUser = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  // User
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
-  const [rooms, setRooms] = useState([]);
-  const [interfaceLang, setInterfaceLang] = useState("EN");
-  const learningLang = useState("NO");
 
-  //NOTE! Use only one room for the first release
-  //TODO: implement multiple rooms in future
-  const [defaultRoom, setDefaultRoom] = useState(null);
+  // Rooms
+  const [rooms, setRooms] = useState([]);
+
+  // Lang
+  const [interfaceLang, setInterfaceLang] = useState("en");
+  const learningLang = useState("no");
+
 
   useEffect(() => {
     const auth = getAuth();
@@ -63,10 +66,6 @@ const useUser = () => {
   }, [user]);
 
   useEffect(() => {
-    setDefaultRoom(rooms.find(r => r.uid === "norsk-room") || null);
-  }, [rooms]);
-
-  useEffect(() => {
     if (!!user && users.length) {
       let profile = users.find(u => u.uid === user.uid)
       setInterfaceLang(profile.lang || "EN");
@@ -80,7 +79,6 @@ const useUser = () => {
     user,
     users,
     rooms,
-    defaultRoom,
     interfaceLang,
     setInterfaceLang,
     learningLang

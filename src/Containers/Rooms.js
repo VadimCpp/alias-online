@@ -19,7 +19,7 @@ const Rooms = () => {
 
   const onClickRoom = async (room) => {
     await updateRoom(user.uid, room.uid);
-    navigate("/playing-room");
+    navigate(`/rooms/${room.uid}`);
   }
 
   return (

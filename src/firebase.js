@@ -4,8 +4,8 @@ import { getAuth } from "firebase/auth";
 
 // Import the methods you need from Firebase
 
-import { setDoc, addDoc, collection, getDoc, doc, updateDoc, deleteDoc, getDocs, onSnapshot } from 'firebase/firestore'
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { setDoc, collection, doc, updateDoc, onSnapshot } from 'firebase/firestore'
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 const googleProvider = new GoogleAuthProvider();
 
 // Fill in the config values of your Firebase project below
@@ -41,19 +41,19 @@ const subscribeForRoomsUpdates = (updatesHandler) => {
   return onSnapshot(roomsRef, updatesHandler);
 }
 
-const setLeader = async (uid, name) => {
-  const roomRef = doc(db, "rooms", "norsk-room");
+const setLeader = async (uid, room, name, word) => {
+  const roomRef = doc(db, "rooms", room);
   await updateDoc(roomRef, {
     leaderUid: uid,
     leaderName: name,
     winnerUid: null,
     winnerName: null,
-    word: null,
+    word: word,
   });
 }
 
-const setWinner = async (uid, name, word) => {
-  const roomRef = doc(db, "rooms", "norsk-room");
+const setWinner = async (uid, room, name, word) => {
+  const roomRef = doc(db, "rooms", room);
   await updateDoc(roomRef, {
     winnerUid: uid,
     winnerName: name,
@@ -63,8 +63,8 @@ const setWinner = async (uid, name, word) => {
   });
 }
 
-const resetGame = async () => {
-  const roomRef = doc(db, "rooms", "norsk-room");
+const resetGame = async (room) => {
+  const roomRef = doc(db, "rooms", room);
   await updateDoc(roomRef, {
     leaderUid: null,
     leaderName: null,
@@ -105,51 +105,6 @@ const updateLang = async (uid, lang) => {
   });
 };
 
-const createQuestion = (question) => {
-  // Add questions to Firestore. This method is called from the component src/Containers/Question.js
-  /*
-        Either follow the documentation here: https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document
-        or see the propoesd solution: https://github.com/bekk/firebase-workshop/blob/main/_L%C3%B8sningsforslag_/Del%202%20-%20Firestore/README.md#legge-til-et-dokument-i-databasen
-
-        After you have written your code for adding a question to Firestore,
-        check if you can see it appear in the Firestore Console.
-    */
-};
-
-// Fetch a question document from Firestore here
-const getQuestion = (id) => {
-  // https://firebase.google.com/docs/firestore/query-data/get-data#get_a_document
-};
-
-// Update a question in Firestore
-const updateQuestion = (question, id) => {
-  // https://firebase.google.com/docs/firestore/manage-data/add-data#update-data
-};
-
-// Delete a question by ID
-const deleteQuestion = (id) => {
-  // https://firebase.google.com/docs/firestore/manage-data/delete-data#delete_documents
-};
-
-// Fetch all questions
-const getQuestions = () => {
-  // https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection
-};
-
-const createQuiz = () => {
-  // Create a quiz with questions from Firestore.
-};
-
-const registerWithEmailAndPassword = async (name, email, password) => {
-  // Register a user with email and password
-  // https://firebase.google.com/docs/auth/web/password-auth#create_a_password-based_account
-  try {
-    console.log("Registration was a success!");
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 const signInWithGoogle = async () => {
   let signInSuccess = false;
   let signInResult;
@@ -179,15 +134,6 @@ const signInWithGoogle = async () => {
   }
 };
 
-const logInWithEmailAndPassword = async (email, password) => {
-  // https://firebase.google.com/docs/auth/web/password-auth#sign_in_a_user_with_an_email_address_and_password
-  try {
-    console.log("Logged in using email and password");
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 const logOut = async (userUid) => {
   try {
     const questionRef = doc(db, "users", userUid);
@@ -203,29 +149,9 @@ const logOut = async (userUid) => {
   }
 };
 
-const sendPasswordReset = async (email) => {
-  // https://firebase.google.com/docs/auth/web/manage-users#send_a_password_reset_email
-  try {
-    console.log("Password reset email sent!");
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-
-
 export {
-  createQuestion,
-  getQuestion,
-  updateQuestion,
-  deleteQuestion,
-  getQuestions,
-  createQuiz,
-  registerWithEmailAndPassword,
   signInWithGoogle,
-  logInWithEmailAndPassword,
   logOut,
-  sendPasswordReset,
   subscribeForUsersUpdates,
   subscribeForRoomsUpdates,
   setLeader,

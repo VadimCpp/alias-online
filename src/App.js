@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/lang-settings" element={<LangSettings />} />
         <Route path="/rooms" element={<Rooms />} />
-        <Route path="/playing-room" element={<PlayingRoom />} />
+        <Route path="/rooms/:slug" element={<PlayingRoom />} />
       </Routes>
     </UserContext.Provider>
   );
