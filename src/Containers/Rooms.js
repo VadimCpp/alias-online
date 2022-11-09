@@ -12,7 +12,7 @@ import { updateRoom } from "../firebase";
 const Rooms = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
   const HEADER_HEIGHT = "120px";
-  const FOOTER_HEIGHT = "80px";
+  const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
   const { user, interfaceLang, rooms, isLoading } = useContext(UserContext);
