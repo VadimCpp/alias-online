@@ -15,7 +15,7 @@ import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 const PlayingRoom = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
   const HEADER_HEIGHT = "120px";
-  const FOOTER_HEIGHT = "80px";
+  const FOOTER_HEIGHT = "130px";
 
   const navigate = useNavigate();
 
@@ -134,9 +134,6 @@ const PlayingRoom = () => {
             <Border title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
             </Border>
-            <Button onClick={onPlayClick}>
-              {getString(interfaceLang, "PLAY")}
-            </Button>
           </Center>
         )}
         {status === 1 && (
@@ -144,9 +141,6 @@ const PlayingRoom = () => {
             <Border title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}} /> : getString(interfaceLang,"LOADING")}
             </Border>
-            <ResetButton onClick={onResetGameClick}>
-              {getString(interfaceLang, "RESET_GAME")}
-            </ResetButton>
           </Center>
         )}
         {status === 2 && isChooseWinner && (
@@ -154,9 +148,6 @@ const PlayingRoom = () => {
             <Border title={getString(interfaceLang, "PLAYERS")}>
               {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
             </Border>
-            <Button onClick={() => setIsChooseWinner(false)}>
-              {getString(interfaceLang, "SHOW_PICTURE")}
-            </Button>
           </Center>
         )}
         {status === 2 && !isChooseWinner && (
@@ -165,9 +156,6 @@ const PlayingRoom = () => {
               <EmojiImage>{getIcon(room?.word)}</EmojiImage>
               <StatusMessage>{room?.word}</StatusMessage>
             </Border>
-            <Button onClick={() => setIsChooseWinner(true)}>
-              {getString(interfaceLang, "CHOOSE_VINNER")}
-            </Button>
           </Center>
         )}
         {status === 3 && (
@@ -178,9 +166,6 @@ const PlayingRoom = () => {
                 {`${room?.winnerName} ${getString(interfaceLang, "HAS_GUESSED")} ${room?.word}`}
               </StatusMessage>
             </Border>
-            <ResetButton onClick={onResetGameClick}>
-              {getString(interfaceLang, "RESET_GAME")}
-            </ResetButton>
           </Center>
         )}
         {status === 4 && (
@@ -188,13 +173,42 @@ const PlayingRoom = () => {
             <Border title={getString(interfaceLang, "STATUS")}>
               <EmojiImage>🥳</EmojiImage>
             </Border>
-            <Button onClick={onGetPrizeClick}>
-              {getString(interfaceLang, "GET_PRIZE")}
-            </Button>
           </Center>
         )}
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
+        <PlayingRoomControlFooter>
+          {status === 0 && (
+            <Button onClick={onPlayClick}>
+              {getString(interfaceLang, "PLAY")}
+            </Button>
+          )}
+          {status === 1 && (
+            <ResetButton onClick={onResetGameClick}>
+              {getString(interfaceLang, "RESET_GAME")}
+            </ResetButton>
+          )}
+          {status === 2 && isChooseWinner && (
+            <Button onClick={() => setIsChooseWinner(false)}>
+              {getString(interfaceLang, "SHOW_PICTURE")}
+            </Button>
+          )}
+          {status === 2 && !isChooseWinner && (
+            <Button onClick={() => setIsChooseWinner(true)}>
+              {getString(interfaceLang, "CHOOSE_VINNER")}
+            </Button>
+          )}
+          {status === 3 && (
+            <ResetButton onClick={onResetGameClick}>
+              {getString(interfaceLang, "RESET_GAME")}
+            </ResetButton>
+          )}
+          {status === 4 && (
+            <Button onClick={onGetPrizeClick}>
+              {getString(interfaceLang, "GET_PRIZE")}
+            </Button>
+          )}
+        </PlayingRoomControlFooter>
         <PlayingRoomFooter>
           {status === 0 && (
             <>
@@ -296,12 +310,24 @@ const PlayingRoomHeader = styled.div`
   z-index: 1;
 `;
 
+const PlayingRoomControlFooter = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  border-top: 1px solid rgb(241, 236, 228);
+  background-color: rgb(251, 246, 238);
+  padding: 0 20px;
+  color: white;
+`;
+
 const PlayingRoomFooter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 50px;
   background-color: #222;
   padding: 0 20px;
   color: white;
@@ -321,6 +347,7 @@ const Center = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 20px 0;
 `;
 
 export default PlayingRoom;
