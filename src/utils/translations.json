@@ -335,5 +335,17 @@
     "UA": "Добре",
     "RU": "Готово",
     "NO": "Fardig"
+  },
+  "YOU": {
+    "EN": "You",
+    "UA": "Ви",
+    "RU": "Вы",
+    "NO": "Du"
+  },
+  "EXPLAIN_A_WORD": {
+    "EN": "Explain a word",
+    "UA": "Пояснює слово",
+    "RU": "Объясняет слово",
+    "NO": "Forklare et ord"
   }
 }

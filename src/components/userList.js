@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
+import getString from "../utils/getString";
+import UserContext from "../contexts/userContext";
 
-const UserList = ({ users, uid, onUserClick }) => {
+const UserList = ({ users, uid, room, onUserClick }) => {
+  const { interfaceLang } = useContext(UserContext);
+  console.log(room);
   const getDisplayName = (user) => {
     let dn = user.displayName;
     if (uid === user.uid) {
-      dn += " (you)";
+      dn += ` (${getString(interfaceLang, "YOU")})`;
+    }
+    if (room.leaderUid === user.uid) {
+      dn += ` (${getString(interfaceLang, "EXPLAIN_A_WORD")})`;
     }
     return dn;
   }
@@ -17,11 +24,10 @@ const UserList = ({ users, uid, onUserClick }) => {
     return (lastActiveHoursAgo < 1);
   }
 
-  const sortedUsers = users.sort((a, b) => {
-    const ia = isActive(a);
-    const ib = isActive(b);
-    if (ia === ib) return 0;
-    if (!ia) return 1;
+  const filteredUsers = users.filter(u => isActive(u) && u.room === room.uid);
+  const sortedUsers = filteredUsers.sort((a, b) => {
+    if (a.score === b.score) return 0;
+    if (a.score < b.score) return 1;
     return -1;
   });
 

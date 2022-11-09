@@ -132,21 +132,21 @@ const PlayingRoom = () => {
         {status === 0 && (
           <Center>
             <Border title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
             </Border>
           </Center>
         )}
         {status === 1 && (
           <Center>
             <Border title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={() => {}} /> : getString(interfaceLang,"LOADING")}
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}} /> : getString(interfaceLang,"LOADING")}
             </Border>
           </Center>
         )}
         {status === 2 && isChooseWinner && (
           <Center>
             <Border title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
             </Border>
           </Center>
         )}
