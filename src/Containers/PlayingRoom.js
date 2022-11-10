@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import getString from "../utils/getString";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
 import { setLeader, setWinner, resetGame, resetScore, updateScore } from "../firebase";
@@ -20,7 +19,7 @@ const PlayingRoom = () => {
   const navigate = useNavigate();
 
   let { slug } = useParams();
-  const { user, users, rooms, interfaceLang } = useContext(UserContext);
+  const { user, users, rooms, lang } = useContext(UserContext);
 
   const [ isChooseWinner, setIsChooseWinner ] = useState(false);
   const [ room, setRoom ] = useState(null);
@@ -106,7 +105,7 @@ const PlayingRoom = () => {
   }
 
   const onResetGameClick = async () => {
-    if (window.confirm(getString(interfaceLang,'ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
+    if (window.confirm(lang('ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
       await resetGame(room.uid);
       await resetScore(user.uid);
     }
@@ -122,7 +121,7 @@ const PlayingRoom = () => {
         <PlayingRoomHeader>
           <SettingsButton onClick={() => navigate("/lang-settings")} />
           <TitleAndSubtitle>
-            <Title onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</Title>
+            <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
             <SubTitle>{room.name}</SubTitle>
           </TitleAndSubtitle>
           <MenuButton onClick={() => alert("TODO")} />
@@ -131,28 +130,28 @@ const PlayingRoom = () => {
       <Container.Content>
         {status === 0 && (
           <Center>
-            <Border title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}}/> : getString(interfaceLang,"LOADING")}
+            <Border title={lang("PLAYERS")}>
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}}/> : lang("LOADING")}
             </Border>
           </Center>
         )}
         {status === 1 && (
           <Center>
-            <Border title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}} /> : getString(interfaceLang,"LOADING")}
+            <Border title={lang("PLAYERS")}>
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}} /> : lang("LOADING")}
             </Border>
           </Center>
         )}
         {status === 2 && isChooseWinner && (
           <Center>
-            <Border title={getString(interfaceLang, "PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={onWinnerClick} /> : getString(interfaceLang,"LOADING")}
+            <Border title={lang("PLAYERS")}>
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={onWinnerClick} /> : lang("LOADING")}
             </Border>
           </Center>
         )}
         {status === 2 && !isChooseWinner && (
           <Center>
-            <Border title={getString(interfaceLang, "WORD")}>
+            <Border title={lang("WORD")}>
               <EmojiImage>{getIcon(room?.word)}</EmojiImage>
               <StatusMessage>{room?.word}</StatusMessage>
             </Border>
@@ -160,17 +159,17 @@ const PlayingRoom = () => {
         )}
         {status === 3 && (
           <Center>
-            <Border title={getString(interfaceLang, "STATUS")}>
+            <Border title={lang("STATUS")}>
               <EmojiImage>{getIcon(room?.word)}</EmojiImage>
               <StatusMessage>
-                {`${room?.winnerName} ${getString(interfaceLang, "HAS_GUESSED")} ${room?.word}`}
+                {`${room?.winnerName} ${lang("HAS_GUESSED")} ${room?.word}`}
               </StatusMessage>
             </Border>
           </Center>
         )}
         {status === 4 && (
           <Center>
-            <Border title={getString(interfaceLang, "STATUS")}>
+            <Border title={lang("STATUS")}>
               <EmojiImage>🥳</EmojiImage>
             </Border>
           </Center>
@@ -180,64 +179,64 @@ const PlayingRoom = () => {
         <PlayingRoomControlFooter>
           {status === 0 && (
             <Button onClick={onPlayClick}>
-              {getString(interfaceLang, "PLAY")}
+              {lang("PLAY")}
             </Button>
           )}
           {status === 1 && (
             <ResetButton onClick={onResetGameClick}>
-              {getString(interfaceLang, "RESET_GAME")}
+              {lang("RESET_GAME")}
             </ResetButton>
           )}
           {status === 2 && isChooseWinner && (
             <Button onClick={() => setIsChooseWinner(false)}>
-              {getString(interfaceLang, "SHOW_PICTURE")}
+              {lang("SHOW_PICTURE")}
             </Button>
           )}
           {status === 2 && !isChooseWinner && (
             <Button onClick={() => setIsChooseWinner(true)}>
-              {getString(interfaceLang, "CHOOSE_VINNER")}
+              {lang("CHOOSE_VINNER")}
             </Button>
           )}
           {status === 3 && (
             <ResetButton onClick={onResetGameClick}>
-              {getString(interfaceLang, "RESET_GAME")}
+              {lang("RESET_GAME")}
             </ResetButton>
           )}
           {status === 4 && (
             <Button onClick={onGetPrizeClick}>
-              {getString(interfaceLang, "GET_PRIZE")}
+              {lang("GET_PRIZE")}
             </Button>
           )}
         </PlayingRoomControlFooter>
         <PlayingRoomFooter>
           {status === 0 && (
             <>
-              {getString(interfaceLang,"GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON")}
+              {lang("GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON")}
             </>
           )}
           {status === 1 && (
             <>
-              {`${leaderName} ${getString(interfaceLang,"ARE_EXPLAINING_THE_WORD")}`}
+              {`${leaderName} ${lang("ARE_EXPLAINING_THE_WORD")}`}
             </>
           )}
           {status === 2 && isChooseWinner && (
             <>
-              {getString(interfaceLang,"CHOOSE_THE_WINNER_OR_BACK_TO_PICTURE")}
+              {lang("CHOOSE_THE_WINNER_OR_BACK_TO_PICTURE")}
             </>
           )}
           {status === 2 && !isChooseWinner && (
             <>
-              {getString(interfaceLang, "YOU_ARE_EXPLAINING_THE_WORD")}
+              {lang("YOU_ARE_EXPLAINING_THE_WORD")}
             </>
           )}
           {status === 3 && (
             <>
-              {getString(interfaceLang, "WAIT_FOR_WINNER")}
+              {lang("WAIT_FOR_WINNER")}
             </>
           )}
           {status === 4 && (
             <>
-              {getString(interfaceLang, "YOU_WIN_PRESS_GET_PRIZE")}
+              {lang("YOU_WIN_PRESS_GET_PRIZE")}
             </>
           )}
         </PlayingRoomFooter>
