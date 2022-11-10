@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { subscribeForRoomsUpdates, subscribeForUsersUpdates } from "../firebase";
+import getString from "../utils/getString";
 
 const useUser = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,8 +15,9 @@ const useUser = () => {
 
   // Lang
   const [interfaceLang, setInterfaceLang] = useState("en");
-  const learningLang = useState("no");
-
+  const lang = useCallback((key) => {
+    return getString(interfaceLang, key);
+  }, [interfaceLang]);
 
   useEffect(() => {
     const auth = getAuth();
@@ -81,7 +83,7 @@ const useUser = () => {
     rooms,
     interfaceLang,
     setInterfaceLang,
-    learningLang
+    lang
   };
 };
 
