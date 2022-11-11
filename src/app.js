@@ -5,10 +5,10 @@ import "./firebase";
 import UserContext from "./contexts/userContext";
 import useUser from "./hooks/useUser";
 
-import Home from "./Containers/Home";
-import Rooms from "./Containers/Rooms";
-import LangSettings from "./Containers/LangSettings";
-import PlayingRoom from "./Containers/PlayingRoom";
+import Home from "./screens/home";
+import Rooms from "./screens/rooms";
+import LangSettings from "./screens/langSettings";
+import PlayingRoom from "./screens/playingRoom";
 
 const App = () => {
   return (
