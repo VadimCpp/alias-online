@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../contexts/userContext";
 import { updateLang } from "../firebase";
-import getString from '../utils/getString';
 import Button from "../components/button";
 import Container from "../components/constainer";
 
@@ -16,7 +15,7 @@ const LangSettings = () => {
 
   const navigate = useNavigate();
 
-  const { user, interfaceLang, setInterfaceLang } = useContext(UserContext);
+  const { user, interfaceLang, setInterfaceLang, lang } = useContext(UserContext);
 
   const langHandler = async (key) => {
     if (user) {
@@ -53,12 +52,12 @@ const LangSettings = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <LangHeader>
-          <Title onClick={() => navigate("/")}>{getString(interfaceLang, "LANGUAGE_SETTINGS")}</Title>
+          <Title onClick={() => navigate("/")}>{lang("LANGUAGE_SETTINGS")}</Title>
         </LangHeader>
       </Container.Header>
       <Container.Content>
         <LangContent>
-          <Border title={getString(interfaceLang, "CHOOSE_LANGUAGE")}>
+          <Border title={lang("CHOOSE_LANGUAGE")}>
             <RadioButton>
               {
                 langOptions.map((option) => {
@@ -74,7 +73,7 @@ const LangSettings = () => {
                         onChange={(e) => langHandler(e.target.value)}
                       />
                       <label key={option.langKey}>
-                        {getString(interfaceLang, option.text)}
+                        {lang(option.text)}
                       </label>
                     </p>
                   )
@@ -83,13 +82,13 @@ const LangSettings = () => {
             </RadioButton>
           </Border>
           <Button onClick={() => navigate(BACK)}>
-            { getString(interfaceLang, "DONE") }
+            { lang("DONE") }
           </Button>
         </LangContent>
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <LangFooter>
-          {getString(interfaceLang, "CHOOSE_LANGUAGE")}
+          {lang("CHOOSE_LANGUAGE")}
         </LangFooter>
       </Container.Footer>
     </Container>

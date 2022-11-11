@@ -1,7 +1,6 @@
 import React, {useContext} from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import getString from "../utils/getString";
 import Container from "../components/constainer";
 import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../icons/menu.svg";
@@ -15,7 +14,7 @@ const Rooms = () => {
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
-  const { user, interfaceLang, rooms, isLoading } = useContext(UserContext);
+  const { user, rooms, isLoading, lang } = useContext(UserContext);
 
   const onClickRoom = async (room) => {
     await updateRoom(user.uid, room.uid);
@@ -27,7 +26,7 @@ const Rooms = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <RoomsHeader>
           <SettingsButton onClick={() => navigate("/lang-settings")} />
-          <Title onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</Title>
+          <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
           <MenuButton onClick={() => alert("TODO")} />
         </RoomsHeader>
       </Container.Header>
@@ -42,7 +41,7 @@ const Rooms = () => {
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <RoomsFooter>
-          { getString(interfaceLang, isLoading ? "LOADING" : "CHOOSE_ROOM" )}
+          { lang(isLoading ? "LOADING" : "CHOOSE_ROOM" )}
         </RoomsFooter>
       </Container.Footer>
     </Container>

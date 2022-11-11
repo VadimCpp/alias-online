@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../contexts/userContext";
-import getString from '../utils/getString';
 import Button from "../components/button";
 import { signInWithGoogle, logOut } from "../firebase";
 import Container from "../components/constainer";
@@ -15,14 +14,14 @@ const Home = () => {
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
-  const { user, interfaceLang, isLoading } = useContext(UserContext);
+  const { user, isLoading, lang } = useContext(UserContext);
 
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <HomeHeader>
           <SettingsButton onClick={() => navigate("/lang-settings")} />
-          <Title onClick={() => navigate("/")}>{getString(interfaceLang, "ALIAS_ONLINE")}</Title>
+          <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
           <MenuButton onClick={() => alert("TODO")} />
         </HomeHeader>
       </Container.Header>
@@ -31,30 +30,30 @@ const Home = () => {
           <HomeSubHeader>
             {
               !!user ?
-              `${getString(interfaceLang, "WELCOME")}, ${user.displayName}` :
-              getString(interfaceLang, "PLAY_WITH_FRIENDS")
+              `${lang("WELCOME")}, ${user.displayName}` :
+              lang("PLAY_WITH_FRIENDS")
             }
           </HomeSubHeader>
           {user && (
             <Button onClick={() => navigate("/rooms")}>
-              {getString(interfaceLang, "PLAY")}
+              {lang("PLAY")}
             </Button>
           )}
           {!user &&
           <Button onClick={() => signInWithGoogle()}>
-            {getString(interfaceLang, "SIGN_IN_WITH_GOOGLE")}
+            {lang("SIGN_IN_WITH_GOOGLE")}
           </Button>
           }
           {user && (
             <Button onClick={() => logOut(user.uid)}>
-              {getString(interfaceLang, "LOG_OUT")}
+              {lang("LOG_OUT")}
             </Button>
           )}
         </HomeContent>
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <HomeFooter>
-          { getString(interfaceLang, isLoading ? "LOADING" : "WELCOME" )}
+          { lang(isLoading ? "LOADING" : "WELCOME" )}
         </HomeFooter>
       </Container.Footer>
     </Container>
