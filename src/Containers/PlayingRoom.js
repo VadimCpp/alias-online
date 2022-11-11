@@ -62,6 +62,21 @@ const PlayingRoom = () => {
     return (w && !!w['EMOJI'] ? w['EMOJI'] : '😵');
   };
 
+  const getWordWithArticle = (room) => {
+    let result = "";
+    if (room) {
+      const w = VOCABULARY.find(w => word === w[room.lang]);
+      if (w) {
+        if (room.lang === "no" || room.lang === "NO") {
+          result = `${w['ART']} ${w['NO'].toLowerCase()}`;
+        } else {
+          result = w[room.lang];
+        }
+      }
+    }
+    return result;
+  };
+
   const getRandomCard = useCallback(() => {
     const wordsWithEmoji = VOCABULARY.filter(w => !!w['EMOJI']);
     const randomIndex = Math.ceil(Math.random() * (wordsWithEmoji.length-1));
@@ -153,7 +168,7 @@ const PlayingRoom = () => {
           <Center>
             <Border title={lang("WORD")}>
               <EmojiImage>{getIcon(room?.word)}</EmojiImage>
-              <StatusMessage>{room?.word}</StatusMessage>
+              <StatusMessage>{getWordWithArticle(room)}</StatusMessage>
             </Border>
           </Center>
         )}
@@ -162,8 +177,11 @@ const PlayingRoom = () => {
             <Border title={lang("STATUS")}>
               <EmojiImage>{getIcon(room?.word)}</EmojiImage>
               <StatusMessage>
-                {`${room?.winnerName} ${lang("HAS_GUESSED")} ${room?.word}`}
+                {getWordWithArticle(room)}
               </StatusMessage>
+              <SubStatusMessage>
+                {`${room?.winnerName} ${lang("HAS_GUESSED_THE_WORD")}`}
+              </SubStatusMessage>
             </Border>
           </Center>
         )}
@@ -255,6 +273,12 @@ const StatusMessage = styled.p`
   text-align: center;
   font-size: 16px;
   font-weight: bold;
+  max-width: 260px;
+`;
+
+const SubStatusMessage = styled.p`
+  margin-top: 10px;
+  text-align: center;
   max-width: 260px;
 `;
 

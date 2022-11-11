@@ -107,8 +107,8 @@
     "RU": "Вы объясняете слово",
     "NO": "Du forklarer ordet"
   },
-  "HAS_GUESSED": {
-    "EN": "has guessed",
+  "HAS_GUESSED_THE_WORD": {
+    "EN": "has guessed the word",
     "UA": "переміг, видгадавши слово",
     "RU": "победил, угадав слово",
     "NO": "har gjet ordet"
