@@ -46,8 +46,10 @@ const setLeader = async (uid, room, name, word) => {
   await updateDoc(roomRef, {
     leaderUid: uid,
     leaderName: name,
+    leaderTimestamp: +(new Date()),
     winnerUid: null,
     winnerName: null,
+    winnerTimestamp: null,
     word: word,
   });
 }
@@ -57,8 +59,10 @@ const setWinner = async (uid, room, name, word) => {
   await updateDoc(roomRef, {
     winnerUid: uid,
     winnerName: name,
+    winnerTimestamp: +(new Date()),
     leaderUid: null,
     leaderName: null,
+    leaderTimestamp: null,
     word,
   });
 }
@@ -68,8 +72,10 @@ const resetGame = async (room) => {
   await updateDoc(roomRef, {
     leaderUid: null,
     leaderName: null,
+    leaderTimestamp: null,
     winnerUid: null,
     winnerName: null,
+    winnerTimestamp: null,
     word: null,
   });
 }
@@ -85,7 +91,7 @@ const updateScore = async (uid, score) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     score,
-    lastActiveAt: (new Date()).toISOString(),
+    lastActiveAt: +(new Date()),
   });
 }
 
@@ -93,7 +99,7 @@ const updateRoom = async (uid, room) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     room,
-    lastActiveAt: (new Date()).toISOString(),
+    lastActiveAt: +(new Date()),
   });
 }
 
@@ -101,7 +107,7 @@ const updateLang = async (uid, lang) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     lang,
-    lastActiveAt: (new Date()).toISOString(),
+    lastActiveAt: +(new Date()),
   });
 };
 
@@ -123,7 +129,7 @@ const signInWithGoogle = async () => {
         displayName: user.displayName,
         photoURL: user.photoURL,
         score: 0,
-        lastActiveAt: (new Date()).toISOString(),
+        lastActiveAt: +(new Date()),
         role: 'spiller',
         isActive: true
       };
