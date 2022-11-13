@@ -5,7 +5,7 @@ import UserContext from "../contexts/userContext";
 
 const UserList = ({ users, uid, room, onUserClick }) => {
   const { interfaceLang } = useContext(UserContext);
-  console.log(room);
+
   const getDisplayName = (user) => {
     let dn = user.displayName;
     if (uid === user.uid) {

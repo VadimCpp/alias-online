@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
-import { setLeader, setWinner, resetGame, resetScore, updateScore } from "../firebase";
+import { setLeader, setWinner, resetGame, updateScore } from "../firebase";
 import VOCABULARY from "../utils/vocabulary.json";
 import Button from "../components/button";
 import ResetButton from "../components/resetButton";
@@ -34,12 +34,16 @@ const PlayingRoom = () => {
   let status = 0; // Game is not started
   let leaderUid = "";
   let leaderName = "";
+  let leaderTimestamp = 0;
   let winnerUid = "";
+  let winnerTimestamp = 0;
   let word = "";
   if (room) {
     leaderUid = room.leaderUid;
     leaderName = room.leaderName;
+    leaderTimestamp = room.leaderTimestamp;
     winnerUid = room.winnerUid;
+    winnerTimestamp = room.winnerTimestamp;
     word = room.word;
 
     if (leaderUid) {
@@ -56,6 +60,24 @@ const PlayingRoom = () => {
   } else {
     console.error('No room found', slug);
   }
+
+  const [ countDown, setCountDown ] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (status === 2 || status === 1) {
+        const today = +(new Date());
+        const diff = (today - leaderTimestamp) / 1000; // in seconds
+        setCountDown(diff < 60 ? Math.ceil(60 - diff) : 0);
+      } else if (status === 3 || status === 4) {
+        const today = +(new Date());
+        const diff = (today - winnerTimestamp) / 1000; // in seconds
+        setCountDown(diff < 30 ? Math.ceil(30 - diff) : 0);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [room]);
 
   const getIcon = (word) => {
     const w = VOCABULARY.find(w => word === w[room?.lang]);
@@ -93,7 +115,6 @@ const PlayingRoom = () => {
     });
 
     if (activeUsers.length >= 3) {
-      await updateScore(user.uid, (user.score || 0) + 1);
       setIsChooseWinner(false);
       const w = getRandomCard();
       await setLeader(user.uid, room.uid, user.displayName, w[room.lang]);
@@ -122,7 +143,6 @@ const PlayingRoom = () => {
   const onResetGameClick = async () => {
     if (window.confirm(lang('ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
       await resetGame(room.uid);
-      await resetScore(user.uid);
     }
   }
 
@@ -200,7 +220,7 @@ const PlayingRoom = () => {
               {lang("PLAY")}
             </Button>
           )}
-          {status === 1 && (
+          {status === 1 && countDown === 0 && (
             <ResetButton onClick={onResetGameClick}>
               {lang("RESET_GAME")}
             </ResetButton>
@@ -215,7 +235,7 @@ const PlayingRoom = () => {
               {lang("CHOOSE_VINNER")}
             </Button>
           )}
-          {status === 3 && (
+          {status === 3 && countDown === 0 && (
             <ResetButton onClick={onResetGameClick}>
               {lang("RESET_GAME")}
             </ResetButton>
@@ -235,6 +255,7 @@ const PlayingRoom = () => {
           {status === 1 && (
             <>
               {`${leaderName} ${lang("ARE_EXPLAINING_THE_WORD")}`}
+              {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}
           {status === 2 && isChooseWinner && (
@@ -245,16 +266,19 @@ const PlayingRoom = () => {
           {status === 2 && !isChooseWinner && (
             <>
               {lang("YOU_ARE_EXPLAINING_THE_WORD")}
+              {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}
           {status === 3 && (
             <>
               {lang("WAIT_FOR_WINNER")}
+              {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}
           {status === 4 && (
             <>
               {lang("YOU_WIN_PRESS_GET_PRIZE")}
+              {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}
         </PlayingRoomFooter>
