@@ -34,7 +34,8 @@ const Rooms = () => {
         <RoomsContent>
           { !isLoading && rooms.map((room) => {
             return <Button key={room.uid} onClick={() => onClickRoom(room)}>
-              {room.name}
+              <ButtonTitle>{room.name}</ButtonTitle>
+              <ButtonSubTitle>{room.description}</ButtonSubTitle>
             </Button>
           })}
         </RoomsContent>
@@ -67,12 +68,12 @@ const MenuButton = styled(MenuIcon)`
   visibility: hidden;
 `;
 
-const Title = styled.h1`  
+const Title = styled.h1`
   text-align: center;
   font-size: 36px;
   color: #ffffff;
   font-style: normal;
-  font-weight: 700; 
+  font-weight: 700;
   cursor: pointer;
 `;
 
@@ -102,6 +103,14 @@ const RoomsFooter = styled.div`
   background-color: #222;
   padding: 0 20px;
   color: white;
+`;
+
+const ButtonTitle = styled.span`
+  font-size: 18px;
+`;
+
+const ButtonSubTitle = styled.span`
+  font-size: 12px;
 `;
 
 export default Rooms;

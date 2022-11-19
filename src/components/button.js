@@ -13,7 +13,9 @@ const StyledButton = styled.button`
   transition: all .5s;
   &:hover{
     transform: scale(1.15);
-  }  
+  }
+  display: flex;
+  flex-direction: column;
 `
 const Button = ({children, ...props}) => {
   return <StyledButton {...props}>
