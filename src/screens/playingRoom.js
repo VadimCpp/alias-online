@@ -10,6 +10,7 @@ import ResetButton from "../components/resetButton";
 import Container from "../components/constainer";
 import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../icons/menu.svg";
+import { isUserActive } from "../utils/helpers";
 
 const PlayingRoom = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -106,20 +107,14 @@ const PlayingRoom = () => {
     }, []);
 
   const onPlayClick = async () => {
-    const activeUsers = users.filter(u => {
-      const today = new Date();
-      const lastActiveAt = new Date(u.lastActiveAt);
-      const lastActiveHoursAgo = (today - lastActiveAt) / 1000 / 60 / 60;
-      // return (lastActiveHoursAgo < 1);
-      return true;
-    });
+    const activeUsers = users.filter(u => isUserActive(u.lastActiveAt));
 
-    if (activeUsers.length >= 3) {
+    if (activeUsers.length >= 2) {
       setIsChooseWinner(false);
       const w = getRandomCard();
       await setLeader(user.uid, room.uid, user.displayName, w[room.lang]);
     } else {
-      alert("To start a game you need at least three active players.");
+      alert("To start a game you need at least two active players.");
     }
   }
 
@@ -159,7 +154,7 @@ const PlayingRoom = () => {
             <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
             <SubTitle>{room.name}</SubTitle>
           </TitleAndSubtitle>
-          <MenuButton onClick={() => alert("TODO")} />
+          <MenuButton onClick={() => null} />
         </PlayingRoomHeader>
       </Container.Header>
       <Container.Content>

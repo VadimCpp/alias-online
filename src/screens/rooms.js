@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext, useCallback } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Container from "../components/constainer";
@@ -7,6 +7,7 @@ import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 import UserContext from "../contexts/userContext";
 import Button from "../components/button";
 import { updateRoom } from "../firebase";
+import { isUserActive } from "../utils/helpers";
 
 const Rooms = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -14,7 +15,27 @@ const Rooms = () => {
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
-  const { user, rooms, isLoading, lang } = useContext(UserContext);
+  const { user, users, rooms, isLoading, lang } = useContext(UserContext);
+
+  const isRoomEmpty = useCallback((room) => {
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].room === room.uid && isUserActive(users[i].lastActiveAt)) {
+        return false;
+      }
+    }
+    return true;
+  }, [users]);
+
+  const getRoomName = useCallback((room) => {
+    let result = room.name;
+    const no = users.filter((u) => (u.room === room.uid && isUserActive(u.lastActiveAt))).length;
+    if (no === 1) {
+      result += " (1👤)";
+    } else if (no > 1) {
+      result += ` (${no}👥)`;
+    }
+    return result;
+  }, [users]);
 
   const onClickRoom = async (room) => {
     await updateRoom(user.uid, room.uid);
@@ -27,14 +48,14 @@ const Rooms = () => {
         <RoomsHeader>
           <SettingsButton onClick={() => navigate("/lang-settings")} />
           <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
-          <MenuButton onClick={() => alert("TODO")} />
+          <MenuButton onClick={() => null} />
         </RoomsHeader>
       </Container.Header>
       <Container.Content>
         <RoomsContent>
           { !isLoading && rooms.map((room) => {
-            return <Button key={room.uid} onClick={() => onClickRoom(room)}>
-              <ButtonTitle>{room.name}</ButtonTitle>
+            return <Button key={room.uid} onClick={() => onClickRoom(room)} isGray={isRoomEmpty(room)}>
+              <ButtonTitle>{getRoomName(room)}</ButtonTitle>
               <ButtonSubTitle>{room.description}</ButtonSubTitle>
             </Button>
           })}
@@ -106,10 +127,11 @@ const RoomsFooter = styled.div`
 `;
 
 const ButtonTitle = styled.span`
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 const ButtonSubTitle = styled.span`
+  padding-top: 4px;
   font-size: 12px;
 `;
 

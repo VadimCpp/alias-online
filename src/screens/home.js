@@ -22,7 +22,7 @@ const Home = () => {
         <HomeHeader>
           <SettingsButton onClick={() => navigate("/lang-settings")} />
           <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
-          <MenuButton onClick={() => alert("TODO")} />
+          <MenuButton onClick={() => null} />
         </HomeHeader>
       </Container.Header>
       <Container.Content>
