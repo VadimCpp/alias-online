@@ -126,7 +126,9 @@ const PlayingRoom = () => {
   }
 
   const onWinnerClick = async (user) => {
-    await setWinner(user.uid, room.uid, user.displayName, room.word);
+    if (room) {
+      await setWinner(user.uid, room.uid, user.displayName, room.word);
+    }
   }
 
   // NOTE!
@@ -139,14 +141,16 @@ const PlayingRoom = () => {
   }, [users, user]);
 
   const onGetPrizeClick = async() => {
-    await updateScore(user.uid,(userData()?.score || 0) + 1);
-    setIsChooseWinner(false);
-    const w = getRandomCard();
-    await setLeader(user.uid, room.uid, userData()?.displayName, w[room.lang]);
+    if (room) {
+      await updateScore(user.uid,(userData()?.score || 0) + 1);
+      setIsChooseWinner(false);
+      const w = getRandomCard();
+      await setLeader(user.uid, room.uid, userData()?.displayName, w[room.lang]);
+    }
   }
 
   const onResetGameClick = async () => {
-    if (window.confirm(lang('ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
+    if (room && window.confirm(lang('ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
       await resetGame(room.uid);
     }
   }
@@ -192,7 +196,7 @@ const PlayingRoom = () => {
         {status === 2 && !isChooseWinner && (
           <Center>
             <Border title={lang("WORD")}>
-              <EmojiImage>{getIcon(room?.word)}</EmojiImage>
+              <EmojiImage>{getIcon(room.word)}</EmojiImage>
               <StatusMessage>{getWordWithArticle(room)}</StatusMessage>
             </Border>
           </Center>
@@ -200,12 +204,12 @@ const PlayingRoom = () => {
         {status === 3 && (
           <Center>
             <Border title={lang("STATUS")}>
-              <EmojiImage>{getIcon(room?.word)}</EmojiImage>
+              <EmojiImage>{getIcon(room.word)}</EmojiImage>
               <StatusMessage>
                 {getWordWithArticle(room)}
               </StatusMessage>
               <SubStatusMessage>
-                {`${room?.winnerName} ${lang("HAS_GUESSED_THE_WORD")}`}
+                {`${room.winnerName} ${lang("HAS_GUESSED_THE_WORD")}`}
               </SubStatusMessage>
             </Border>
           </Center>
