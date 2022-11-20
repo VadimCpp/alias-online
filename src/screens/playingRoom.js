@@ -114,7 +114,7 @@ const PlayingRoom = () => {
       const w = getRandomCard();
       await setLeader(user.uid, room.uid, user.displayName, w[room.lang]);
     } else {
-      alert("To start a game you need at least two active players.");
+      alert(lang("NEED_AT_LEAST_TWO_PLAYERS"));
     }
   }
 
@@ -142,7 +142,7 @@ const PlayingRoom = () => {
   }
 
   if (!room) {
-    return <>Loading...</>;
+    return <>{lang("LOADING")}</>;
   }
 
   return (

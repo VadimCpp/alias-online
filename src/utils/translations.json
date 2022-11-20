@@ -347,5 +347,11 @@
     "UA": "Пояснює слово",
     "RU": "Объясняет слово",
     "NO": "Forklare et ord"
+  },
+  "NEED_AT_LEAST_TWO_PLAYERS": {
+    "EN": "To start a game you need at least two active players.",
+    "UA": "Для початку гри запросіть принаймні двох гравців",
+    "RU": "Для начала игры необходимо минимум двое участников",
+    "NO": "For å spille det må bli minst to spiller"
   }
 }
