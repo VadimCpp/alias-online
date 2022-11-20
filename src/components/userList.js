@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import styled, { keyframes } from "styled-components";
 import getString from "../utils/getString";
 import UserContext from "../contexts/userContext";
 
@@ -37,7 +37,11 @@ const UserList = ({ users, uid, room, onUserClick }) => {
         sortedUsers.map(user => {
           return (
             <Row key={user.uid} onClick={() => onUserClick(user)}>
-              <Avatar width="32" height="32" src={user.photoURL} alt={user.displayName} />
+              {
+                (user.greeting)
+                ? <Rotate>{"👋"}</Rotate>
+                : <Avatar width="32" height="32" src={user.photoURL} alt={user.displayName} />
+              }
               <Name>{getDisplayName(user)}</Name>
               <Score>{user.score}</Score>
               { isActive(user) ? <ActiveIndicator /> : <InactiveIndicator /> }
@@ -89,6 +93,22 @@ const Name = styled.span`
 
 const Score = styled.span`
   font-weight: bold;
+`;
+
+// https://styled-components.com/docs/basics#animations
+const rotate = keyframes`
+  0%   {transform: rotate(0deg);}
+  25%  {transform: rotate(15deg);}
+  50%  {transform: rotate(0deg);}
+  75%  {transform: rotate(-15deg);}
+  100% {transform: rotate(0deg);}
+`;
+
+// Here we create a component that will rotate everything we pass in over two seconds
+const Rotate = styled.span`
+  animation: ${rotate} 1s linear infinite;
+  font-size: 32px;
+  margin-right: 10px;
 `;
 
 export default UserList;

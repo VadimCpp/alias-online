@@ -84,6 +84,7 @@ const resetScore = async (uid) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     score: 0,
+    greeting: false,
   });
 }
 
@@ -92,6 +93,14 @@ const updateScore = async (uid, score) => {
   await updateDoc(userRef, {
     score,
     lastActiveAt: +(new Date()),
+    greeting: false,
+  });
+}
+
+const updateGreeting = async (uid, greeting) => {
+  const userRef = doc(db, "users", uid);
+  await updateDoc(userRef, {
+    greeting,
   });
 }
 
@@ -100,6 +109,7 @@ const updateRoom = async (uid, room) => {
   await updateDoc(userRef, {
     room,
     lastActiveAt: +(new Date()),
+    greeting: false,
   });
 }
 
@@ -108,6 +118,7 @@ const updateLang = async (uid, lang) => {
   await updateDoc(userRef, {
     lang,
     lastActiveAt: +(new Date()),
+    greeting: false,
   });
 };
 
@@ -165,6 +176,7 @@ export {
   resetGame,
   resetScore,
   updateScore,
+  updateGreeting,
   updateRoom,
   updateLang
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import UserList from "../components/userList";
 import UserContext from "../contexts/userContext";
-import { setLeader, setWinner, resetGame, updateScore } from "../firebase";
+import { setLeader, setWinner, resetGame, updateScore, updateGreeting } from "../firebase";
 import VOCABULARY from "../utils/vocabulary.json";
 import Button from "../components/button";
 import ResetButton from "../components/resetButton";
@@ -106,6 +106,13 @@ const PlayingRoom = () => {
     return wordsWithEmoji[randomIndex];
     }, []);
 
+  const onGreet = async () => {
+    await updateGreeting(user.uid, true);
+    setTimeout(async () => {
+      await updateGreeting(user.uid, false);
+    }, 1000);
+  };
+
   const onPlayClick = async () => {
     const activeUsers = users.filter(u => isUserActive(u.lastActiveAt));
 
@@ -122,17 +129,20 @@ const PlayingRoom = () => {
     await setWinner(user.uid, room.uid, user.displayName, room.word);
   }
 
+  // NOTE!
+  // users object contains data about score:
+  // https://docs.google.com/document/d/1J7g91NJokW6iptjZxOcIQbLNSpCceRIT7UVWEcZV_BA/edit#heading=h.ie7mxisro286
+  // and user object contains only authorization information.
+  // TODO: implement unified user information.
+  const userData = useCallback(() => {
+    return users.find(u => u.uid === user.uid);
+  }, [users, user]);
+
   const onGetPrizeClick = async() => {
-    // NOTE!
-    // users object contains data about score:
-    // https://docs.google.com/document/d/1J7g91NJokW6iptjZxOcIQbLNSpCceRIT7UVWEcZV_BA/edit#heading=h.ie7mxisro286
-    // and user object contains only authorization information.
-    // TODO: implement unified user information.
-    const userData = users.find(u => u.uid === user.uid);
-    await updateScore(user.uid,(userData.score || 0) + 1);
+    await updateScore(user.uid,(userData()?.score || 0) + 1);
     setIsChooseWinner(false);
     const w = getRandomCard();
-    await setLeader(user.uid, room.uid, userData.displayName, w[room.lang]);
+    await setLeader(user.uid, room.uid, userData()?.displayName, w[room.lang]);
   }
 
   const onResetGameClick = async () => {
@@ -161,7 +171,7 @@ const PlayingRoom = () => {
         {status === 0 && (
           <Center>
             <Border title={lang("PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}}/> : lang("LOADING")}
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}} /> : lang("LOADING")}
             </Border>
           </Center>
         )}
@@ -216,9 +226,19 @@ const PlayingRoom = () => {
             </Button>
           )}
           {status === 1 && countDown === 0 && (
-            <ResetButton onClick={onResetGameClick}>
-              {lang("RESET_GAME")}
-            </ResetButton>
+            <>
+              <Button onClick={onGreet}>
+                {"👋"}
+              </Button>
+              <ResetButton onClick={onResetGameClick}>
+                {lang("RESET_GAME")}
+              </ResetButton>
+            </>
+          )}
+          {status === 1 && countDown > 0 && (
+            <Button onClick={onGreet}>
+              {"👋"}
+            </Button>
           )}
           {status === 2 && isChooseWinner && (
             <Button onClick={() => setIsChooseWinner(false)}>
