@@ -18,10 +18,10 @@
     "NO": "Logg in her"
   },
   "PLAY_WITH_FRIENDS": {
-    "EN": "Play with friends around the globe",
-    "UA": "Грай з друзями з усього світу",
-    "RU": "Играй с друзьями по всему миру",
-    "NO": "Spill med venner over hele verden"
+    "EN": "Play with friends around the globe 🌍",
+    "UA": "Грай з друзями з усього світу 🌍",
+    "RU": "Играй с друзьями по всему миру 🌍",
+    "NO": "Spill med venner over hele verden 🌍"
   },
   "PLAY": {
     "EN": "Play",
@@ -353,5 +353,17 @@
     "UA": "Для початку гри запросіть принаймні двох гравців",
     "RU": "Для начала игры необходимо минимум двое участников",
     "NO": "For å spille det må bli minst to spiller"
+  },
+  "VOCABULARY": {
+    "EN": "Vocabulary",
+    "UA": "Словник",
+    "RU": "Словарь",
+    "NO": "Vokabular"
+  },
+  "THERE_ARE_X_WORDS_IN_VOCABULAR": {
+    "EN": "There are {x} words in the vocabulary",
+    "UA": "В словнику {x} слів",
+    "RU": "В словаре {x} слов",
+    "NO": "Dette er {x} ord i vokabularet"
   }
 }

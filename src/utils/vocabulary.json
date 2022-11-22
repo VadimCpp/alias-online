@@ -36,7 +36,7 @@
   { "no": "Brød", "en": "Bread", "emoji": "🍞", "ordbokene": "https://ordbokene.no/bm/7884/br%C3%B8d", "naob": "https://naob.no/ordbok/br%C3%B8d", "snl": "https://snl.no/br%C3%B8d" },
   { "no": "Shorts", "en": "Shorts", "emoji": "🩳", "ordbokene": "https://ordbokene.no/bm/51249/shorts", "naob": "https://naob.no/ordbok/shorts", "snl": "https://snl.no/shorts" },
   { "no": "Dukke", "en": "Doll", "emoji": null, "ordbokene": "https://ordbokene.no/bm/10526/dokke", "naob": "https://naob.no/ordbok/dukke_2", "snl": "https://snl.no/dukke" },
-  { "no": "Tennisracket", "en": "Tennis racket", "emoji": "🏓", "ordbokene": "https://ordbokene.no/bm/60318/tennisracket", "naob": "https://naob.no/ordbok/tennisracket", "snl": null },
+
   { "no": "Fotoapparat", "en": "Fotoapparat", "emoji": "📷", "ordbokene": "https://ordbokene.no/bm/17368/fotoapparat", "naob": "https://naob.no/ordbok/fotoapparat", "snl": null },
 
   { "no": "Nøtt", "en": "Nut", "emoji": "🌰", "ordbokene": "https://ordbokene.no/bm/41643/n%C3%B8tt", "naob": "https://naob.no/ordbok/n%C3%B8tt_2", "snl": "https://snl.no/n%C3%B8tt" },
@@ -78,7 +78,7 @@
 
   { "no": "Geit", "en": "Goat", "emoji": "🐐", "ordbokene": "https://ordbokene.no/bm/19358/geit", "naob": "https://naob.no/ordbok/geit", "snl": "https://snl.no/geit" },
   { "no": "Hammer", "en": "Hammer", "emoji": "🔨", "ordbokene": "https://ordbokene.no/bm/22136/hammer", "naob": "https://naob.no/ordbok/hammer", "snl": "https://snl.no/hammer" },
-  { "no": "Rake", "en": "Rake", "emoji": "", "ordbokene": "https://ordbokene.no/bm/47322/rake", "naob": "https://naob.no/ordbok/rake_1", "snl": null },
+  { "no": "Rake", "en": "Rake", "emoji": null, "ordbokene": "https://ordbokene.no/bm/47322/rake", "naob": "https://naob.no/ordbok/rake_1", "snl": null },
   { "no": "Batteri", "en": "Battery", "emoji": "🔋", "ordbokene": "https://ordbokene.no/bm/4756/batteri", "naob": "https://naob.no/ordbok/batteri", "snl": "https://snl.no/batteri" },
   { "no": "Trafikkskilt", "en": "Road sign", "emoji": null, "ordbokene": "https://ordbokene.no/bm/61727/trafikkskilt", "naob": "https://naob.no/ordbok/trafikkskilt", "snl": "https://snl.no/trafikkskilt" },
   { "no": "Kam", "en": "Comb", "emoji": null, "ordbokene": "https://ordbokene.no/bm/28389/kam", "naob": "https://naob.no/ordbok/kam", "snl": "https://snl.no/kam_-_til_h%C3%A5r" },
@@ -109,12 +109,12 @@
   { "no": "Fly", "en": "Airplane", "emoji": "✈️", "ordbokene": "https://ordbokene.no/bm/15542/fly", "naob": "https://naob.no/ordbok/fly_6", "snl": "https://snl.no/fly" },
   { "no": "Sykkelhjelm", "en": "Bicycle helmet", "emoji": null, "ordbokene": null, "naob": "https://naob.no/ordbok/sykkelhjelm", "snl": null },
 
-  { "no": "Jojo", "en": "", "emoji": "" , "ordbokene": "https://ordbokene.no/bm/27765/jojo", "naob": "https://naob.no/ordbok/jojo", "snl": "https://snl.no/jojo" },
+  { "no": "Jojo", "en": "", "emoji": null , "ordbokene": "https://ordbokene.no/bm/27765/jojo", "naob": "https://naob.no/ordbok/jojo", "snl": "https://snl.no/jojo" },
   { "no": "Teddybjørn", "en": "", "emoji": "🧸", "ordbokene": "https://ordbokene.no/bm/60029/teddybj%C3%B8rn", "naob": "https://naob.no/ordbok/teddybj%C3%B8rn", "snl": "https://snl.no/teddybj%C3%B8rn" },
   { "no": "Motorsykkel", "en": "", "emoji": "🏍", "ordbokene": "https://ordbokene.no/bm/39295/motorsykkel", "naob": "https://naob.no/ordbok/motorsykkel", "snl": "https://snl.no/motorsykkel" },
-  { "no": "Ratt", "en": "", "emoji": "", "ordbokene": "https://ordbokene.no/bm/47551/ratt", "naob": "https://naob.no/ordbok/ratt_1", "snl": null },
-  { "no": "Smykke", "en": "", "emoji": "", "ordbokene": "https://ordbokene.no/bm/54889/smykke", "naob": "https://naob.no/ordbok/smykke_1", "snl": null },
-  { "no": "Vaskemaskin", "en": "", "emoji": "", "ordbokene": "https://ordbokene.no/bm/66825/vaskemaskin", "naob": "https://naob.no/ordbok/vaskemaskin", "snl": "https://snl.no/vaskemaskin" },
+  { "no": "Ratt", "en": "", "emoji": null, "ordbokene": "https://ordbokene.no/bm/47551/ratt", "naob": "https://naob.no/ordbok/ratt_1", "snl": null },
+  { "no": "Smykke", "en": "", "emoji": null, "ordbokene": "https://ordbokene.no/bm/54889/smykke", "naob": "https://naob.no/ordbok/smykke_1", "snl": null },
+  { "no": "Vaskemaskin", "en": "", "emoji": null, "ordbokene": "https://ordbokene.no/bm/66825/vaskemaskin", "naob": "https://naob.no/ordbok/vaskemaskin", "snl": "https://snl.no/vaskemaskin" },
   { "no": "Sag", "en": "", "emoji": "🪚", "ordbokene": "https://ordbokene.no/bm/49619/sag", "naob": "https://naob.no/ordbok/sag", "snl": "https://snl.no/sag" },
   { "no": "Stetoskop", "en": "", "emoji": "🩺", "ordbokene": "https://ordbokene.no/bm/57076/stetoskop", "naob": "https://naob.no/ordbok/stetoskop", "snl": "https://sml.snl.no/stetoskop" },
   { "no": "Gulrot", "en": "", "emoji": "🥕", "ordbokene": "https://ordbokene.no/bm/21581/gulrot", "naob": "https://naob.no/ordbok/gulrot", "snl": "https://snl.no/gulrot" },

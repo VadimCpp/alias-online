@@ -7,6 +7,7 @@ import { signInWithGoogle, logOut } from "../firebase";
 import Container from "../components/constainer";
 import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../icons/menu.svg";
+import vocabulary from "../utils/vocabulary.json";
 
 const Home = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -15,6 +16,8 @@ const Home = () => {
 
   const navigate = useNavigate();
   const { user, isLoading, lang } = useContext(UserContext);
+
+  const filteredVocabulary = vocabulary.filter(w => !!w['emoji']);
 
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
@@ -27,28 +30,41 @@ const Home = () => {
       </Container.Header>
       <Container.Content>
         <HomeContent>
-          <HomeSubHeader>
+          <SectionTitle>
             {
               !!user ?
               `${lang("WELCOME")}, ${user.displayName}` :
               lang("PLAY_WITH_FRIENDS")
             }
-          </HomeSubHeader>
-          {user && (
-            <Button onClick={() => navigate("/rooms")}>
-              {lang("PLAY")}
+          </SectionTitle>
+          <SectionFooter>
+            {user && (
+              <Button onClick={() => navigate("/rooms")}>
+                {lang("PLAY")}
+              </Button>
+            )}
+            {!user &&
+            <Button onClick={() => signInWithGoogle()}>
+              {lang("SIGN_IN_WITH_GOOGLE")}
             </Button>
-          )}
-          {!user &&
-          <Button onClick={() => signInWithGoogle()}>
-            {lang("SIGN_IN_WITH_GOOGLE")}
-          </Button>
-          }
-          {user && (
-            <Button onClick={() => logOut(user.uid)}>
-              {lang("LOG_OUT")}
+            }
+            {user && (
+              <Button onClick={() => logOut(user.uid)}>
+                {lang("LOG_OUT")}
+              </Button>
+            )}
+          </SectionFooter>
+        </HomeContent>
+        <HomeContent background={"lightgray"}>
+          <SectionTitle>{"Vocabulary"}</SectionTitle>
+          <p>
+            { lang("THERE_ARE_X_WORDS_IN_VOCABULAR", filteredVocabulary.length) }
+          </p>
+          <SectionFooter>
+            <Button onClick={() => navigate("/vokabular")}>
+              {"See all"}
             </Button>
-          )}
+          </SectionFooter>
         </HomeContent>
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
@@ -59,14 +75,6 @@ const Home = () => {
     </Container>
   );
 };
-
-const HomeSubHeader = styled.p`
-  text-align: center;
-  gap: 0.5em;
-  align-items: center;
-  font-size: 1.5em; 
-  margin: 35px auto;
-`;
 
 const HomeHeader = styled.div`
   display: flex;
@@ -111,6 +119,7 @@ const HomeContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${props => (props.background ? props.background : "transparent")};
 `;
 
 const HomeFooter = styled.div`
@@ -123,5 +132,20 @@ const HomeFooter = styled.div`
   padding: 0 20px;
   color: white;
 `;
+
+const SectionTitle = styled.h2`
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 24px;
+  text-align: center;
+`
+
+const SectionFooter = styled.div`
+  padding-top: 10px;
+  padding-bottom: 15px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+`
 
 export default Home;

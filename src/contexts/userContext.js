@@ -4,7 +4,7 @@ const UserContext = createContext({
   user: null,
   users: [],
   defaultRoom: null,
-  interfaceLang: "EN",
+  interfaceLang: "NO",
   learningLang: "NO",
 });
 
