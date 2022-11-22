@@ -80,28 +80,24 @@ const PlayingRoom = () => {
     return () => clearInterval(interval);
   }, [room]);
 
-  const getIcon = (word) => {
+  const getIcon = useCallback((word) => {
     const w = VOCABULARY.find(w => word === w[room?.lang]);
-    return (w && !!w['EMOJI'] ? w['EMOJI'] : '😵');
-  };
+    return (w && !!w['emoji'] ? w['emoji'] : '😵');
+  }, [room]);
 
-  const getWordWithArticle = (room) => {
+  const getWord = (room) => {
     let result = "";
     if (room) {
       const w = VOCABULARY.find(w => word === w[room.lang]);
       if (w) {
-        if (room.lang === "no" || room.lang === "NO") {
-          result = `${w['ART']} ${w['NO'].toLowerCase()}`;
-        } else {
-          result = w[room.lang];
-        }
+        result = w[room.lang];
       }
     }
     return result;
   };
 
   const getRandomCard = useCallback(() => {
-    const wordsWithEmoji = VOCABULARY.filter(w => !!w['EMOJI']);
+    const wordsWithEmoji = VOCABULARY.filter(w => !!w['emoji']);
     const randomIndex = Math.ceil(Math.random() * (wordsWithEmoji.length-1));
     return wordsWithEmoji[randomIndex];
     }, []);
@@ -197,7 +193,7 @@ const PlayingRoom = () => {
           <Center>
             <Border title={lang("WORD")}>
               <EmojiImage>{getIcon(room.word)}</EmojiImage>
-              <StatusMessage>{getWordWithArticle(room)}</StatusMessage>
+              <StatusMessage>{getWord(room)}</StatusMessage>
             </Border>
           </Center>
         )}
@@ -206,7 +202,7 @@ const PlayingRoom = () => {
             <Border title={lang("STATUS")}>
               <EmojiImage>{getIcon(room.word)}</EmojiImage>
               <StatusMessage>
-                {getWordWithArticle(room)}
+                {getWord(room)}
               </StatusMessage>
               <SubStatusMessage>
                 {`${room.winnerName} ${lang("HAS_GUESSED_THE_WORD")}`}

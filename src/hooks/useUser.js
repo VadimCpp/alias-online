@@ -70,9 +70,9 @@ const useUser = () => {
   useEffect(() => {
     if (!!user && users.length) {
       let profile = users.find(u => u.uid === user.uid)
-      setInterfaceLang(profile.lang || "EN");
+      setInterfaceLang(profile.lang || "en");
     } else {
-      setInterfaceLang("EN");
+      setInterfaceLang("en");
     }
   }, [users, user]);
 
