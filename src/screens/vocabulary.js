@@ -17,8 +17,7 @@ const Vocabulary = () => {
   const { lang } = useContext(UserContext);
 
   const onClickWord = async (word) => {
-    // TODO:
-    // navigate(`/vokabular/${word}`);
+    navigate(`/vokabular/${encodeURI(word)}`);
   }
 
   const filteredVocabulary = vocabulary.filter(w => !!w['emoji']);

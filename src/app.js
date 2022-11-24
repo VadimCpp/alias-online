@@ -10,6 +10,7 @@ import Rooms from "./screens/rooms";
 import LangSettings from "./screens/langSettings";
 import PlayingRoom from "./screens/playingRoom";
 import Vocabulary from "./screens/vocabulary";
+import Word from "./screens/word";
 
 const App = () => {
   return (
@@ -20,9 +21,10 @@ const App = () => {
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/rooms/:slug" element={<PlayingRoom />} />
         <Route path="/vokabular" element={<Vocabulary />} />
-        {/*<Route path="/vokabular/:word" element={<Word />} />*/}
+        <Route path="/vokabular/:word" element={<Word />} />
       </Routes>
     </UserContext.Provider>
   );
 };
+
 export default App;

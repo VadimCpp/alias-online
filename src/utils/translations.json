@@ -365,5 +365,11 @@
     "UA": "В словнику {x} слів",
     "RU": "В словаре {x} слов",
     "NO": "Dette er {x} ord i vokabularet"
+  },
+  "use_links_to_get_more_information": {
+    "EN": "Use links to get more information",
+    "UA": "Використовуйте посилання",
+    "RU": "Используйте ссылки",
+    "NO": "Bruk lenke for å lese mer"
   }
 }
