@@ -17,7 +17,11 @@ const Home = () => {
   const navigate = useNavigate();
   const { user, isLoading, lang } = useContext(UserContext);
 
-  const filteredVocabulary = vocabulary.filter(w => !!w['emoji']).slice(0, 3);
+  const randomVocabulary = (min, max) => Math.floor(Math.random() * (max-min) + min); 
+
+  const filteredVocabulary = vocabulary.filter(w => !!w['emoji']);
+  const numOfRandomVocab = randomVocabulary(0, filteredVocabulary.length - 3); 
+  const threeRandomImages = filteredVocabulary.slice(numOfRandomVocab, numOfRandomVocab + 3); 
 
   const onClickWord = async (word) => {
     // TODO:
@@ -64,7 +68,7 @@ const Home = () => {
           <SectionTitle>{"Vocabulary"}</SectionTitle>
 
           <VocabularyContent>
-          { filteredVocabulary.map((word) => {
+          { threeRandomImages.map((word) => {
             return <Button key={word['no']} onClick={() => onClickWord(word['no'])}>
               <EmojiImage>{word['emoji']}</EmojiImage>
               <ButtonSubTitle>{word['no']}</ButtonSubTitle>
