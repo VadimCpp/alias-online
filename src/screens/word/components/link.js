@@ -20,9 +20,8 @@ const Container = styled.a`
   text-overflow: ellipsis;
   color: black;
   text-decoration: none;
-  transition: all .5s;
   text-align: center;
-  
+  transition: transform 200ms linear;
   &:hover {
     transform: scale(1.15);
   }

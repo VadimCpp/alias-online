@@ -41,7 +41,7 @@ const Word = () => {
       </Container.Header>
       <Container.Content>
         <WordContent>
-          <PlayingCard wordObject={vocabularyRecord} margin={"0 0 20px 0"}/>
+          <PlayingCard wordObject={vocabularyRecord} margin={"0 0 25px 0"}/>
           {
             [
               { slug: 'ordbokene', label: "Ordbøkene", backgroundColor: "rgb(252, 241, 242)" },
@@ -54,7 +54,7 @@ const Word = () => {
                   link={vocabularyRecord[v.slug]}
                   label={v.label}
                   icon={v.slug}
-                  margin={"0 0 20px 0"}
+                  margin={"0 0 10px 0"}
                   backgroundColor={v.backgroundColor}
                 />
               }
