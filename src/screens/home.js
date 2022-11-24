@@ -17,7 +17,16 @@ const Home = () => {
   const navigate = useNavigate();
   const { user, isLoading, lang } = useContext(UserContext);
 
+  const randomVocabulary = (min, max) => Math.floor(Math.random() * (max-min) + min); 
+
   const filteredVocabulary = vocabulary.filter(w => !!w['emoji']);
+  const numOfRandomVocab = randomVocabulary(0, filteredVocabulary.length - 3); 
+  const threeRandomImages = filteredVocabulary.slice(numOfRandomVocab, numOfRandomVocab + 3); 
+
+  const onClickWord = async (word) => {
+    // TODO:
+    // navigate(`/vokabular/${word}`);
+  }
 
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
@@ -57,6 +66,16 @@ const Home = () => {
         </HomeContent>
         <HomeContent background={"lightgray"}>
           <SectionTitle>{"Vocabulary"}</SectionTitle>
+
+          <VocabularyContent>
+          { threeRandomImages.map((word) => {
+            return <Button key={word['no']} onClick={() => onClickWord(word['no'])}>
+              <EmojiImage>{word['emoji']}</EmojiImage>
+              <ButtonSubTitle>{word['no']}</ButtonSubTitle>
+            </Button>
+          })}
+        </VocabularyContent>    
+          
           <p>
             { lang("THERE_ARE_X_WORDS_IN_VOCABULAR", filteredVocabulary.length) }
           </p>
@@ -147,5 +166,22 @@ const SectionFooter = styled.div`
   display: flex;
   flex-direction: column;
 `
+const VocabularyContent = styled.div`
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+`
+
+const EmojiImage = styled.h2`
+  font-size: 64px;
+  text-align: center;
+`
+const ButtonSubTitle = styled.span`
+  padding-top: 4px;
+  font-size: 12px;
+`;
 
 export default Home;
