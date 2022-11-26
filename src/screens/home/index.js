@@ -8,6 +8,7 @@ import Container from "../../components/constainer";
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
 import vocabulary from "../../utils/vocabulary.json";
+import PlayingCardMini from "./components/playingCardMini";
 
 const Home = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -30,8 +31,7 @@ const Home = () => {
   }, [filteredVocabulary]);
 
   const onClickWord = async (word) => {
-    // TODO:
-    // navigate(`/vokabular/${word}`);
+    navigate(`/vokabular/${word}`);
   }
 
   return (
@@ -74,10 +74,7 @@ const Home = () => {
           <SectionTitle>{"Vocabulary"}</SectionTitle>
           <VocabularyContent>
             {randomIcons.map((word) => {
-              return <Button key={word['no']} onClick={() => onClickWord(word['no'])}>
-                <EmojiImage>{word['emoji']}</EmojiImage>
-                <ButtonSubTitle>{word['no']}</ButtonSubTitle>
-              </Button>
+              return <PlayingCardMini wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
             })}
           </VocabularyContent>
           <p>
@@ -174,18 +171,8 @@ const VocabularyContent = styled.div`
   padding: 10px 20px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 `
-
-const EmojiImage = styled.h2`
-  font-size: 64px;
-  text-align: center;
-`
-const ButtonSubTitle = styled.span`
-  padding-top: 4px;
-  font-size: 12px;
-`;
 
 export default Home;
