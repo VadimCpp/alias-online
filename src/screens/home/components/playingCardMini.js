@@ -30,7 +30,7 @@ const Container = styled.div`
 const Icon = styled.p`
   font-size: 32px;
   text-align: center;
-  line-height: 50px;
+  line-height: 53px;
 `;
 
 const Word = styled.p`
@@ -39,6 +39,8 @@ const Word = styled.p`
   line-height: 18px;
   color: black;
   background-color: gold;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export default PlayingCardMini;

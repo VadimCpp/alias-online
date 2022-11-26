@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import Container from "../components/constainer";
-import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
-import { ReactComponent as MenuIcon } from "../icons/menu.svg";
-import UserContext from "../contexts/userContext";
-import Button from "../components/button";
-import vocabulary from "../utils/vocabulary.json";
+import Container from "../../components/constainer";
+import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
+import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
+import UserContext from "../../contexts/userContext";
+import vocabulary from "../../utils/vocabulary.json";
+import PlayingCardMedium from "./components/playingCardMedium";
 
 const Vocabulary = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -34,10 +34,7 @@ const Vocabulary = () => {
       <Container.Content>
         <VocabularyContent>
           { filteredVocabulary.map((word) => {
-            return <Button key={word['no']} onClick={() => onClickWord(word['no'])}>
-              <EmojiImage>{word['emoji']}</EmojiImage>
-              <ButtonSubTitle>{word['no']}</ButtonSubTitle>
-            </Button>
+            return <PlayingCardMedium wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
           })}
         </VocabularyContent>
       </Container.Content>
@@ -106,16 +103,6 @@ const VocabularyFooter = styled.div`
   background-color: #222;
   padding: 0 20px;
   color: white;
-`;
-
-const EmojiImage = styled.h2`
-  font-size: 64px;
-  text-align: center;
-`;
-
-const ButtonSubTitle = styled.span`
-  padding-top: 4px;
-  font-size: 12px;
 `;
 
 export default Vocabulary;
