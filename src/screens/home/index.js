@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import UserContext from "../contexts/userContext";
-import Button from "../components/button";
-import { signInWithGoogle, logOut } from "../firebase";
-import Container from "../components/constainer";
-import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
-import { ReactComponent as MenuIcon } from "../icons/menu.svg";
-import vocabulary from "../utils/vocabulary.json";
+import UserContext from "../../contexts/userContext";
+import Button from "../../components/button";
+import { signInWithGoogle, logOut } from "../../firebase";
+import Container from "../../components/constainer";
+import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
+import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
+import vocabulary from "../../utils/vocabulary.json";
 
 const Home = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -17,11 +17,17 @@ const Home = () => {
   const navigate = useNavigate();
   const { user, isLoading, lang } = useContext(UserContext);
 
-  const randomVocabulary = (min, max) => Math.floor(Math.random() * (max-min) + min); 
+  const [ filteredVocabulary, setFilteredVocabulary ] = useState([]);
+  const [ randomIcons, setRandomIcons ] = useState([]);
 
-  const filteredVocabulary = vocabulary.filter(w => !!w['emoji']);
-  const numOfRandomVocab = randomVocabulary(0, filteredVocabulary.length - 3); 
-  const threeRandomImages = filteredVocabulary.slice(numOfRandomVocab, numOfRandomVocab + 3); 
+  useEffect(() => setFilteredVocabulary(vocabulary.filter(w => !!w['emoji'])), []);
+  useEffect(() => {
+    if (filteredVocabulary.length) {
+      const getRandomIndex = (min, max) => Math.floor(Math.random() * (max-min) + min);
+      const randomIndex = getRandomIndex(0, filteredVocabulary.length - 3);
+      setRandomIcons(filteredVocabulary.slice(randomIndex, randomIndex + 3));
+    }
+  }, [filteredVocabulary]);
 
   const onClickWord = async (word) => {
     // TODO:
@@ -66,16 +72,14 @@ const Home = () => {
         </HomeContent>
         <HomeContent background={"lightgray"}>
           <SectionTitle>{"Vocabulary"}</SectionTitle>
-
           <VocabularyContent>
-          { threeRandomImages.map((word) => {
-            return <Button key={word['no']} onClick={() => onClickWord(word['no'])}>
-              <EmojiImage>{word['emoji']}</EmojiImage>
-              <ButtonSubTitle>{word['no']}</ButtonSubTitle>
-            </Button>
-          })}
-        </VocabularyContent>    
-          
+            {randomIcons.map((word) => {
+              return <Button key={word['no']} onClick={() => onClickWord(word['no'])}>
+                <EmojiImage>{word['emoji']}</EmojiImage>
+                <ButtonSubTitle>{word['no']}</ButtonSubTitle>
+              </Button>
+            })}
+          </VocabularyContent>
           <p>
             { lang("THERE_ARE_X_WORDS_IN_VOCABULAR", filteredVocabulary.length) }
           </p>
