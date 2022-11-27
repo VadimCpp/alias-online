@@ -87,6 +87,7 @@ const VocabularyContent = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 100px;
 `;
 
 const VocabularyFooter = styled.div`

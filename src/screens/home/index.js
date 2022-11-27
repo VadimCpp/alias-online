@@ -29,6 +29,11 @@ const Home = () => {
     }
   }, [filteredVocabulary]);
 
+  // https://stackoverflow.com/a/8745829/1775459
+  useEffect(() => {
+    window.scrollTo(1, 0);
+  }, []);
+
   const onClickWord = async (word) => {
     navigate(`/vokabular/${word}`);
   }
@@ -84,6 +89,7 @@ const Home = () => {
               {"See all"}
             </Button>
           </SectionFooter>
+          <BlankSpace />
         </HomeContent>
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
@@ -162,6 +168,11 @@ const SectionFooter = styled.div`
   display: flex;
   flex-direction: column;
 `
+
+const BlankSpace = styled.div`
+  height: 100px;
+`;
+
 const VocabularyContent = styled.div`
   padding: 10px 20px;
   display: flex;

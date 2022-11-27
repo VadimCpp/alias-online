@@ -21,7 +21,7 @@ Container.Footer = ({children, paddingBottom, ...props}) => {
 
 const Header = styled.header`
   height: ${ props => props.height};
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -30,7 +30,7 @@ const Header = styled.header`
 
 const Footer = styled.header`
   height: ${ props => props.height};
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
@@ -39,7 +39,7 @@ const Footer = styled.header`
 
 const StyledContainer = styled.div`
   width: 100%; 
-  height: 100vh;
+  height: 101vh;
   box-sizing: border-box;
   padding-top: ${ props => props.paddingTop};
   padding-bottom: ${ props => props.paddingBottom};
