@@ -5,7 +5,6 @@ import UserContext from "../../contexts/userContext";
 import Button from "../../components/button";
 import { signInWithGoogle, logOut } from "../../firebase";
 import Container from "../../components/constainer";
-import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
 import vocabulary from "../../utils/vocabulary.json";
 import PlayingCardMini from "./components/playingCardMini";
@@ -38,7 +37,7 @@ const Home = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <HomeHeader>
-          <SettingsButton onClick={() => navigate("/lang-settings")} />
+          <EmptyBlock />
           <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
           <MenuButton onClick={() => null} />
         </HomeHeader>
@@ -74,7 +73,7 @@ const Home = () => {
           <SectionTitle>{"Vocabulary"}</SectionTitle>
           <VocabularyContent>
             {randomIcons.map((word) => {
-              return <PlayingCardMini wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
+              return <PlayingCardMini key={word['no']} wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
             })}
           </VocabularyContent>
           <p>
@@ -106,13 +105,18 @@ const HomeHeader = styled.div`
   padding: 0 20px;
 `;
 
-const SettingsButton = styled(SettingsIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
+const EmptyBlock = styled.div`
+  width: 0;
+  height: 0;
+`;
+
+const Title = styled.h1`  
+  text-align: center;
+  font-size: 36px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700; 
+  cursor: pointer;
 `;
 
 const MenuButton = styled(MenuIcon)`
@@ -123,15 +127,6 @@ const MenuButton = styled(MenuIcon)`
     transform: scale(1.25);
   }
   visibility: hidden;
-`;
-
-const Title = styled.h1`  
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700; 
-  cursor: pointer;
 `;
 
 const HomeContent = styled.div`

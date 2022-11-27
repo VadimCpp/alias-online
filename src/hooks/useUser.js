@@ -23,6 +23,11 @@ const useUser = () => {
     return result;
   }, [interfaceLang]);
 
+  // Menu
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => setIsModalOpen(true);
+  const hideModal = () => setIsModalOpen(false);
+
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, authUser => {
@@ -87,7 +92,10 @@ const useUser = () => {
     rooms,
     interfaceLang,
     setInterfaceLang,
-    lang
+    lang,
+    isModalOpen,
+    showModal,
+    hideModal,
   };
 };
 

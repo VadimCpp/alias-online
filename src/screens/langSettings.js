@@ -5,6 +5,7 @@ import UserContext from "../contexts/userContext";
 import { updateLang } from "../firebase";
 import Button from "../components/button";
 import Container from "../components/constainer";
+import {ReactComponent as MenuIcon} from "../icons/menu.svg";
 
 const BACK = -1;
 
@@ -15,7 +16,7 @@ const LangSettings = () => {
 
   const navigate = useNavigate();
 
-  const { user, interfaceLang, setInterfaceLang, lang } = useContext(UserContext);
+  const { user, interfaceLang, setInterfaceLang, lang, showModal } = useContext(UserContext);
 
   const langHandler = async (key) => {
     if (user) {
@@ -52,7 +53,9 @@ const LangSettings = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <LangHeader>
-          <Title onClick={() => navigate("/")}>{lang("LANGUAGE_SETTINGS")}</Title>
+          <EmptyBlock />
+          <Title>{lang("LANGUAGE_SETTINGS")}</Title>
+          <MenuButton onClick={() => showModal()} />
         </LangHeader>
       </Container.Header>
       <Container.Content>
@@ -63,7 +66,7 @@ const LangSettings = () => {
                 langOptions.map((option) => {
                   let isChecked = interfaceLang === option.langKey;
                   return (
-                    <p>
+                    <p key={option.langKey}>
                       <input
                         type="radio"
                         name="langOptions"
@@ -102,6 +105,11 @@ const RadioButton = styled.div`
   line-height: 30px;
 `;
 
+const EmptyBlock = styled.div`
+  width: 0;
+  height: 0;
+`;
+
 const Title = styled.h1`  
   text-align: center;
   font-size: 36px;
@@ -111,10 +119,20 @@ const Title = styled.h1`
   cursor: pointer;
 `;
 
+const MenuButton = styled(MenuIcon)`
+  transition: all .5s;
+  width: 36px;
+  height: 36px;
+  &:hover {
+    transform: scale(1.25);
+  }
+  cursor: pointer;
+`;
+
 const LangHeader = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
   background-color: #2BC48A;

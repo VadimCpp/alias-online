@@ -11,6 +11,7 @@ import LangSettings from "./screens/langSettings";
 import PlayingRoom from "./screens/playingRoom";
 import Vocabulary from "./screens/vocabulary";
 import Word from "./screens/word";
+import Menu from "./components/menu";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/vokabular" element={<Vocabulary />} />
         <Route path="/vokabular/:word" element={<Word />} />
       </Routes>
+      <Menu />
     </UserContext.Provider>
   );
 };

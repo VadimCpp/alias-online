@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Container from "../../components/constainer";
-import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
 import UserContext from "../../contexts/userContext";
 import vocabulary from "../../utils/vocabulary.json";
@@ -14,7 +13,7 @@ const Vocabulary = () => {
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
-  const { lang } = useContext(UserContext);
+  const { lang, showModal } = useContext(UserContext);
 
   const onClickWord = async (word) => {
     navigate(`/vokabular/${encodeURI(word)}`);
@@ -26,15 +25,15 @@ const Vocabulary = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <VocabularyHeader>
-          <SettingsButton onClick={() => navigate("/lang-settings")} />
+          <EmptyBlock />
           <Title onClick={() => navigate("/")}>{lang("VOCABULARY")}</Title>
-          <MenuButton onClick={() => null} />
+          <MenuButton onClick={() => showModal()} />
         </VocabularyHeader>
       </Container.Header>
       <Container.Content>
         <VocabularyContent>
           { filteredVocabulary.map((word) => {
-            return <PlayingCardMedium wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
+            return <PlayingCardMedium key={word['no']} wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
           })}
         </VocabularyContent>
       </Container.Content>
@@ -47,13 +46,18 @@ const Vocabulary = () => {
   );
 };
 
-const SettingsButton = styled(SettingsIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
+const EmptyBlock = styled.div`
+  width: 0;
+  height: 0;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  font-size: 36px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
 `;
 
 const MenuButton = styled(MenuIcon)`
@@ -63,15 +67,6 @@ const MenuButton = styled(MenuIcon)`
   &:hover {
     transform: scale(1.25);
   }
-  visibility: hidden;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700;
   cursor: pointer;
 `;
 

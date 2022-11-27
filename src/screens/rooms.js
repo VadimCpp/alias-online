@@ -2,7 +2,6 @@ import React, { useContext, useCallback } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Container from "../components/constainer";
-import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
 import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 import UserContext from "../contexts/userContext";
 import Button from "../components/button";
@@ -15,7 +14,7 @@ const Rooms = () => {
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
-  const { user, users, rooms, isLoading, lang } = useContext(UserContext);
+  const { user, users, rooms, isLoading, lang, showModal } = useContext(UserContext);
 
   const isRoomEmpty = useCallback((room) => {
     for (let i = 0; i < users.length; i++) {
@@ -46,9 +45,9 @@ const Rooms = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <RoomsHeader>
-          <SettingsButton onClick={() => navigate("/lang-settings")} />
+          <EmptyBlock />
           <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
-          <MenuButton onClick={() => null} />
+          <MenuButton onClick={() => showModal()} />
         </RoomsHeader>
       </Container.Header>
       <Container.Content>
@@ -70,13 +69,18 @@ const Rooms = () => {
   );
 };
 
-const SettingsButton = styled(SettingsIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
+const EmptyBlock = styled.div`
+  width: 0;
+  height: 0;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  font-size: 36px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
 `;
 
 const MenuButton = styled(MenuIcon)`
@@ -86,15 +90,6 @@ const MenuButton = styled(MenuIcon)`
   &:hover {
     transform: scale(1.25);
   }
-  visibility: hidden;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700;
   cursor: pointer;
 `;
 

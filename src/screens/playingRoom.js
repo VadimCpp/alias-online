@@ -8,8 +8,6 @@ import VOCABULARY from "../utils/vocabulary.json";
 import Button from "../components/button";
 import ResetButton from "../components/resetButton";
 import Container from "../components/constainer";
-import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
-import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 import { isUserActive } from "../utils/helpers";
 
 const PlayingRoom = () => {
@@ -159,12 +157,12 @@ const PlayingRoom = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <PlayingRoomHeader>
-          <SettingsButton onClick={() => navigate("/lang-settings")} />
+          {/*<SettingsButton onClick={() => navigate("/lang-settings")} />*/}
           <TitleAndSubtitle>
             <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
             <SubTitle>{room.name}</SubTitle>
           </TitleAndSubtitle>
-          <MenuButton onClick={() => null} />
+          {/*<MenuButton onClick={() => null} />*/}
         </PlayingRoomHeader>
       </Container.Header>
       <Container.Content>
@@ -319,25 +317,6 @@ const SubStatusMessage = styled.p`
   margin-top: 10px;
   text-align: center;
   max-width: 260px;
-`;
-
-const SettingsButton = styled(SettingsIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-`;
-
-const MenuButton = styled(MenuIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  visibility: hidden;
 `;
 
 const Title = styled.h1`  
