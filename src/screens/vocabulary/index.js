@@ -47,8 +47,8 @@ const Vocabulary = () => {
 };
 
 const EmptyBlock = styled.div`
-  width: 0;
-  height: 0;
+  width: 36px;
+  height: 36px;
 `;
 
 const Title = styled.h1`

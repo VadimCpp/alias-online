@@ -2,12 +2,14 @@ import styled from "styled-components";
 import {useContext} from "react";
 import UserContext from "../contexts/userContext";
 import { useNavigate } from "react-router-dom";
+import AliasImage from '../images/bg.jpg';
 
 const Menu = () => {
   const navigate = useNavigate();
   const { isModalOpen, hideModal, lang } = useContext(UserContext);
   if (isModalOpen) {
     return <DarkScreen onClick={() => hideModal()}>
+      <BgImage />
       <MenuContainer>
         <MenuItem onClick={() => navigate("/")}>{lang("home")}</MenuItem>
         <MenuItem onClick={() => navigate("/rooms")}>{lang("rooms")}</MenuItem>
@@ -49,6 +51,21 @@ const MenuItem = styled.li`
   &:hover {
     background-color: rgba(0, 0, 0, .1);
   }
+`;
+
+const BgImage = styled.div`
+  opacity: .25;
+
+  /* The image used */
+  background-image: url("${AliasImage}");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export default Menu;
