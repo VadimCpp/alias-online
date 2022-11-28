@@ -9,11 +9,11 @@ import PlayingCardMedium from "./components/playingCardMedium";
 
 const Vocabulary = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
-  const HEADER_HEIGHT = "120px";
+  const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
-  const { lang, showModal } = useContext(UserContext);
+  const { lang } = useContext(UserContext);
 
   const onClickWord = async (word) => {
     navigate(`/vokabular/${encodeURI(word)}`);
@@ -26,8 +26,8 @@ const Vocabulary = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <Header
           title={lang("VOCABULARY")}
-          onBackButton={null}
-          onMenuButton={() => showModal()}
+          backButton
+          menuButton
         />
       </Container.Header>
       <Container.Content>

@@ -1,27 +1,34 @@
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import React from "react";
 import { ReactComponent as BackIcon } from "../icons/back.svg";
 import { ReactComponent as MenuIcon } from "../icons/menu.svg";
+import UserContext from "../contexts/userContext";
 
-const Header = ({ title, onBackButton, onMenuButton }) => {
+const BACK = -1;
+
+const Header = ({ title, backButton, menuButton }) => {
+  const navigate = useNavigate();
+  const { showModal } = useContext(UserContext);
+
   return (
     <Container>
-      { onBackButton ? <BackButton onClick={onBackButton} /> : <EmptyBlock /> }
+      { backButton ? <BackButton onClick={() => navigate(BACK)} /> : <EmptyBlock /> }
       <Title>{title}</Title>
-      { onMenuButton ? <MenuButton onClick={onMenuButton} /> : <EmptyBlock /> }
+      { menuButton ? <MenuButton onClick={() => showModal()} /> : <EmptyBlock /> }
     </Container>
   );
 };
 
 const EmptyBlock = styled.div`
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
 `;
 
 const BackButton = styled(BackIcon)`
   transition: all .5s;
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   &:hover {
     transform: scale(1.25);
   }
@@ -30,7 +37,7 @@ const BackButton = styled(BackIcon)`
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 36px;
+  font-size: 24px;
   color: #ffffff;
   font-style: normal;
   font-weight: 700;
@@ -39,8 +46,8 @@ const Title = styled.h1`
 
 const MenuButton = styled(MenuIcon)`
   transition: all .5s;
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   &:hover {
     transform: scale(1.25);
   }

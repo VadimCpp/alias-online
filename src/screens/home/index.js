@@ -11,7 +11,7 @@ import PlayingCardMini from "./components/playingCardMini";
 
 const Home = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
-  const HEADER_HEIGHT = "120px";
+  const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
@@ -41,11 +41,7 @@ const Home = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <Header
-          title={lang("ALIAS_ONLINE")}
-          onBackButton={null}
-          onMenuButton={null}
-        />
+        <Header title={lang("ALIAS_ONLINE")} />
       </Container.Header>
       <Container.Content>
         <HomeContent>

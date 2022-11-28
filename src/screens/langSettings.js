@@ -11,12 +11,12 @@ const BACK = -1;
 
 const LangSettings = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
-  const HEADER_HEIGHT = "120px";
+  const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
 
-  const { user, interfaceLang, setInterfaceLang, lang, showModal } = useContext(UserContext);
+  const { user, interfaceLang, setInterfaceLang, lang } = useContext(UserContext);
 
   const langHandler = async (key) => {
     if (user) {
@@ -54,8 +54,8 @@ const LangSettings = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <Header
           title={lang("LANGUAGE_SETTINGS")}
-          onBackButton={() => navigate(BACK)}
-          onMenuButton={() => showModal()}
+          backButton
+          menuButton
         />
       </Container.Header>
       <Container.Content>

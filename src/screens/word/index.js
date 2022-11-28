@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Container from "../../components/constainer";
 import Header from "../../components/header";
@@ -8,14 +8,10 @@ import vocabulary from "../../utils/vocabulary.json";
 import PlayingCard from "./components/playingCard";
 import Link from "./components/link";
 
-const BACK = -1;
-
 const Word = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
   const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "50px";
-
-  const navigate = useNavigate();
 
   let { word } = useParams();
 
@@ -30,15 +26,15 @@ const Word = () => {
     }
   }, [decodedWord])
 
-  const { lang, showModal } = useContext(UserContext);
+  const { lang } = useContext(UserContext);
 
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <Header
           title={decodedWord}
-          onBackButton={() => navigate(BACK)}
-          onMenuButton={() => showModal()}
+          backButton
+          menuButton
         />
       </Container.Header>
       <Container.Content>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { setLeader, setWinner, resetGame, updateScore, updateGreeting } from "../firebase";
 import UserList from "../components/userList";
@@ -11,17 +11,13 @@ import UserContext from "../contexts/userContext";
 import VOCABULARY from "../utils/vocabulary.json";
 import { isUserActive } from "../utils/helpers";
 
-const BACK = -1;
-
 const PlayingRoom = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
-  const HEADER_HEIGHT = "120px";
+  const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "130px";
 
-  const navigate = useNavigate();
-
   let { slug } = useParams();
-  const { user, users, rooms, lang, showModal } = useContext(UserContext);
+  const { user, users, rooms, lang } = useContext(UserContext);
 
   const [ isChooseWinner, setIsChooseWinner ] = useState(false);
   const [ room, setRoom ] = useState(null);
@@ -161,8 +157,8 @@ const PlayingRoom = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <Header
           title={room.name}
-          onBackButton={() => navigate(BACK)}
-          onMenuButton={() => showModal()}
+          backButton
+          menuButton
         />
       </Container.Header>
       <Container.Content>

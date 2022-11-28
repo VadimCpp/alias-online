@@ -10,11 +10,11 @@ import { isUserActive } from "../utils/helpers";
 
 const Rooms = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
-  const HEADER_HEIGHT = "120px";
+  const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "50px";
 
   const navigate = useNavigate();
-  const { user, users, rooms, isLoading, lang, showModal } = useContext(UserContext);
+  const { user, users, rooms, isLoading, lang } = useContext(UserContext);
 
   const isRoomEmpty = useCallback((room) => {
     for (let i = 0; i < users.length; i++) {
@@ -46,8 +46,8 @@ const Rooms = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <Header
           title={lang("ALIAS_ONLINE")}
-          onBackButton={null}
-          onMenuButton={() => showModal()}
+          backButton
+          menuButton
         />
       </Container.Header>
       <Container.Content>
