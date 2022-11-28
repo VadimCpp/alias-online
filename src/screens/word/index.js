@@ -1,11 +1,12 @@
 import React, {useContext, useEffect, useState} from "react";
 import styled from "styled-components";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Container from "../../components/constainer";
 import UserContext from "../../contexts/userContext";
 import vocabulary from "../../utils/vocabulary.json";
 import PlayingCard from "./components/playingCard";
 import Link from "./components/link";
+import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
 
 const Word = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -25,13 +26,15 @@ const Word = () => {
     }
   }, [decodedWord])
 
-  const { lang } = useContext(UserContext);
+  const { lang, showModal } = useContext(UserContext);
 
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <WordHeader>
+          <EmptyBlock />
           <Title>{decodedWord}</Title>
+          <MenuButton onClick={() => showModal()} />
         </WordHeader>
       </Container.Header>
       <Container.Content>
@@ -67,12 +70,27 @@ const Word = () => {
   );
 };
 
+const EmptyBlock = styled.div`
+  width: 36px;
+  height: 36px;
+`;
+
 const Title = styled.h1`
   text-align: center;
   font-size: 36px;
   color: #ffffff;
   font-style: normal;
   font-weight: 700;
+  cursor: pointer;
+`;
+
+const MenuButton = styled(MenuIcon)`
+  transition: all .5s;
+  width: 36px;
+  height: 36px;
+  &:hover {
+    transform: scale(1.25);
+  }
   cursor: pointer;
 `;
 

@@ -9,6 +9,7 @@ import Button from "../components/button";
 import ResetButton from "../components/resetButton";
 import Container from "../components/constainer";
 import { isUserActive } from "../utils/helpers";
+import { ReactComponent as MenuIcon } from "../icons/menu.svg";
 
 const PlayingRoom = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -18,7 +19,7 @@ const PlayingRoom = () => {
   const navigate = useNavigate();
 
   let { slug } = useParams();
-  const { user, users, rooms, lang } = useContext(UserContext);
+  const { user, users, rooms, lang, showModal } = useContext(UserContext);
 
   const [ isChooseWinner, setIsChooseWinner ] = useState(false);
   const [ room, setRoom ] = useState(null);
@@ -157,12 +158,12 @@ const PlayingRoom = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <PlayingRoomHeader>
-          {/*<SettingsButton onClick={() => navigate("/lang-settings")} />*/}
+          <EmptyBlock />
           <TitleAndSubtitle>
             <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
             <SubTitle>{room.name}</SubTitle>
           </TitleAndSubtitle>
-          {/*<MenuButton onClick={() => null} />*/}
+          <MenuButton onClick={() => showModal()} />
         </PlayingRoomHeader>
       </Container.Header>
       <Container.Content>
@@ -319,12 +320,27 @@ const SubStatusMessage = styled.p`
   max-width: 260px;
 `;
 
+const EmptyBlock = styled.div`
+  width: 36px;
+  height: 36px;
+`;
+
 const Title = styled.h1`  
   text-align: center;
   font-size: 36px;
   color: #ffffff;
   font-style: normal;
   font-weight: 700; 
+  cursor: pointer;
+`;
+
+const MenuButton = styled(MenuIcon)`
+  transition: all .5s;
+  width: 36px;
+  height: 36px;
+  &:hover {
+    transform: scale(1.25);
+  }
   cursor: pointer;
 `;
 
