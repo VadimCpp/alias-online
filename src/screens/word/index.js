@@ -1,13 +1,12 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import {useNavigate, useParams} from "react-router-dom";
 import Container from "../../components/constainer";
+import Header from "../../components/header";
 import UserContext from "../../contexts/userContext";
 import vocabulary from "../../utils/vocabulary.json";
 import PlayingCard from "./components/playingCard";
 import Link from "./components/link";
-import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
-import { ReactComponent as BackIcon } from "../../icons/back.svg";
 
 const BACK = -1;
 
@@ -36,11 +35,11 @@ const Word = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <WordHeader>
-          <BackButton onClick={() => navigate(BACK)} />
-          <Title>{decodedWord}</Title>
-          <MenuButton onClick={() => showModal()} />
-        </WordHeader>
+        <Header
+          title={decodedWord}
+          onBackButton={() => navigate(BACK)}
+          onMenuButton={() => showModal()}
+        />
       </Container.Header>
       <Container.Content>
         <WordContent>
@@ -74,45 +73,6 @@ const Word = () => {
     </Container>
   );
 };
-
-const BackButton = styled(BackIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700;
-  cursor: pointer;
-`;
-
-const MenuButton = styled(MenuIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const WordHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  background-color: #2BC48A;
-  padding: 0 20px;
-`;
 
 const WordContent = styled.div`
   padding: 10px 20px;

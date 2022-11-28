@@ -1,10 +1,10 @@
 import React, { useContext, useCallback } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import Container from "../components/constainer";
-import { ReactComponent as MenuIcon } from "../icons/menu.svg";
-import UserContext from "../contexts/userContext";
+import Header from "../components/header";
 import Button from "../components/button";
+import UserContext from "../contexts/userContext";
 import { updateRoom } from "../firebase";
 import { isUserActive } from "../utils/helpers";
 
@@ -44,11 +44,11 @@ const Rooms = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <RoomsHeader>
-          <EmptyBlock />
-          <Title>{lang("ALIAS_ONLINE")}</Title>
-          <MenuButton onClick={() => showModal()} />
-        </RoomsHeader>
+        <Header
+          title={lang("ALIAS_ONLINE")}
+          onBackButton={null}
+          onMenuButton={() => showModal()}
+        />
       </Container.Header>
       <Container.Content>
         <RoomsContent>
@@ -68,40 +68,6 @@ const Rooms = () => {
     </Container>
   );
 };
-
-const EmptyBlock = styled.div`
-  width: 36px;
-  height: 36px;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700;
-  cursor: pointer;
-`;
-
-const MenuButton = styled(MenuIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const RoomsHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  background-color: #2BC48A;
-  padding: 0 20px;
-`;
 
 const RoomsContent = styled.div`
   padding: 10px 20px;

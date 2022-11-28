@@ -5,8 +5,7 @@ import UserContext from "../contexts/userContext";
 import { updateLang } from "../firebase";
 import Button from "../components/button";
 import Container from "../components/constainer";
-import {ReactComponent as MenuIcon} from "../icons/menu.svg";
-import {ReactComponent as BackIcon} from "../icons/back.svg";
+import Header from "../components/header";
 
 const BACK = -1;
 
@@ -53,11 +52,11 @@ const LangSettings = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <LangHeader>
-          <BackButton onClick={() => navigate(BACK)} />
-          <Title>{lang("LANGUAGE_SETTINGS")}</Title>
-          <MenuButton onClick={() => showModal()} />
-        </LangHeader>
+        <Header
+          title={lang("LANGUAGE_SETTINGS")}
+          onBackButton={() => navigate(BACK)}
+          onMenuButton={() => showModal()}
+        />
       </Container.Header>
       <Container.Content>
         <LangContent>
@@ -104,45 +103,6 @@ const RadioButton = styled.div`
   display: flex;
   flex-direction: column;
   line-height: 30px;
-`;
-
-const BackButton = styled(BackIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const Title = styled.h1`  
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700; 
-  cursor: pointer;
-`;
-
-const MenuButton = styled(MenuIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const LangHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  background-color: #2BC48A;
-  padding: 0 20px;
 `;
 
 const LangContent = styled.div`

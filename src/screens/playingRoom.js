@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import UserList from "../components/userList";
-import UserContext from "../contexts/userContext";
+import styled from "styled-components";
 import { setLeader, setWinner, resetGame, updateScore, updateGreeting } from "../firebase";
-import VOCABULARY from "../utils/vocabulary.json";
+import UserList from "../components/userList";
 import Button from "../components/button";
 import ResetButton from "../components/resetButton";
 import Container from "../components/constainer";
+import Header from "../components/header";
+import UserContext from "../contexts/userContext";
+import VOCABULARY from "../utils/vocabulary.json";
 import { isUserActive } from "../utils/helpers";
-import { ReactComponent as MenuIcon } from "../icons/menu.svg";
-import { ReactComponent as BackIcon } from "../icons/back.svg";
 
 const BACK = -1;
 
@@ -160,11 +159,11 @@ const PlayingRoom = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <PlayingRoomHeader>
-          <BackButton onClick={() => navigate(BACK)} />
-          <Title>{room.name}</Title>
-          <MenuButton onClick={() => showModal()} />
-        </PlayingRoomHeader>
+        <Header
+          title={room.name}
+          onBackButton={() => navigate(BACK)}
+          onMenuButton={() => showModal()}
+        />
       </Container.Header>
       <Container.Content>
         {status === 0 && (
@@ -318,48 +317,6 @@ const SubStatusMessage = styled.p`
   margin-top: 10px;
   text-align: center;
   max-width: 260px;
-`;
-
-const BackButton = styled(BackIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const Title = styled.h1`  
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700; 
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-const MenuButton = styled(MenuIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const PlayingRoomHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  background-color: #2BC48A;
-  padding: 0 20px;
-  z-index: 1;
 `;
 
 const PlayingRoomControlFooter = styled.div`

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import Container from "../../components/constainer";
-import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
+import Header from "../../components/header";
 import UserContext from "../../contexts/userContext";
 import vocabulary from "../../utils/vocabulary.json";
 import PlayingCardMedium from "./components/playingCardMedium";
@@ -24,11 +24,11 @@ const Vocabulary = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <VocabularyHeader>
-          <EmptyBlock />
-          <Title>{lang("VOCABULARY")}</Title>
-          <MenuButton onClick={() => showModal()} />
-        </VocabularyHeader>
+        <Header
+          title={lang("VOCABULARY")}
+          onBackButton={null}
+          onMenuButton={() => showModal()}
+        />
       </Container.Header>
       <Container.Content>
         <VocabularyContent>
@@ -45,40 +45,6 @@ const Vocabulary = () => {
     </Container>
   );
 };
-
-const EmptyBlock = styled.div`
-  width: 36px;
-  height: 36px;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700;
-  cursor: pointer;
-`;
-
-const MenuButton = styled(MenuIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  cursor: pointer;
-`;
-
-const VocabularyHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  background-color: #2BC48A;
-  padding: 0 20px;
-`;
 
 const VocabularyContent = styled.div`
   padding: 10px 20px;

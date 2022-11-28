@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { signInWithGoogle, logOut } from "../../firebase";
 import UserContext from "../../contexts/userContext";
 import Button from "../../components/button";
-import { signInWithGoogle, logOut } from "../../firebase";
+import Header from "../../components/header";
 import Container from "../../components/constainer";
-import { ReactComponent as MenuIcon } from "../../icons/menu.svg";
 import vocabulary from "../../utils/vocabulary.json";
 import PlayingCardMini from "./components/playingCardMini";
 
@@ -41,11 +41,11 @@ const Home = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <HomeHeader>
-          <EmptyBlock />
-          <Title>{lang("ALIAS_ONLINE")}</Title>
-          <MenuButton onClick={() => null} />
-        </HomeHeader>
+        <Header
+          title={lang("ALIAS_ONLINE")}
+          onBackButton={null}
+          onMenuButton={null}
+        />
       </Container.Header>
       <Container.Content>
         <HomeContent>
@@ -100,40 +100,6 @@ const Home = () => {
     </Container>
   );
 };
-
-const HomeHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  background-color: #2BC48A;
-  padding: 0 20px;
-`;
-
-const EmptyBlock = styled.div`
-  width: 36px;
-  height: 36px;
-`;
-
-const Title = styled.h1`  
-  text-align: center;
-  font-size: 36px;
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 700; 
-  cursor: pointer;
-`;
-
-const MenuButton = styled(MenuIcon)`
-  transition: all .5s;
-  width: 36px;
-  height: 36px;
-  &:hover {
-    transform: scale(1.25);
-  }
-  visibility: hidden;
-`;
 
 const HomeContent = styled.div`
   padding: 10px 20px;
