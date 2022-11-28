@@ -26,7 +26,7 @@ const Vocabulary = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <VocabularyHeader>
           <EmptyBlock />
-          <Title onClick={() => navigate("/")}>{lang("VOCABULARY")}</Title>
+          <Title>{lang("VOCABULARY")}</Title>
           <MenuButton onClick={() => showModal()} />
         </VocabularyHeader>
       </Container.Header>

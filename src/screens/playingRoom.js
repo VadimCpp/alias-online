@@ -10,6 +10,9 @@ import ResetButton from "../components/resetButton";
 import Container from "../components/constainer";
 import { isUserActive } from "../utils/helpers";
 import { ReactComponent as MenuIcon } from "../icons/menu.svg";
+import { ReactComponent as BackIcon } from "../icons/back.svg";
+
+const BACK = -1;
 
 const PlayingRoom = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -158,11 +161,8 @@ const PlayingRoom = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <PlayingRoomHeader>
-          <EmptyBlock />
-          <TitleAndSubtitle>
-            <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
-            <SubTitle>{room.name}</SubTitle>
-          </TitleAndSubtitle>
+          <BackButton onClick={() => navigate(BACK)} />
+          <Title>{room.name}</Title>
           <MenuButton onClick={() => showModal()} />
         </PlayingRoomHeader>
       </Container.Header>
@@ -320,9 +320,14 @@ const SubStatusMessage = styled.p`
   max-width: 260px;
 `;
 
-const EmptyBlock = styled.div`
+const BackButton = styled(BackIcon)`
+  transition: all .5s;
   width: 36px;
   height: 36px;
+  &:hover {
+    transform: scale(1.25);
+  }
+  cursor: pointer;
 `;
 
 const Title = styled.h1`  
@@ -332,6 +337,8 @@ const Title = styled.h1`
   font-style: normal;
   font-weight: 700; 
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const MenuButton = styled(MenuIcon)`
@@ -342,18 +349,6 @@ const MenuButton = styled(MenuIcon)`
     transform: scale(1.25);
   }
   cursor: pointer;
-`;
-
-const SubTitle = styled.p`
-  text-align: center;
-  color: white;
-  margin: 0;
-`;
-
-const TitleAndSubtitle = styled.div`
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
 `;
 
 const PlayingRoomHeader = styled.div`

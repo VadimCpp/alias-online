@@ -46,7 +46,7 @@ const Rooms = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <RoomsHeader>
           <EmptyBlock />
-          <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
+          <Title>{lang("ALIAS_ONLINE")}</Title>
           <MenuButton onClick={() => showModal()} />
         </RoomsHeader>
       </Container.Header>

@@ -6,6 +6,7 @@ import { updateLang } from "../firebase";
 import Button from "../components/button";
 import Container from "../components/constainer";
 import {ReactComponent as MenuIcon} from "../icons/menu.svg";
+import {ReactComponent as BackIcon} from "../icons/back.svg";
 
 const BACK = -1;
 
@@ -53,7 +54,7 @@ const LangSettings = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <LangHeader>
-          <EmptyBlock />
+          <BackButton onClick={() => navigate(BACK)} />
           <Title>{lang("LANGUAGE_SETTINGS")}</Title>
           <MenuButton onClick={() => showModal()} />
         </LangHeader>
@@ -105,9 +106,14 @@ const RadioButton = styled.div`
   line-height: 30px;
 `;
 
-const EmptyBlock = styled.div`
+const BackButton = styled(BackIcon)`
+  transition: all .5s;
   width: 36px;
   height: 36px;
+  &:hover {
+    transform: scale(1.25);
+  }
+  cursor: pointer;
 `;
 
 const Title = styled.h1`  

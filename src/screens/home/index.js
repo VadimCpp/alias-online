@@ -43,7 +43,7 @@ const Home = () => {
       <Container.Header height={HEADER_HEIGHT}>
         <HomeHeader>
           <EmptyBlock />
-          <Title onClick={() => navigate("/")}>{lang("ALIAS_ONLINE")}</Title>
+          <Title>{lang("ALIAS_ONLINE")}</Title>
           <MenuButton onClick={() => null} />
         </HomeHeader>
       </Container.Header>
