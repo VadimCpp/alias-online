@@ -162,5 +162,66 @@
   { "no": "Bumerang", "en": "Boomerang", "emoji": "🪃", "ordbokene": "https://ordbokene.no/bm/8099/bumerang", "naob": "https://naob.no/ordbok/bumerang", "snl": "https://snl.no/bumerang" },
   { "no": "Hane", "en": "Rooster", "emoji": "🐓", "ordbokene": "https://ordbokene.no/bm/22332/hane", "naob": "https://naob.no/ordbok/hane", "snl": "https://snl.no/hane" },
   { "no": "Giraff", "en": "Giraffe", "emoji": "🦒", "ordbokene": null, "naob": "https://naob.no/ordbok/giraff", "snl": "https://snl.no/sjiraff" },
-  { "no": "Glass", "en": "Glass", "emoji": null, "ordbokene": "https://ordbokene.no/bm/20134/glass", "naob": "https://naob.no/ordbok/glass", "snl": "https://snl.no/glass" }
+  { "no": "Glass", "en": "Glass", "emoji": null, "ordbokene": "https://ordbokene.no/bm/20134/glass", "naob": "https://naob.no/ordbok/glass", "snl": "https://snl.no/glass" },
+
+  { "id": 201, "no": "Handlevogn", "en":  "Shopping cart", "emoji": "🛒", "ordbokene": "https://ordbokene.no/bm/116103/handlevogn", "naob": "https://naob.no/ordbok/handlevogn", "snl": null },
+  { "id": 202, "no": "Vannkanne", "en":  "Watering can", "emoji": null, "ordbokene": null, "naob": "https://naob.no/ordbok/vannkanne", "snl": null },
+  { "id": 203, "no": "Frosk", "en":  "Frog", "emoji": "🐸", "ordbokene": "https://ordbokene.no/bm/18192/frosk", "naob": "https://naob.no/ordbok/frosk_1", "snl": "https://snl.no/ekte_frosker" },
+  { "id": 204, "no": "Tromme", "en":  "Drum", "emoji": "🥁", "ordbokene": "https://ordbokene.no/bm/62405/tromme", "naob": "https://naob.no/ordbok/tromme_1", "snl": "https://snl.no/tromme" },
+  { "id": 205, "no": "Datamaskin", "en":  "Computer", "emoji": "💻", "ordbokene": "https://ordbokene.no/bm/9313/datamaskin", "naob": "https://naob.no/ordbok/datamaskin", "snl": "https://snl.no/datamaskin" },
+  { "id": 206, "no": "Kjøleskap", "en":  "Refrigerator", "emoji": null, "ordbokene": "https://ordbokene.no/bm/29736/kj%C3%B8leskap", "naob": "https://naob.no/ordbok/kj%C3%B8leskap", "snl": "https://snl.no/kj%C3%B8leskap" },
+  { "id": 207, "no": "Hamburger", "en":  "Hamburger", "emoji": "🍔", "ordbokene": "https://ordbokene.no/bm/22124/hamburger", "naob": "https://naob.no/ordbok/hamburger_1", "snl": "https://snl.no/hamburger" },
+  { "id": 209, "no": "Robot", "en":  "Robot", "emoji": "🤖", "ordbokene": "https://ordbokene.no/bm/48735/robot", "naob": "https://naob.no/ordbok/robot", "snl": "https://snl.no/robot" },
+
+  { "id": 213, "no": "Pølse", "en":  "Sausage", "emoji": null, "ordbokene": "https://ordbokene.no/bm/47029/p%C3%B8lse", "naob": "https://naob.no/ordbok/p%C3%B8lse", "snl": "https://snl.no/p%C3%B8lse" },
+  { "id": 219, "no": "Hund", "en":  "Dog", "emoji": "🐕", "ordbokene": "https://ordbokene.no/bm/24522/hund", "naob": "https://naob.no/ordbok/hund", "snl": "https://snl.no/hund" },
+
+  { "id": 220, "no": "Heisekran", "en":  "Hoist crane", "emoji": "🏗", "ordbokene": "https://ordbokene.no/bm/22894/heisekran", "naob": "https://naob.no/ordbok/heisekran", "snl": null },
+  { "id": 221, "no": "Belte", "en":  "Belt", "emoji": null, "ordbokene": "https://ordbokene.no/bm/5196/belte", "naob": "https://naob.no/ordbok/belte_1", "snl": "https://snl.no/belte" },
+  { "id": 222, "no": "Mais", "en":  "Corn", "emoji": "🌽", "ordbokene": "https://ordbokene.no/bm/36587/mais", "naob": "https://naob.no/ordbok/mais", "snl": "https://snl.no/mais" },
+  { "id": 223, "no": "Kjole", "en":  "Dress", "emoji": "👗", "ordbokene": "https://ordbokene.no/bm/29658/kjole", "naob": "https://naob.no/ordbok/kjole", "snl": "https://snl.no/kjole" },
+  { "id": 224, "no": "Blomster", "en":  "Flowers", "emoji": "🌸", "ordbokene": "https://ordbokene.no/bm/6552/blomst", "naob": "https://naob.no/ordbok/blomst", "snl": "https://snl.no/blomst" },
+  { "id": 226, "no": "Bok", "en":  "Book", "emoji": "📖", "ordbokene": "https://ordbokene.no/bm/6790/bok", "naob": "https://naob.no/ordbok/bok_1", "snl": "https://snl.no/bok" },
+  { "id": 227, "no": "Julenissen", "en":  "Santa Claus", "emoji": "🎅🏻", "ordbokene": "https://ordbokene.no/bm/27988/julenisse", "naob": "https://naob.no/ordbok/julenisse", "snl": "https://snl.no/julenissen" },
+  { "id": 228, "no": "Pil", "en":  "Arrow", "emoji": null, "ordbokene": "https://ordbokene.no/bm/44919/pil", "naob": "https://naob.no/ordbok/pil_1", "snl": "https://snl.no/pil" },
+  { "id": 229, "no": "Ku", "en":  "Cow", "emoji": "🐄", "ordbokene": "https://ordbokene.no/bm/32538/ku", "naob": "https://naob.no/ordbok/ku", "snl": "https://snl.no/ku" },
+
+  { "id": 230, "no": "Marihøne", "en":  "Ladybug", "emoji": "🐞", "ordbokene": "https://ordbokene.no/bm/37066/marih%C3%B8ne", "naob": "https://naob.no/ordbok/marih%C3%B8ne", "snl": "https://snl.no/marih%C3%B8ner" },
+  { "id": 232, "no": "Dekk", "en":  "Tire", "emoji": null, "ordbokene": "https://ordbokene.no/bm/9538/dekk", "naob": "https://naob.no/ordbok/dekk_1", "snl": "https://snl.no/bildekk" },
+  { "id": 233, "no": "Kjetting", "en":  "Chain", "emoji": "⛓", "ordbokene": "https://ordbokene.no/bm/29648/kjetting", "naob": "https://naob.no/ordbok/kjetting", "snl": "https://snl.no/kjetting" },
+
+  { "id": 247, "no": "Statue", "en":  "Statue", "emoji": null, "ordbokene": "https://ordbokene.no/bm/56810/statue", "naob": "https://naob.no/ordbok/statue", "snl": "https://snl.no/statue" },
+  { "id": 249, "no": "Mikrobølgeovn", "en":  "Microwave oven", "emoji": null, "ordbokene": "https://ordbokene.no/bm/38325/mikrob%C3%B8lgeovn", "naob": "https://naob.no/ordbok/mikrob%C3%B8lgeovn", "snl": "https://snl.no/mikrob%C3%B8lgeovn" },
+
+  { "id": 250, "no": "Kanin", "en":  "Rabbit", "emoji": "🐇", "ordbokene": "https://ordbokene.no/bm/28526/kanin", "naob": "https://naob.no/ordbok/kanin", "snl": "https://snl.no/kanin" },
+  { "id": 251, "no": "Klovn", "en":  "Clown", "emoji": "🤡", "ordbokene": "https://ordbokene.no/bm/30257/klovn", "naob": "https://naob.no/ordbok/klovn", "snl": "https://snl.no/klovn" },
+  { "id": 253, "no": "Palme", "en":  "Palm", "emoji": "🌴", "ordbokene": "https://ordbokene.no/bm/43951/palme", "naob": "https://naob.no/ordbok/palme_2", "snl": "https://snl.no/palme" },
+  { "id": 254, "no": "Fjær", "en":  "Feather", "emoji": "🪶", "ordbokene": "https://ordbokene.no/bm/15128/fj%C3%A6r", "naob": "https://naob.no/ordbok/fj%C3%A6r_1", "snl": "https://snl.no/fj%C3%A6r" },
+  { "id": 256, "no": "Hodetelefoner", "en":  "Headphones", "emoji": "🎧", "ordbokene": "https://ordbokene.no/bm/23991/hodetelefon", "naob": "https://naob.no/ordbok/hodetelefon", "snl": "https://snl.no/hodetelefon" },
+  { "id": 257, "no": "Pute", "en":  "Pillow", "emoji": null, "ordbokene": "https://ordbokene.no/bm/46969/pute", "naob": "https://naob.no/ordbok/pute", "snl": null },
+  { "id": 258, "no": "Vindmølle", "en":  "Windmill", "emoji": null, "ordbokene": "https://ordbokene.no/bm/68443/vindm%C3%B8lle", "naob": "https://naob.no/ordbok/vindm%C3%B8lle", "snl": "https://snl.no/vindm%C3%B8lle" },
+  { "id": 259, "no": "Jordbær", "en":  "Strawberry", "emoji": "🍓", "ordbokene": "https://ordbokene.no/bm/27807/jordb%C3%A6r", "naob": "https://naob.no/ordbok/jordb%C3%A6r", "snl": "https://snl.no/jordb%C3%A6r" },
+
+  { "id": 260, "no": "Gressklipper", "en":  "Lawnmower", "emoji": null, "ordbokene": "https://ordbokene.no/bm/20918/gressklipper", "naob": "https://naob.no/ordbok/gressklipper", "snl": "https://snl.no/gressklipper" },
+  { "id": 261, "no": "Sopp", "en":  "Mushroom", "emoji": "🍄", "ordbokene": "https://ordbokene.no/bm/55634/sopp", "naob": "https://naob.no/ordbok/sopp", "snl": "https://snl.no/sopp" },
+  { "id": 262, "no": "Kaktus", "en":  "Cactus", "emoji": "🌵", "ordbokene": "https://ordbokene.no/bm/28228/kaktus", "naob": "https://naob.no/ordbok/kaktus", "snl": "https://snl.no/kaktus" },
+  { "id": 268, "no": "Hundehus", "en":  "Dog house", "emoji": null, "ordbokene": "https://ordbokene.no/bm/24530/hundehus", "naob": "https://naob.no/ordbok/hundehus", "snl": null },
+
+  { "id": 271, "no": "Hai", "en":  "Shark", "emoji": "🦈", "ordbokene": "https://ordbokene.no/bm/21867/hai", "naob": "https://naob.no/ordbok/hai_1", "snl": "https://snl.no/haier" },
+  { "id": 272, "no": "Sugerør", "en":  "Drinking straw", "emoji": null, "ordbokene": "https://ordbokene.no/bm/58261/suger%C3%B8r", "naob": "https://naob.no/ordbok/suger%C3%B8r", "snl": "https://snl.no/suger%C3%B8r_-_vannkraftverk" },
+  { "id": 273, "no": "Buss", "en":  "Bus", "emoji": "🚌", "ordbokene": "https://ordbokene.no/bm/8218/buss", "naob": "https://naob.no/ordbok/buss_1", "snl": "https://snl.no/buss" },
+  { "id": 274, "no": "Tre", "en":  "Tree", "emoji": "🌳", "ordbokene": "https://ordbokene.no/bm/61959/tre", "naob": "https://naob.no/ordbok/tre_3", "snl": "https://snl.no/tre" },
+
+  { "id": 281, "no": "Støvsuger", "en":  "Vacuum cleaner", "emoji": null, "ordbokene": "https://ordbokene.no/bm/58115/st%C3%B8vsuger", "naob": "https://naob.no/ordbok/st%C3%B8vsuger", "snl": "https://snl.no/st%C3%B8vsuger" },
+  { "id": 282, "no": "Is", "en":  "Ice cream", "emoji": "🍦", "ordbokene": "https://ordbokene.no/bm/27187/is", "naob": "https://naob.no/ordbok/is", "snl": "https://snl.no/is_-_spiseis" },
+  { "id": 283, "no": "Trampoline", "en":  "Trampoline", "emoji": null, "ordbokene": "https://ordbokene.no/bm/61790/trampoline", "naob": "https://naob.no/ordbok/trampoline", "snl": "https://snl.no/trampoline" },
+
+  { "id": 291, "no": "Sau", "en":  "Sheep", "emoji": "🐑", "ordbokene": "https://ordbokene.no/bm/50243/sau", "naob": "https://naob.no/ordbok/sau", "snl": "https://snl.no/sau" },
+  { "id": 295, "no": "Ballong", "en":  "Balloon", "emoji": "🎈", "ordbokene": "https://ordbokene.no/bm/4285/ballong", "naob": "https://naob.no/ordbok/ballong", "snl": null },
+  { "id": 296, "no": "Hest", "en":  "Horse", "emoji": "🐴", "ordbokene": "https://ordbokene.no/bm/23430/hest", "naob": "https://naob.no/ordbok/hest", "snl": "https://snl.no/hest" },
+  { "id": 297, "no": "Delfin", "en":  "Dolphin", "emoji": "🐬", "ordbokene": "https://ordbokene.no/bm/9620/delfin", "naob": "https://naob.no/ordbok/delfin", "snl": "https://snl.no/delfiner" },
+  { "id": 298, "no": "Kake", "en":  "Cake", "emoji": "🎂", "ordbokene": "https://ordbokene.no/bm/28203/kake", "naob": "https://naob.no/ordbok/kake_1", "snl": null },
+  { "id": 299, "no": "Varmluftballong", "en":  "Hot air balloon", "emoji": null, "ordbokene": null, "naob": "https://naob.no/ordbok/varmluftsballong", "snl": "https://snl.no/varmluftsballong" },
+
+  { "id": 300, "no": "Bil", "en":  "Car", "emoji": "🚗", "ordbokene": "https://ordbokene.no/bm/5868/bil", "naob": "https://naob.no/ordbok/bil_3", "snl": "https://snl.no/bil" }
 ]
