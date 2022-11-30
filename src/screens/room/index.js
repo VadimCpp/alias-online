@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { setLeader, setWinner, resetGame, updateScore, updateGreeting } from "../firebase";
-import UserList from "../components/userList";
-import Button from "../components/button";
-import ResetButton from "../components/resetButton";
-import Container from "../components/constainer";
-import Header from "../components/header";
-import UserContext from "../contexts/userContext";
-import VOCABULARY from "../utils/vocabulary.json";
-import { isUserActive } from "../utils/helpers";
+import { setLeader, setWinner, resetGame, updateScore, updateGreeting } from "../../firebase";
+import UserList from "../../components/userList";
+import Button from "../../components/button";
+import ResetButton from "../../components/resetButton";
+import Container from "../../components/constainer";
+import Header from "../../components/header";
+import UserContext from "../../contexts/userContext";
+import VOCABULARY from "../../utils/vocabulary.json";
+import { isUserActive } from "../../utils/helpers";
 
 const PlayingRoom = () => {
   // TODO: how to pass parameter once to the top tag of compound component?

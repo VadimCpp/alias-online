@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import UserContext from "../contexts/userContext";
-import { updateLang } from "../firebase";
-import Button from "../components/button";
-import Container from "../components/constainer";
-import Header from "../components/header";
+import UserContext from "../../contexts/userContext";
+import { updateLang } from "../../firebase";
+import Button from "../../components/button";
+import Container from "../../components/constainer";
+import Header from "../../components/header";
 
 const BACK = -1;
 
-const LangSettings = () => {
+const Lang = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
   const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "50px";
@@ -134,4 +134,4 @@ const Border = styled.div`
   margin-bottom: 20px;
 `;
 
-export default LangSettings;
+export default Lang;

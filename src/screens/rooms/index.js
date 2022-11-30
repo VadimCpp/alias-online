@@ -1,12 +1,12 @@
 import React, { useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Container from "../components/constainer";
-import Header from "../components/header";
-import Button from "../components/button";
-import UserContext from "../contexts/userContext";
-import { updateRoom } from "../firebase";
-import { isUserActive } from "../utils/helpers";
+import Container from "../../components/constainer";
+import Header from "../../components/header";
+import Button from "../../components/button";
+import UserContext from "../../contexts/userContext";
+import { updateRoom } from "../../firebase";
+import { isUserActive } from "../../utils/helpers";
 
 const Rooms = () => {
   // TODO: how to pass parameter once to the top tag of compound component?

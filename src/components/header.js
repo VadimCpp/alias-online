@@ -14,7 +14,7 @@ const Header = ({ title, backButton, menuButton }) => {
   return (
     <Container>
       { backButton ? <BackButton onClick={() => navigate(BACK)} /> : <EmptyBlock /> }
-      <Title>{title}</Title>
+      <Title onClick={() => navigate("/")}>{title}</Title>
       { menuButton ? <MenuButton onClick={() => showModal()} /> : <EmptyBlock /> }
     </Container>
   );
