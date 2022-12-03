@@ -301,7 +301,7 @@
     "NO": "Lasting..."
   },
   "ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME": {
-    "EN": "Are you sure you want to reset game?",
+    "EN": "Are you sure you want to reset the game?",
     "UA": "Ви впевнені, що хочете зкинути гру?",
     "RU": "Вы уверены, что хотите сбросить игру?",
     "NO": "Er du sikker på at du vil tilbakestille spillet?"
@@ -395,5 +395,17 @@
     "UA": "🇺🇦 Налаштування мови",
     "RU": "🇷🇺 Настройки языка",
     "NO": "🇳🇴 Språkinnstillinger"
+  },
+  "next_word": {
+    "EN": "Next word!",
+    "UA": "Інше слово!",
+    "RU": "Другое слово!",
+    "NO": "Vise andre ord!"
+  },
+  "are_you_sure_you_want_to_reset_word": {
+    "EN": "Are you sure you want to reset the word?",
+    "UA": "Ви впевнені, що хочете змінити слово?",
+    "RU": "Вы уверены, что хотите сбросить слово?",
+    "NO": "Er du sikker på at du vil tilbakestille ordet?"
   }
 }

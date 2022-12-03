@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { setLeader, setWinner, resetGame, updateScore, updateGreeting } from "../../firebase";
+import { setLeader, setWinner, resetGame, updateScore, updateGreeting, updateWord } from "../../firebase";
 import UserList from "../../components/userList";
 import Button from "../../components/button";
 import ResetButton from "../../components/resetButton";
@@ -148,6 +148,13 @@ const PlayingRoom = () => {
     }
   }
 
+  const onNextWordClick = async () => {
+    if (room && window.confirm(lang('ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
+      const w = getRandomCard();
+      await updateWord(room.uid, w[room.lang]);
+    }
+  }
+
   if (!room) {
     return <>{lang("LOADING")}</>;
   }
@@ -189,6 +196,7 @@ const PlayingRoom = () => {
               <EmojiImage>{getIcon(room.word)}</EmojiImage>
               <StatusMessage>{getWord(room)}</StatusMessage>
             </Border>
+            <Button onClick={() => onNextWordClick()}>{lang("next_word")}</Button>
           </Center>
         )}
         {status === 3 && (

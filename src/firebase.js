@@ -166,6 +166,13 @@ const logOut = async (userUid) => {
   }
 };
 
+const updateWord = async (room, word) => {
+  const roomRef = doc(db, "rooms", room);
+  await updateDoc(roomRef, {
+    word: word,
+  });
+}
+
 export {
   signInWithGoogle,
   logOut,
@@ -178,5 +185,6 @@ export {
   updateScore,
   updateGreeting,
   updateRoom,
-  updateLang
+  updateLang,
+  updateWord,
 };
