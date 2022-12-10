@@ -14,7 +14,6 @@ const Menu = () => {
         <MenuItem onClick={() => navigate("/")}>{lang("home")}</MenuItem>
         <MenuItem onClick={() => navigate("/rooms")}>{lang("rooms")}</MenuItem>
         <MenuItem onClick={() => navigate("/vokabular")}>{lang("vocabulary")}</MenuItem>
-        <MenuItem onClick={() => navigate("/lang")}>{lang("language_settings")}</MenuItem>
       </MenuContainer>
     </DarkScreen>
   }

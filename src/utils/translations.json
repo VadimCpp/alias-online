@@ -233,24 +233,11 @@
     "RU": "Сделано",
     "NO": "Laget av"
   },
-  "LANGUAGE_SETTINGS": {
-    "EN": "Language settings",
-    "UA": "Налаштування мови",
-    "RU": "Настройки языка",
-    "NO": "Språkinnstillinger"
-  },
-  "CHOOSE_LANGUAGE": {
-    "EN": "Choose language",
-    "UA": "Оберіть мову",
-    "RU": "Выберите язык",
-    "NO": "Velg språk"
-  },
   "GET_PRIZE": {
     "EN": "Get prize",
     "UA": "Отримати приз",
     "RU": "Получить приз",
     "NO": "Få premie"
-
   },
   "CHOOSE_VINNER": {
     "EN": "Choose vinner",
@@ -330,12 +317,6 @@
     "RU": "Подождите пока победитель возьмет приз",
     "NO": "Venter når vinner ta prisen"
   },
-  "DONE": {
-    "EN": "Done",
-    "UA": "Добре",
-    "RU": "Готово",
-    "NO": "Fardig"
-  },
   "YOU": {
     "EN": "You",
     "UA": "Ви",
@@ -383,12 +364,6 @@
     "UA": "Словник",
     "RU": "Словарь",
     "NO": "Vokabular"
-  },
-  "language_settings": {
-    "EN": "🇬🇧 Language settings",
-    "UA": "🇺🇦 Налаштування мови",
-    "RU": "🇷🇺 Настройки языка",
-    "NO": "🇳🇴 Språkinnstillinger"
   },
   "next_word": {
     "EN": "Next word!",

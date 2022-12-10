@@ -7,7 +7,6 @@ import useUser from "./hooks/useUser";
 
 import Home from "./screens/home";
 import Rooms from "./screens/rooms";
-import Lang from "./screens/lang";
 import Room from "./screens/room";
 import Vocabulary from "./screens/vocabulary";
 import Word from "./screens/word";
@@ -18,7 +17,6 @@ const App = () => {
     <UserContext.Provider value={useUser()}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/lang" element={<Lang />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/rooms/:slug" element={<Room />} />
         <Route path="/vokabular" element={<Vocabulary />} />
