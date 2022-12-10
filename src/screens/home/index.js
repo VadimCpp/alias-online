@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { signInWithGoogle, logOut } from "../../firebase";
 import UserContext from "../../contexts/userContext";
 import Button from "../../components/button";
@@ -79,9 +79,17 @@ const Home = () => {
           </SectionTitle>
           <SectionFooter>
             {user && (
-              <Button onClick={() => navigate("/rooms")}>
-                {lang("PLAY")}
-              </Button>
+              <Row>
+                <Left>
+                  ➡️
+                </Left>
+                <Button onClick={() => navigate("/rooms")}>
+                  {lang("PLAY")}
+                </Button>
+                <Right>
+                  ⬅️
+                </Right>
+              </Row>
             )}
             {!user &&
             <Button onClick={() => signInWithGoogle()}>
@@ -150,6 +158,50 @@ const VocabularyContent = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-`
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const leftAnimation = keyframes`
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(10px);
+  }
+  100% {
+    transform: translate(0);
+  }
+`;
+
+const Left = styled.div`
+  display: block;
+  font-size: 24px;
+  animation: ${leftAnimation} 1s linear infinite;
+  margin-right: 20px;
+`;
+
+const rightAnimation = keyframes`
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(-10px);
+  }
+  100% {
+    transform: translate(0);
+  }
+`;
+
+const Right = styled.div`
+  display: block;
+  font-size: 24px;
+  animation: ${rightAnimation} 1s linear infinite;
+  margin-left: 20px;
+`;
 
 export default Home;
