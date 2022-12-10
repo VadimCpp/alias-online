@@ -354,12 +354,6 @@
     "RU": "Для начала игры необходимо минимум двое участников",
     "NO": "For å spille det må bli minst to spiller"
   },
-  "VOCABULARY": {
-    "EN": "Vocabulary",
-    "UA": "Словник",
-    "RU": "Словарь",
-    "NO": "Vokabular"
-  },
   "THERE_ARE_X_WORDS_IN_VOCABULAR": {
     "EN": "There are {x} words in the vocabulary",
     "UA": "В словнику {x} слів",
@@ -407,5 +401,17 @@
     "UA": "Ви впевнені, що хочете змінити слово?",
     "RU": "Вы уверены, что хотите сбросить слово?",
     "NO": "Er du sikker på at du vil tilbakestille ordet?"
+  },
+  "we_speak_your_language": {
+    "EN": "We speak your language!",
+    "UA": "Ми розмовляємо Вашою мовою!",
+    "RU": "Мы разговариваем на вашем языке!",
+    "NO": "Vi snakker norsk!"
+  },
+  "see_all": {
+    "EN": "See all",
+    "UA": "Дивитись всі",
+    "RU": "Смотреть все",
+    "NO": "Se alle"
   }
 }

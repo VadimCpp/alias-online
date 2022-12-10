@@ -8,6 +8,7 @@ import Header from "../../components/header";
 import Container from "../../components/constainer";
 import vocabulary from "../../utils/vocabulary.json";
 import PlayingCardMini from "./components/playingCardMini";
+import LangButtons from "./components/langButtons";
 
 const Home = () => {
   // TODO: how to pass parameter once to the top tag of compound component?
@@ -46,6 +47,30 @@ const Home = () => {
       <Container.Content>
         <HomeContent>
           <SectionTitle>
+            {lang("we_speak_your_language")}
+          </SectionTitle>
+          <SectionFooter>
+            <LangButtons />
+          </SectionFooter>
+        </HomeContent>
+        <HomeContent background={"lightgray"}>
+          <SectionTitle>{lang("vocabulary")}</SectionTitle>
+          <VocabularyContent>
+            {randomIcons.map((word) => {
+              return <PlayingCardMini key={word['no']} wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
+            })}
+          </VocabularyContent>
+          <p>
+            { lang("THERE_ARE_X_WORDS_IN_VOCABULAR", filteredVocabulary.length) }
+          </p>
+          <SectionFooter>
+            <Button onClick={() => navigate("/vokabular")}>
+              {lang("see_all")}
+            </Button>
+          </SectionFooter>
+        </HomeContent>
+        <HomeContent>
+          <SectionTitle>
             {
               !!user ?
               `${lang("WELCOME")}, ${user.displayName}` :
@@ -68,22 +93,6 @@ const Home = () => {
                 {lang("LOG_OUT")}
               </Button>
             )}
-          </SectionFooter>
-        </HomeContent>
-        <HomeContent background={"lightgray"}>
-          <SectionTitle>{"Vocabulary"}</SectionTitle>
-          <VocabularyContent>
-            {randomIcons.map((word) => {
-              return <PlayingCardMini key={word['no']} wordObject={word} margin={"0 10px 15px"} onClick={onClickWord} />
-            })}
-          </VocabularyContent>
-          <p>
-            { lang("THERE_ARE_X_WORDS_IN_VOCABULAR", filteredVocabulary.length) }
-          </p>
-          <SectionFooter>
-            <Button onClick={() => navigate("/vokabular")}>
-              {"See all"}
-            </Button>
           </SectionFooter>
           <BlankSpace />
         </HomeContent>

@@ -25,7 +25,7 @@ const Vocabulary = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <Header
-          title={lang("VOCABULARY")}
+          title={lang("vocabulary")}
           backButton
           menuButton
         />
