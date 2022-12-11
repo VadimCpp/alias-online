@@ -42,7 +42,7 @@ const Home = () => {
   return (
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
-        <Header title={lang("ALIAS_ONLINE")} />
+        <Header title={lang("alias_online")} />
       </Container.Header>
       <Container.Content>
         <HomeContent>
@@ -61,7 +61,7 @@ const Home = () => {
             })}
           </VocabularyContent>
           <p>
-            { lang("THERE_ARE_X_WORDS_IN_VOCABULAR", filteredVocabulary.length) }
+            { lang("there_are_x_words_in_vocabular", filteredVocabulary.length) }
           </p>
           <SectionFooter>
             <Button onClick={() => navigate("/vokabular")}>
@@ -73,8 +73,8 @@ const Home = () => {
           <SectionTitle>
             {
               !!user ?
-              `${lang("WELCOME")}, ${user.displayName}` :
-              lang("PLAY_WITH_FRIENDS")
+              `${lang("welcome")}, ${user.displayName}` :
+              lang("play_with_friends")
             }
           </SectionTitle>
           <SectionFooter>
@@ -84,7 +84,7 @@ const Home = () => {
                   ➡️
                 </Left>
                 <Button onClick={() => navigate("/rooms")}>
-                  {lang("PLAY")}
+                  {lang("play")}
                 </Button>
                 <Right>
                   ⬅️
@@ -93,12 +93,12 @@ const Home = () => {
             )}
             {!user &&
             <Button onClick={() => signInWithGoogle()}>
-              {lang("SIGN_IN_WITH_GOOGLE")}
+              {lang("sign_in_with_google")}
             </Button>
             }
             {user && (
               <Button onClick={() => logOut(user.uid)}>
-                {lang("LOG_OUT")}
+                {lang("log_out")}
               </Button>
             )}
           </SectionFooter>
@@ -107,7 +107,7 @@ const Home = () => {
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <HomeFooter>
-          { lang(isLoading ? "LOADING" : "WELCOME" )}
+          { lang(isLoading ? "loading" : "welcome" )}
         </HomeFooter>
       </Container.Footer>
     </Container>

@@ -45,7 +45,7 @@ const Rooms = () => {
     <Container paddingTop={HEADER_HEIGHT} paddingBottom={FOOTER_HEIGHT}>
       <Container.Header height={HEADER_HEIGHT}>
         <Header
-          title={lang("ALIAS_ONLINE")}
+          title={lang("alias_online")}
           backButton
           menuButton
         />
@@ -62,7 +62,7 @@ const Rooms = () => {
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <RoomsFooter>
-          { lang(isLoading ? "LOADING" : "CHOOSE_ROOM" )}
+          { lang(isLoading ? "loading" : "choose_room" )}
         </RoomsFooter>
       </Container.Footer>
     </Container>

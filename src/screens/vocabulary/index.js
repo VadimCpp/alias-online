@@ -39,7 +39,7 @@ const Vocabulary = () => {
       </Container.Content>
       <Container.Footer height={FOOTER_HEIGHT}>
         <VocabularyFooter>
-          { lang("THERE_ARE_X_WORDS_IN_VOCABULAR", filteredVocabulary.length) }
+          { lang("there_are_x_words_in_vocabular", filteredVocabulary.length) }
         </VocabularyFooter>
       </Container.Footer>
     </Container>

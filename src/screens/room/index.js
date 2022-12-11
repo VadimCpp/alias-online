@@ -115,7 +115,7 @@ const PlayingRoom = () => {
       const w = getRandomCard();
       await setLeader(user.uid, room.uid, user.displayName, w[room.lang]);
     } else {
-      alert(lang("NEED_AT_LEAST_TWO_PLAYERS"));
+      alert(lang("need_at_least_two_players"));
     }
   }
 
@@ -144,20 +144,20 @@ const PlayingRoom = () => {
   }
 
   const onResetGameClick = async () => {
-    if (room && window.confirm(lang('ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
+    if (room && window.confirm(lang('are_you_sure_you_want_to_reset_game'))) {
       await resetGame(room.uid);
     }
   }
 
   const onNextWordClick = async () => {
-    if (room && window.confirm(lang('ARE_YOU_SURE_YOU_WANT_TO_RESET_GAME'))) {
+    if (room && window.confirm(lang('are_you_sure_you_want_to_reset_game'))) {
       const w = getRandomCard();
       await updateWord(room.uid, w[room.lang]);
     }
   }
 
   if (!room) {
-    return <>{lang("LOADING")}</>;
+    return <>{lang("loading")}</>;
   }
 
   return (
@@ -172,28 +172,28 @@ const PlayingRoom = () => {
       <Container.Content>
         {status === 0 && (
           <Center>
-            <Border title={lang("PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={(u) => navigate(`/profile/${u.uid}`)} /> : lang("LOADING")}
+            <Border title={lang("players")}>
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={(u) => navigate(`/profile/${u.uid}`)} /> : lang("loading")}
             </Border>
           </Center>
         )}
         {status === 1 && (
           <Center>
-            <Border title={lang("PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={(u) => navigate(`/profile/${u.uid}`)} /> : lang("LOADING")}
+            <Border title={lang("players")}>
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={(u) => navigate(`/profile/${u.uid}`)} /> : lang("loading")}
             </Border>
           </Center>
         )}
         {status === 2 && isChooseWinner && (
           <Center>
-            <Border title={lang("PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={onWinnerClick} /> : lang("LOADING")}
+            <Border title={lang("players")}>
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={onWinnerClick} /> : lang("loading")}
             </Border>
           </Center>
         )}
         {status === 2 && !isChooseWinner && (
           <Center>
-            <Border title={lang("WORD")}>
+            <Border title={lang("word")}>
               <EmojiImage>{getIcon(room.word)}</EmojiImage>
               <StatusMessage>{getWord(room)}</StatusMessage>
             </Border>
@@ -202,20 +202,20 @@ const PlayingRoom = () => {
         )}
         {status === 3 && (
           <Center>
-            <Border title={lang("STATUS")}>
+            <Border title={lang("status")}>
               <EmojiImage>{getIcon(room.word)}</EmojiImage>
               <StatusMessage>
                 {getWord(room)}
               </StatusMessage>
               <SubStatusMessage>
-                {`${room.winnerName} ${lang("HAS_GUESSED_THE_WORD")}`}
+                {`${room.winnerName} ${lang("has_guessed_the_word")}`}
               </SubStatusMessage>
             </Border>
           </Center>
         )}
         {status === 4 && (
           <Center>
-            <Border title={lang("STATUS")}>
+            <Border title={lang("status")}>
               <EmojiImage>🥳</EmojiImage>
             </Border>
           </Center>
@@ -225,7 +225,7 @@ const PlayingRoom = () => {
         <PlayingRoomControlFooter>
           {status === 0 && (
             <Button onClick={onPlayClick}>
-              {lang("PLAY")}
+              {lang("play")}
             </Button>
           )}
           {status === 1 && countDown === 0 && (
@@ -234,7 +234,7 @@ const PlayingRoom = () => {
                 {"👋"}
               </Button>
               <ResetButton onClick={onResetGameClick}>
-                {lang("RESET_GAME")}
+                {lang("reset_game")}
               </ResetButton>
             </>
           )}
@@ -245,57 +245,57 @@ const PlayingRoom = () => {
           )}
           {status === 2 && isChooseWinner && (
             <Button onClick={() => setIsChooseWinner(false)}>
-              {lang("SHOW_PICTURE")}
+              {lang("show_picture")}
             </Button>
           )}
           {status === 2 && !isChooseWinner && (
             <Button onClick={() => setIsChooseWinner(true)}>
-              {lang("CHOOSE_VINNER")}
+              {lang("choose_vinner")}
             </Button>
           )}
           {status === 3 && countDown === 0 && (
             <ResetButton onClick={onResetGameClick}>
-              {lang("RESET_GAME")}
+              {lang("reset_game")}
             </ResetButton>
           )}
           {status === 4 && (
             <Button onClick={onGetPrizeClick}>
-              {lang("GET_PRIZE")}
+              {lang("get_prize")}
             </Button>
           )}
         </PlayingRoomControlFooter>
         <PlayingRoomFooter>
           {status === 0 && (
             <>
-              {lang("GAME_IS_NOT_STARTED_PRESS_PLAY_BUTTON")}
+              {lang("game_is_not_started_press_play_button")}
             </>
           )}
           {status === 1 && (
             <>
-              {`${leaderName} ${lang("ARE_EXPLAINING_THE_WORD")}`}
+              {`${leaderName} ${lang("are_explaining_the_word")}`}
               {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}
           {status === 2 && isChooseWinner && (
             <>
-              {lang("CHOOSE_THE_WINNER_OR_BACK_TO_PICTURE")}
+              {lang("choose_the_winner_or_back_to_picture")}
             </>
           )}
           {status === 2 && !isChooseWinner && (
             <>
-              {lang("YOU_ARE_EXPLAINING_THE_WORD")}
+              {lang("you_are_explaining_the_word")}
               {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}
           {status === 3 && (
             <>
-              {lang("WAIT_FOR_WINNER")}
+              {lang("wait_for_winner")}
               {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}
           {status === 4 && (
             <>
-              {lang("YOU_WIN_PRESS_GET_PRIZE")}
+              {lang("you_win_press_get_prize")}
               {countDown > 0 ? ` (${countDown})` : ""}
             </>
           )}

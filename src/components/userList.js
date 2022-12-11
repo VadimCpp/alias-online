@@ -10,10 +10,10 @@ const UserList = ({ users, uid, room, onUserClick }) => {
   const getDisplayName = (user) => {
     let dn = user.displayName;
     if (uid === user.uid) {
-      dn += ` (${getString(interfaceLang, "YOU")})`;
+      dn += ` (${getString(interfaceLang, "you")})`;
     }
     if (room.leaderUid === user.uid) {
-      dn += ` (${getString(interfaceLang, "EXPLAIN_A_WORD")})`;
+      dn += ` (${getString(interfaceLang, "explain_a_word")})`;
     }
     return dn;
   }
