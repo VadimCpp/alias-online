@@ -9,6 +9,7 @@ import Home from "./screens/home";
 import Rooms from "./screens/rooms";
 import Room from "./screens/room";
 import Vocabulary from "./screens/vocabulary";
+import Profile from "./screens/profile";
 import Word from "./screens/word";
 import Menu from "./components/menu";
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/rooms/:slug" element={<Room />} />
+        <Route path="/profile/:uid" element={<Profile />} />
         <Route path="/vokabular" element={<Vocabulary />} />
         <Route path="/vokabular/:word" element={<Word />} />
       </Routes>

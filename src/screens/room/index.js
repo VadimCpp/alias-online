@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { setLeader, setWinner, resetGame, updateScore, updateGreeting, updateWord } from "../../firebase";
 import UserList from "../../components/userList";
@@ -16,6 +16,7 @@ const PlayingRoom = () => {
   const HEADER_HEIGHT = "80px";
   const FOOTER_HEIGHT = "130px";
 
+  const navigate = useNavigate();
   let { slug } = useParams();
   const { user, users, rooms, lang } = useContext(UserContext);
 
@@ -172,14 +173,14 @@ const PlayingRoom = () => {
         {status === 0 && (
           <Center>
             <Border title={lang("PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}} /> : lang("LOADING")}
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={(u) => navigate(`/profile/${u.uid}`)} /> : lang("LOADING")}
             </Border>
           </Center>
         )}
         {status === 1 && (
           <Center>
             <Border title={lang("PLAYERS")}>
-              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={() => {}} /> : lang("LOADING")}
+              {users.length ? <UserList users={users} uid={user?.uid} room={room} onUserClick={(u) => navigate(`/profile/${u.uid}`)} /> : lang("LOADING")}
             </Border>
           </Center>
         )}

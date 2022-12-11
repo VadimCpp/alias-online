@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import getString from "../utils/getString";
 import UserContext from "../contexts/userContext";
+import Avatar from "../components/avatar";
 
 const UserList = ({ users, uid, room, onUserClick }) => {
   const { interfaceLang } = useContext(UserContext);
@@ -40,7 +41,7 @@ const UserList = ({ users, uid, room, onUserClick }) => {
               {
                 (user.greeting)
                 ? <Rotate>{"👋"}</Rotate>
-                : <Avatar width="32" height="32" src={user.photoURL} alt={user.displayName} />
+                : <Avatar user={user}/>
               }
               <Name>{getDisplayName(user)}</Name>
               <Score>{user.score}</Score>
@@ -80,11 +81,6 @@ const Row = styled.li`
   align-items: center;
   margin-bottom: 10px;
   cursor: pointer;
-`;
-
-const Avatar = styled.img`
-  border-radius: 16px;
-  margin-right: 10px;
 `;
 
 const Name = styled.span`

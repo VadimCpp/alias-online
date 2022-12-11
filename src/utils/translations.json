@@ -388,5 +388,23 @@
     "UA": "Дивитись всі",
     "RU": "Смотреть все",
     "NO": "Se alle"
+  },
+  "profile": {
+    "EN": "Profile",
+    "UA": "Профіль",
+    "RU": "Профиль",
+    "NO": "Profil"
+  },
+  "it_is_your_profile": {
+    "EN": "It is your profile",
+    "UA": "Це Ваш профіль",
+    "RU": "Это Ваш профиль",
+    "NO": "Det er din profil"
+  },
+  "this_is_pro": {
+    "EN": "This is professional profile",
+    "UA": "Це професійний профіль",
+    "RU": "Это профессиональный профиль",
+    "NO": "Det er profesionelt profil"
   }
 }

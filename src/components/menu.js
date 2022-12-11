@@ -11,9 +11,10 @@ const Menu = () => {
     return <DarkScreen onClick={() => hideModal()}>
       <BgImage />
       <MenuContainer>
-        <MenuItem onClick={() => navigate("/")}>{lang("home")}</MenuItem>
-        <MenuItem onClick={() => navigate("/rooms")}>{lang("rooms")}</MenuItem>
-        <MenuItem onClick={() => navigate("/vokabular")}>{lang("vocabulary")}</MenuItem>
+        <MenuItem onClick={() => navigate("/")}>{lang("home") + " 🏠"}</MenuItem>
+        <MenuItem onClick={() => navigate("/profile")}>{lang("profile") + " 👤"}</MenuItem>
+        <MenuItem onClick={() => navigate("/rooms")}>{lang("rooms") + " 👥"}</MenuItem>
+        <MenuItem onClick={() => navigate("/vokabular")}>{lang("vocabulary") + " 📖"}</MenuItem>
       </MenuContainer>
     </DarkScreen>
   }
