@@ -8,7 +8,7 @@ const LangButtons = () => {
 
   return (
     <Container>
-      { ["NO", "UA", "RU", "EN"].map((lang) => <Button key={lang} onClick={() => setInterfaceLang(lang)}>{lang}</Button>) }
+      { ["no", "ua", "ru", "en"].map((lang) => <Button key={lang} onClick={() => setInterfaceLang(lang)}>{lang}</Button>) }
     </Container>
   );
 };

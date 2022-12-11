@@ -14,7 +14,7 @@ const useUser = () => {
   const [rooms, setRooms] = useState([]);
 
   // Lang
-  const [interfaceLang, setInterfaceLang] = useState("NO");
+  const [interfaceLang, setInterfaceLang] = useState("no");
   const lang = useCallback((key, optParam) => {
     let result = getString(interfaceLang, key);
     if (optParam) {
@@ -79,9 +79,9 @@ const useUser = () => {
   useEffect(() => {
     if (!!user && users.length) {
       let profile = users.find(u => u.uid === user.uid)
-      setInterfaceLang(profile.lang || "NO");
+      setInterfaceLang(profile?.lang?.toLowerCase() || "no");
     } else {
-      setInterfaceLang("NO");
+      setInterfaceLang("no");
     }
   }, [users, user]);
 
