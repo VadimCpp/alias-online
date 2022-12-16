@@ -18,7 +18,7 @@
     "deploy": "firebase deploy --only hosting",
     "deploy-rules": "firebase deploy --only firestore:rules",
     "format": "prettier . --write",
-    "prepare": "cp -rf ./scripts/commit-msg .git/hooks && chmod 755 ./scripts/commit-msg"
+    "prepare": "shx cp -rf ./scripts/commit-msg .git/hooks && shx <zchmod 755 ./scripts/commit-msg"
   },
   "eslintConfig": {
     "extends": [
@@ -31,7 +31,8 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.22",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "shx": "^0.3.4"
   },
   "browserslist": {
     "production": [
