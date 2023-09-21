@@ -1,5 +1,5 @@
 const isUserActive = (lastActiveAt) => {
-  const today = +(new Date());
+  const today = Date.now();
   return (today - lastActiveAt) / 1000 / 60 / 60 < 1;
 };
 

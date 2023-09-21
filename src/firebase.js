@@ -46,7 +46,7 @@ const setLeader = async (uid, room, name, word) => {
   await updateDoc(roomRef, {
     leaderUid: uid,
     leaderName: name,
-    leaderTimestamp: +(new Date()),
+    leaderTimestamp: Date.now(),
     winnerUid: null,
     winnerName: null,
     winnerTimestamp: null,
@@ -59,7 +59,7 @@ const setWinner = async (uid, room, name, word) => {
   await updateDoc(roomRef, {
     winnerUid: uid,
     winnerName: name,
-    winnerTimestamp: +(new Date()),
+    winnerTimestamp: Date.now(),
     leaderUid: null,
     leaderName: null,
     leaderTimestamp: null,
@@ -92,7 +92,7 @@ const updateScore = async (uid, score) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     score,
-    lastActiveAt: +(new Date()),
+    lastActiveAt: Date.now(),
     greeting: false,
   });
 }
@@ -108,7 +108,7 @@ const updateRoom = async (uid, room) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     room,
-    lastActiveAt: +(new Date()),
+    lastActiveAt: Date.now(),
     greeting: false,
   });
 }
@@ -117,7 +117,7 @@ const updateLang = async (uid, lang) => {
   const userRef = doc(db, "users", uid);
   await updateDoc(userRef, {
     lang,
-    lastActiveAt: +(new Date()),
+    lastActiveAt: Date.now(),
     greeting: false,
   });
 };
@@ -140,7 +140,7 @@ const signInWithGoogle = async () => {
         displayName: user.displayName,
         photoURL: user.photoURL,
         score: 0,
-        lastActiveAt: +(new Date()),
+        lastActiveAt: Date.now(),
         role: 'spiller',
         isActive: true
       };

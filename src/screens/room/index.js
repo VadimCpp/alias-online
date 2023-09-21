@@ -65,11 +65,11 @@ const PlayingRoom = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (status === 2 || status === 1) {
-        const today = +(new Date());
+        const today = Date.now();
         const diff = (today - leaderTimestamp) / 1000; // in seconds
         setCountDown(diff < 60 ? Math.ceil(60 - diff) : 0);
       } else if (status === 3 || status === 4) {
-        const today = +(new Date());
+        const today = Date.now();
         const diff = (today - winnerTimestamp) / 1000; // in seconds
         setCountDown(diff < 30 ? Math.ceil(30 - diff) : 0);
       }
