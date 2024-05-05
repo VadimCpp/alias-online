@@ -1,6 +1,6 @@
 # Alias-online
 
-> An online version of the famous game. Play here ➡️ https://alias-online-13de4.web.app
+> An online version of the famous game.
 
 ![IMG_1185](https://user-images.githubusercontent.com/4641125/194563847-7b9041ff-66d8-4892-9209-6b513961cde5.JPG)
 
